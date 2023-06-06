@@ -11,7 +11,7 @@ package Clases;
 public class Administrador extends Usuario {
     
     private String area;
-    //:v
+    //:v;
  
     public String getArea() {
         return area;
