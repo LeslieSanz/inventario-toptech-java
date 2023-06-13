@@ -4,7 +4,15 @@ public class Producto {
     private String cod;
     private String categoria;
     private String descripcion;
-    private double precio_unid;
+    private double precioUnit;
+
+    public double getPrecioUnit() {
+        return precioUnit;
+    }
+
+    public void setPrecioUnit(double precioUnit) {
+        this.precioUnit = precioUnit;
+    }
 
     public String getCod() {
         return cod;
@@ -30,13 +38,6 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public double getPrecio_unid() {
-        return precio_unid;
-    }
-
-    public void setPrecio_unid(double precio_unid) {
-        this.precio_unid = precio_unid;
-    }
 }
     
 

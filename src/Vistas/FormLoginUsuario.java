@@ -189,7 +189,7 @@ public class FormLoginUsuario extends javax.swing.JFrame {
                 m.jMenuProceso.setVisible(false);              
                 m.jMenuProductos.setVisible(true);
                 m.jMenuProveedores.setVisible(true);
-                m.jMenuDetalle.setVisible(true);
+                m.jMenuVenta.setVisible(true);
             }else{
                 if(cbxTipoUsuario.getSelectedItem().equals("Vendedor")){
                     FormMenu m= new FormMenu();
@@ -197,7 +197,7 @@ public class FormLoginUsuario extends javax.swing.JFrame {
                     m.jMenuProceso.setVisible(false);              
                     m.jMenuProductos.setVisible(false);
                      m.jMenuProveedores.setVisible(false);
-                     m.jMenuDetalle.setVisible(true);
+                     m.jMenuVenta.setVisible(true);
                 }else{
                     JOptionPane.showMessageDialog(null, "Por favor, seleccione un tipo de usuario"); 
                 }   
