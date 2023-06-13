@@ -275,7 +275,8 @@ public class FormMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jmProductoActionPerformed
 
     private void jmiProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProveedoresActionPerformed
-        FormProveedor pv=new FormProveedor();
+        IFormProveedor pv=new IFormProveedor();
+        contenedor.add(pv);
         pv.setVisible(true);
     }//GEN-LAST:event_jmiProveedoresActionPerformed
 
