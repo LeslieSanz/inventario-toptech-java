@@ -10,9 +10,7 @@ package Clases;
  */
 public class Venta {
     private String fecha;
-    private double precioUnitario;
-    private int cantidad;
-    private double importeTotal; //se calcula
+    private double total; //se calcula
     private double impuestoIGV; //se calcula
     private double descuento; //se calcula
 
@@ -24,28 +22,12 @@ public class Venta {
         this.fecha = fecha;
     }
 
-    public double getPrecioUnitario() {
-        return precioUnitario;
+    public double getTotal() {
+        return total;
     }
 
-    public void setPrecioUnitario(double precioUnitario) {
-        this.precioUnitario = precioUnitario;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public double getImporteTotal() {
-        return importeTotal;
-    }
-
-    public void setImporteTotal(double importeTotal) {
-        this.importeTotal = importeTotal;
+    public void setTotal(double importeTotal) {
+        this.total = importeTotal;
     }
 
     public double getImpuestoIGV() {

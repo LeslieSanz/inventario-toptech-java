@@ -37,21 +37,36 @@ public class FormMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        contenedor = new javax.swing.JDesktopPane();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSalidaStock = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenuProceso = new javax.swing.JMenu();
-        jmiEntrada = new javax.swing.JMenuItem();
-        jmiSalida = new javax.swing.JMenuItem();
         jMenuProductos = new javax.swing.JMenu();
         jmProducto = new javax.swing.JMenuItem();
         jMenuProveedores = new javax.swing.JMenu();
         jmiProveedores = new javax.swing.JMenuItem();
-        jMenuDetalle = new javax.swing.JMenu();
+        jMenuProceso = new javax.swing.JMenu();
+        jmiEntrada = new javax.swing.JMenuItem();
+        jmiSalida = new javax.swing.JMenuItem();
+        jMenuVenta = new javax.swing.JMenu();
         jmiVenta = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        contenedor.setBackground(new java.awt.Color(204, 204, 204));
+        contenedor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
+        jLabel1.setText("Inventario de productos");
 
         tblSalidaStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -66,34 +81,81 @@ public class FormMenu extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblSalidaStock);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
-        jLabel1.setText("Inventario de productos");
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(83, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
+        );
 
-        jMenuProceso.setText("Proceso");
-        jMenuProceso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuProcesoActionPerformed(evt);
-            }
-        });
+        contenedor.setLayer(jPanel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        jmiEntrada.setText(" Entrada");
-        jmiEntrada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiEntradaActionPerformed(evt);
-            }
-        });
-        jMenuProceso.add(jmiEntrada);
+        javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
+        contenedor.setLayout(contenedorLayout);
+        contenedorLayout.setHorizontalGroup(
+            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        contenedorLayout.setVerticalGroup(
+            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
-        jmiSalida.setText(" Salida");
-        jmiSalida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiSalidaActionPerformed(evt);
-            }
-        });
-        jMenuProceso.add(jmiSalida);
+        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
-        jMenuBar1.add(jMenuProceso);
+        jLabel2.setText("Frase motivadora");
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(163, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(157, 157, 157))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(249, 249, 249)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(contenedor)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(contenedor)
+                .addContainerGap())
+        );
+
+        jMenuProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/productos.png"))); // NOI18N
         jMenuProductos.setText("Productos");
         jMenuProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +173,7 @@ public class FormMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuProductos);
 
+        jMenuProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedores.png"))); // NOI18N
         jMenuProveedores.setText("Proveedores");
 
         jmiProveedores.setText(" Abrir...");
@@ -123,22 +186,52 @@ public class FormMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuProveedores);
 
-        jMenuDetalle.setText("Detalle");
-        jMenuDetalle.addActionListener(new java.awt.event.ActionListener() {
+        jMenuProceso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proceso.png"))); // NOI18N
+        jMenuProceso.setText("Proceso");
+        jMenuProceso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuDetalleActionPerformed(evt);
+                jMenuProcesoActionPerformed(evt);
             }
         });
 
-        jmiVenta.setText("Venta");
+        jmiEntrada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/entradita.png"))); // NOI18N
+        jmiEntrada.setText(" Entrada");
+        jmiEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiEntradaActionPerformed(evt);
+            }
+        });
+        jMenuProceso.add(jmiEntrada);
+
+        jmiSalida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salidita.png"))); // NOI18N
+        jmiSalida.setText(" Salida");
+        jmiSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSalidaActionPerformed(evt);
+            }
+        });
+        jMenuProceso.add(jmiSalida);
+
+        jMenuBar1.add(jMenuProceso);
+
+        jMenuVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ventas.png"))); // NOI18N
+        jMenuVenta.setText("Venta");
+        jMenuVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuVentaActionPerformed(evt);
+            }
+        });
+
+        jmiVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/detalle.png"))); // NOI18N
+        jmiVenta.setText("Generar venta");
         jmiVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiVentaActionPerformed(evt);
             }
         });
-        jMenuDetalle.add(jmiVenta);
+        jMenuVenta.add(jmiVenta);
 
-        jMenuBar1.add(jMenuDetalle);
+        jMenuBar1.add(jMenuVenta);
 
         setJMenuBar(jMenuBar1);
 
@@ -146,21 +239,11 @@ public class FormMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -180,8 +263,9 @@ public class FormMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiVentaActionPerformed
 
     private void jmiEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEntradaActionPerformed
-        FormEntrada e=new FormEntrada();
-        e.setVisible(true);
+        IFormEntrada e = new IFormEntrada();
+        contenedor.add(e);
+        e.show();
     }//GEN-LAST:event_jmiEntradaActionPerformed
 
     private void jmProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmProductoActionPerformed
@@ -194,13 +278,14 @@ public class FormMenu extends javax.swing.JFrame {
         pv.setVisible(true);
     }//GEN-LAST:event_jmiProveedoresActionPerformed
 
-    private void jMenuDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuDetalleActionPerformed
+    private void jMenuVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVentaActionPerformed
 
-    }//GEN-LAST:event_jMenuDetalleActionPerformed
+    }//GEN-LAST:event_jMenuVentaActionPerformed
 
     private void jmiSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSalidaActionPerformed
-        FormSalida s=new FormSalida();
-        s.setVisible(true);
+        IFormSalida s = new IFormSalida();
+        contenedor.add(s);
+        s.show();
     }//GEN-LAST:event_jmiSalidaActionPerformed
 
     /**
@@ -242,12 +327,17 @@ public class FormMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane contenedor;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
-    public static javax.swing.JMenu jMenuDetalle;
     public static javax.swing.JMenu jMenuProceso;
     public static javax.swing.JMenu jMenuProductos;
     public static javax.swing.JMenu jMenuProveedores;
+    public static javax.swing.JMenu jMenuVenta;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem jmProducto;
     private javax.swing.JMenuItem jmiEntrada;
