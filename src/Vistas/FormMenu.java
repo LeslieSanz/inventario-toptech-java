@@ -258,8 +258,9 @@ public class FormMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuProductosActionPerformed
 
     private void jmiVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiVentaActionPerformed
-        FormVenta v=new FormVenta();
-        v.setVisible(true);
+        IFormVenta v=new IFormVenta();
+        contenedor.add(v);
+        v.show();
     }//GEN-LAST:event_jmiVentaActionPerformed
 
     private void jmiEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEntradaActionPerformed
