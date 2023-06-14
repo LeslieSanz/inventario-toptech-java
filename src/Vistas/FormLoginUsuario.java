@@ -160,6 +160,7 @@ public class FormLoginUsuario extends javax.swing.JFrame {
         if(cbxTipoUsuario.getSelectedItem().equals("Administrador")){
             FormMenu m= new FormMenu();
             m.setVisible(true);
+            //
         }else{
             if(cbxTipoUsuario.getSelectedItem().equals("Invitado")){
                 FormMenu m= new FormMenu();
