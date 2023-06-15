@@ -114,7 +114,7 @@ public class FormMenu extends javax.swing.JFrame {
             .addComponent(pnlnventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Frase motivadora.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FraseMenu.png"))); // NOI18N
 
         javax.swing.GroupLayout pnlFondoBlancoLayout = new javax.swing.GroupLayout(pnlFondoBlanco);
         pnlFondoBlanco.setLayout(pnlFondoBlancoLayout);
