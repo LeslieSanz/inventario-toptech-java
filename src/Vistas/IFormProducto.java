@@ -49,6 +49,7 @@ public class IFormProducto extends javax.swing.JInternalFrame {
         tblProducto = new javax.swing.JTable();
 
         setClosable(true);
+        setTitle("Productos");
         setPreferredSize(new java.awt.Dimension(777, 546));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

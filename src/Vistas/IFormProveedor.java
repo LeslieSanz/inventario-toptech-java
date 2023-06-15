@@ -44,6 +44,7 @@ public class IFormProveedor extends javax.swing.JInternalFrame {
         tblProvedor = new javax.swing.JTable();
 
         setClosable(true);
+        setTitle("Proveedores");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
