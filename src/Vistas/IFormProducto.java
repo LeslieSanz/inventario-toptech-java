@@ -177,7 +177,7 @@ public class IFormProducto extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cbxCategoriaActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-       //Registrar Productos
+       //Registrar Productos Hola Mundo
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
 
