@@ -46,7 +46,7 @@ public class FormMenu extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuProductos = new javax.swing.JMenu();
-        jmProducto = new javax.swing.JMenuItem();
+        jmiProducto = new javax.swing.JMenuItem();
         jMenuProveedores = new javax.swing.JMenu();
         jmiProveedores = new javax.swing.JMenuItem();
         jMenuProceso = new javax.swing.JMenu();
@@ -144,13 +144,13 @@ public class FormMenu extends javax.swing.JFrame {
             }
         });
 
-        jmProducto.setText("Abrir...");
-        jmProducto.addActionListener(new java.awt.event.ActionListener() {
+        jmiProducto.setText("Abrir...");
+        jmiProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmProductoActionPerformed(evt);
+                jmiProductoActionPerformed(evt);
             }
         });
-        jMenuProductos.add(jmProducto);
+        jMenuProductos.add(jmiProducto);
 
         jMenuBar1.add(jMenuProductos);
 
@@ -239,24 +239,28 @@ public class FormMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuProductosActionPerformed
 
     private void jmiVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiVentaActionPerformed
+        actualizarInterfaz();
         IFormVenta v=new IFormVenta();
         contenedor.add(v);
         v.show();
     }//GEN-LAST:event_jmiVentaActionPerformed
 
     private void jmiEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiEntradaActionPerformed
+        actualizarInterfaz();
         IFormEntrada e = new IFormEntrada();
         contenedor.add(e);
         e.show();
     }//GEN-LAST:event_jmiEntradaActionPerformed
 
-    private void jmProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmProductoActionPerformed
+    private void jmiProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProductoActionPerformed
+        actualizarInterfaz();
         IFormProducto pr=new IFormProducto();
         contenedor.add(pr);
         pr.setVisible(true);
-    }//GEN-LAST:event_jmProductoActionPerformed
+    }//GEN-LAST:event_jmiProductoActionPerformed
 
     private void jmiProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiProveedoresActionPerformed
+        actualizarInterfaz();
         IFormProveedor pv=new IFormProveedor();
         contenedor.add(pv);
         pv.setVisible(true);
@@ -267,10 +271,18 @@ public class FormMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuVentaActionPerformed
 
     private void jmiSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSalidaActionPerformed
+        actualizarInterfaz();
         IFormSalida s = new IFormSalida();
         contenedor.add(s);
         s.show();
     }//GEN-LAST:event_jmiSalidaActionPerformed
+
+    //Para que no se sobrepongan los frames internos
+    public void actualizarInterfaz(){
+        contenedor.removeAll();
+        contenedor.revalidate();
+        contenedor.repaint();
+    }
 
     /**
      * @param args the command line arguments
@@ -320,8 +332,8 @@ public class FormMenu extends javax.swing.JFrame {
     public static javax.swing.JMenu jMenuProveedores;
     public static javax.swing.JMenu jMenuVenta;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JMenuItem jmProducto;
     private javax.swing.JMenuItem jmiEntrada;
+    private javax.swing.JMenuItem jmiProducto;
     private javax.swing.JMenuItem jmiProveedores;
     private javax.swing.JMenuItem jmiSalida;
     private javax.swing.JMenuItem jmiVenta;
