@@ -4,6 +4,7 @@
  */
 package Vistas;
 
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -11,8 +12,11 @@ import javax.swing.table.DefaultTableModel;
  * @author luism
  */
 public class IFormProducto extends javax.swing.JInternalFrame {
- 
-        DefaultTableModel modelo = new DefaultTableModel();
+    //Instanciar el ArrayList como static para que el IFormEntrada y el IFormSalida 
+    //puedan tener acceso
+    private static ArrayList<String> listaProductos = new ArrayList<>();
+    
+    DefaultTableModel modelo = new DefaultTableModel();
     
     public IFormProducto() {
         initComponents();
