@@ -25,7 +25,7 @@ public class FormMenu extends javax.swing.JFrame {
         modelo.addColumn("Entradas");
         modelo.addColumn("Salidas");
         modelo.addColumn("Stock");
-        tblSalidaStock.setModel(modelo);
+        
     }
 
     /**
@@ -39,10 +39,6 @@ public class FormMenu extends javax.swing.JFrame {
 
         pnlFondoBlanco = new javax.swing.JPanel();
         contenedor = new javax.swing.JDesktopPane();
-        pnlnventario = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblSalidaStock = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuProductos = new javax.swing.JMenu();
@@ -54,64 +50,26 @@ public class FormMenu extends javax.swing.JFrame {
         jmiSalida = new javax.swing.JMenuItem();
         jMenuVenta = new javax.swing.JMenu();
         jmiVenta = new javax.swing.JMenuItem();
+        jMenuInventario = new javax.swing.JMenu();
+        jmiInventario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         pnlFondoBlanco.setBackground(new java.awt.Color(255, 255, 255));
 
         contenedor.setBackground(new java.awt.Color(204, 204, 204));
+        contenedor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         contenedor.setPreferredSize(new java.awt.Dimension(777, 543));
-
-        pnlnventario.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
-        jLabel1.setText("Inventario de productos");
-
-        tblSalidaStock.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tblSalidaStock);
-
-        javax.swing.GroupLayout pnlnventarioLayout = new javax.swing.GroupLayout(pnlnventario);
-        pnlnventario.setLayout(pnlnventarioLayout);
-        pnlnventarioLayout.setHorizontalGroup(
-            pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlnventarioLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(85, Short.MAX_VALUE))
-        );
-        pnlnventarioLayout.setVerticalGroup(
-            pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlnventarioLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
-
-        contenedor.setLayer(pnlnventario, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
         contenedor.setLayout(contenedorLayout);
         contenedorLayout.setHorizontalGroup(
             contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlnventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 775, Short.MAX_VALUE)
         );
         contenedorLayout.setVerticalGroup(
             contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlnventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 549, Short.MAX_VALUE)
         );
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FraseMenu.png"))); // NOI18N
@@ -144,7 +102,7 @@ public class FormMenu extends javax.swing.JFrame {
             }
         });
 
-        jmiProducto.setText("Abrir...");
+        jmiProducto.setText("Registrar");
         jmiProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiProductoActionPerformed(evt);
@@ -157,7 +115,7 @@ public class FormMenu extends javax.swing.JFrame {
         jMenuProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedores.png"))); // NOI18N
         jMenuProveedores.setText("Proveedores");
 
-        jmiProveedores.setText(" Abrir...");
+        jmiProveedores.setText("Registrar");
         jmiProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiProveedoresActionPerformed(evt);
@@ -213,6 +171,25 @@ public class FormMenu extends javax.swing.JFrame {
         jMenuVenta.add(jmiVenta);
 
         jMenuBar1.add(jMenuVenta);
+
+        jMenuInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inventario.png"))); // NOI18N
+        jMenuInventario.setText("Inventario");
+        jMenuInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuInventarioActionPerformed(evt);
+            }
+        });
+
+        jmiInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/stock.png"))); // NOI18N
+        jmiInventario.setText(" Ver stock");
+        jmiInventario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiInventarioActionPerformed(evt);
+            }
+        });
+        jMenuInventario.add(jmiInventario);
+
+        jMenuBar1.add(jMenuInventario);
 
         setJMenuBar(jMenuBar1);
 
@@ -277,6 +254,17 @@ public class FormMenu extends javax.swing.JFrame {
         s.show();
     }//GEN-LAST:event_jmiSalidaActionPerformed
 
+    private void jMenuInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInventarioActionPerformed
+
+    }//GEN-LAST:event_jMenuInventarioActionPerformed
+
+    private void jmiInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiInventarioActionPerformed
+        actualizarInterfaz();
+        IFormInventario i = new IFormInventario();
+        contenedor.add(i);
+        i.show();
+    }//GEN-LAST:event_jmiInventarioActionPerformed
+
     //Para que no se sobrepongan los frames internos
     public void actualizarInterfaz(){
         contenedor.removeAll();
@@ -324,21 +312,19 @@ public class FormMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane contenedor;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
+    public static javax.swing.JMenu jMenuInventario;
     public static javax.swing.JMenu jMenuProceso;
     public static javax.swing.JMenu jMenuProductos;
     public static javax.swing.JMenu jMenuProveedores;
     public static javax.swing.JMenu jMenuVenta;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem jmiEntrada;
+    private javax.swing.JMenuItem jmiInventario;
     private javax.swing.JMenuItem jmiProducto;
     private javax.swing.JMenuItem jmiProveedores;
     private javax.swing.JMenuItem jmiSalida;
     private javax.swing.JMenuItem jmiVenta;
     private javax.swing.JPanel pnlFondoBlanco;
-    private javax.swing.JPanel pnlnventario;
-    private javax.swing.JTable tblSalidaStock;
     // End of variables declaration//GEN-END:variables
 }
