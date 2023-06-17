@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vistas;
+import Clases.Producto;
+import static Vistas.IFormProducto.listaProductos;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,10 +17,39 @@ public class IFormInventario extends javax.swing.JInternalFrame {
     /**
      * Creates new form IFormInventario
      */
+    //Declarar un objeto de la clase producto
+    Producto p;
+    //Instanciar el ArrayList como public static para que el IFormEntrada y el IFormSalida 
+    //puedan tener acceso
+    //public static ArrayList<Producto> listaProductos = new ArrayList<>();
+    DefaultTableModel modelo = new DefaultTableModel();
     public IFormInventario() {
         initComponents();
+        establecerColumnas();
+        mostrarTablaProductos();
     }
-
+    private void establecerColumnas(){
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Descripción");
+        modelo.addColumn("Categoría");
+        modelo.addColumn("Precio Unit");
+        modelo.addColumn("Stock");
+        tblStock.setModel(modelo);
+    }
+    public void mostrarTablaProductos(){
+        for(int i=tblStock.getRowCount()-1;i>=0;i--){
+            modelo.removeRow(i);
+        }
+        //Mostrar productos en la tabla
+        for(int i=0;i<listaProductos.size();i++){
+            Object[] data={listaProductos.get(i).getCod(),listaProductos.get(i).getDescripcion(),
+                //Revisar stock
+                listaProductos.get(i).getCategoria(),listaProductos.get(i).getPrecioUnit(),};
+            modelo.addRow(data);
+        }
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

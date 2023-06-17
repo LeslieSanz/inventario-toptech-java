@@ -5,7 +5,9 @@
 
 package Vistas;
 //Importando el ArrayList Lista productos del IFormProducto
+import Clases.Entrada;
 import static Vistas.IFormProducto.listaProductos;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,7 +18,8 @@ import javax.swing.table.DefaultTableModel;
 public class IFormEntrada extends javax.swing.JInternalFrame {
     int indice=-1;
     DefaultTableModel modelo= new DefaultTableModel();
-    
+    Entrada e;
+    ArrayList<Entrada> listaEntrada = new ArrayList<>();
     public IFormEntrada() {
         initComponents();
         establecerColumnas();
@@ -24,16 +27,23 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     }
     
     private void establecerColumnas(){
-        modelo.addColumn("ID");
-        modelo.addColumn("Cant. solicitada");
-        modelo.addColumn("Cant. recibida");
-        modelo.addColumn("Estado");
+        //modelo.addColumn("ID");
         modelo.addColumn("Fecha"); 
-        modelo.addColumn("Prec. Compra");
-        modelo.addColumn("Prec. Venta");
+        modelo.addColumn("Cant. recibida");
+        modelo.addColumn("Cant. solicitada");
+        //modelo.addColumn("Estado");
+        //modelo.addColumn("Prec. Compra");
+        //modelo.addColumn("Prec. Venta");
         tblsalida.setModel(modelo);
     }
-
+    
+    public void borrarInterfaz(){
+        txtCantidadRecibida.setText(null);
+        txtCantidadSolicitada.setText(null);
+        txtCodPro.setText(null);
+        txtFechaEntrada.requestFocus();
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -246,9 +256,30 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblsalidaKeyPressed
 
     private void btnIngresarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarProductoActionPerformed
-        // TODO add your handling code here:
+        e = new Entrada();
+        e.setCantidad_recibida(Integer.parseInt(txtCantidadRecibida.getText()));
+        e.setCantidad_solicitada(Integer.parseInt(txtCantidadSolicitada.getText()));
+        e.setFecha(txtFechaEntrada.getText());
+        listaEntrada.add(e);
+        borrarInterfaz();
+        mostrarTablaEntrada();
     }//GEN-LAST:event_btnIngresarProductoActionPerformed
-
+    
+    private void mostrarTablaEntrada(){
+        eliminarElementosTabla();
+        for(int i=0; i<listaEntrada.size(); i++){
+            Object[] data={listaEntrada.get(i).getFecha(),listaEntrada.get(i).getCantidad_recibida(),
+                listaEntrada.get(i).getCantidad_solicitada(),};
+            modelo.addRow(data);
+        }
+    }
+    
+    public void eliminarElementosTabla(){
+        for(int i=tblsalida.getRowCount()-1; i>=0; i--){
+            modelo.removeRow(i);
+        }
+    }
+    
     private void btnBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProductoActionPerformed
         // Buscar producto por codigo
         String codigo;
