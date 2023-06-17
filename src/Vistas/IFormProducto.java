@@ -4,6 +4,7 @@
  */
 package Vistas;
 
+import Clases.Producto;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,10 +13,11 @@ import javax.swing.table.DefaultTableModel;
  * @author luism
  */
 public class IFormProducto extends javax.swing.JInternalFrame {
-    //Instanciar el ArrayList como static para que el IFormEntrada y el IFormSalida 
+    //Declarar un objeto de la clase producto
+    Producto p;
+    //Instanciar el ArrayList como public static para que el IFormEntrada y el IFormSalida 
     //puedan tener acceso
-    private static ArrayList<String> listaProductos = new ArrayList<>();
-    
+    public static ArrayList<String> listaProductos = new ArrayList<>();
     DefaultTableModel modelo = new DefaultTableModel();
     
     public IFormProducto() {
@@ -182,8 +184,41 @@ public class IFormProducto extends javax.swing.JInternalFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
        //Registrar Productos Hola Mundo
+        p = new Producto();
+        p.setCod(txtCodPro.getText());
+        p.setDescripcion(txtDescrip.getText());
+        p.setCategoria(cbxCategoria.getSelectedItem().toString());
+        p.setPrecioUnit(Double.parseDouble(txtPrecioUnit.getText()));
+        //Agregar al array list
+        listaProductos.add(p);
+        borrarInterfaz();
+        mostrarTablaProductos();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
+    
+     public void eliminarElementosTablaProductos(){
+        for(int i=tblProducto.getRowCount()-1;i>=0;i--){
+            modelo.removeRow(i);
+        }
+    }
+    
+    public void borrarInterfaz(){
+        txtCodPro.setText(null);
+        txtDescrip.setText(null);
+        cbxCategoria.setSelectedIndex(0);
+        txtPrecioUnit.setText(null);
+        txtCodPro.requestFocus();
+    }
+    
+    public void mostrarTablaProductos(){
+        eliminarElementosTablaProductos();
+        //Mostrar productos en la tabla
+        for(int i=0;i<listaProductos.size();i++){
+            Object[] data={listaProductos.get(i).getCod(),listaProductos.get(i).getDescripcion(),
+                listaProductos.get(i).getCategoria(),listaProductos.get(i).getPrecioUnit(),};
+            modelo.addRow(data);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
