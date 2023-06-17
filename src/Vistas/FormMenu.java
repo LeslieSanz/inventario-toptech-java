@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author leslie,luis,luis y esther
+ * @author leslie,luis^2 y esther
  */
 public class FormMenu extends javax.swing.JFrame {
     DefaultTableModel modelo = new DefaultTableModel();
