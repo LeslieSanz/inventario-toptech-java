@@ -17,7 +17,7 @@ public class IFormProducto extends javax.swing.JInternalFrame {
     Producto p;
     //Instanciar el ArrayList como public static para que el IFormEntrada y el IFormSalida 
     //puedan tener acceso
-    public static ArrayList<String> listaProductos = new ArrayList<>();
+    public static ArrayList<Producto> listaProductos = new ArrayList<>();
     DefaultTableModel modelo = new DefaultTableModel();
     
     public IFormProducto() {
