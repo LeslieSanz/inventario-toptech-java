@@ -23,6 +23,8 @@ public class IFormProducto extends javax.swing.JInternalFrame {
     public IFormProducto() {
         initComponents();
         establecerColumnas();
+        //Para mantener los productos en la tabla si se cambia de frame
+        mostrarTablaProductos();
     }
     private void establecerColumnas(){
         modelo.addColumn("Codigo");
