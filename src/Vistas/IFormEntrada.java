@@ -24,24 +24,25 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         initComponents();
         establecerColumnas();
         pnlDatosEntrada.setVisible(false);
+        //mostrarTablaEntrada();
     }
     
     private void establecerColumnas(){
-        //modelo.addColumn("ID");
+        modelo.addColumn("Código");
+        modelo.addColumn("Descripción");
         modelo.addColumn("Fecha"); 
-        modelo.addColumn("Cant. recibida");
-        modelo.addColumn("Cant. solicitada");
-        //modelo.addColumn("Estado");
-        //modelo.addColumn("Prec. Compra");
-        //modelo.addColumn("Prec. Venta");
+        modelo.addColumn("Cant.recibida");
+        modelo.addColumn("Cant.solicitada");
+        modelo.addColumn("Estado");
         tblsalida.setModel(modelo);
     }
     
     public void borrarInterfaz(){
+        txtCodPro.setText(null);
         txtCantidadRecibida.setText(null);
         txtCantidadSolicitada.setText(null);
-        txtCodPro.setText(null);
-        txtFechaEntrada.requestFocus();
+        txtFechaEntrada.setText(null);
+        txtCodPro.requestFocus();
     }
     
     /** This method is called from within the constructor to
@@ -256,39 +257,54 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblsalidaKeyPressed
 
     private void btnIngresarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarProductoActionPerformed
-        e = new Entrada();
+        e = new Entrada(listaProductos);
+        e.setCodPro(listaProductos.get(indice).getCod());
+        e.setDesPro(listaProductos.get(indice).getDescripcion());
         e.setCantidad_recibida(Integer.parseInt(txtCantidadRecibida.getText()));
         e.setCantidad_solicitada(Integer.parseInt(txtCantidadSolicitada.getText()));
         e.setFecha(txtFechaEntrada.getText());
         listaEntrada.add(e);
         borrarInterfaz();
+        pnlDatosEntrada.setVisible(false);
         mostrarTablaEntrada();
     }//GEN-LAST:event_btnIngresarProductoActionPerformed
     
     private void mostrarTablaEntrada(){
-        eliminarElementosTabla();
-        for(int i=0; i<listaEntrada.size(); i++){
-            Object[] data={listaEntrada.get(i).getFecha(),listaEntrada.get(i).getCantidad_recibida(),
-                listaEntrada.get(i).getCantidad_solicitada(),};
-            modelo.addRow(data);
-        }
-    }
+    eliminarElementosTabla();
     
+    for(int i=0; i<listaEntrada.size(); i++){
+        Object[] data={
+            listaEntrada.get(i).getCodPro(),
+            listaEntrada.get(i).getDesPro(),
+            listaEntrada.get(i).getFecha(),
+            listaEntrada.get(i).getCantidad_recibida(),
+            listaEntrada.get(i).getCantidad_solicitada(),
+        };
+        modelo.addRow(data);
+    }    
+}
+   
     public void eliminarElementosTabla(){
         for(int i=tblsalida.getRowCount()-1; i>=0; i--){
             modelo.removeRow(i);
         }
     }
     
-    private void btnBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProductoActionPerformed
+    public int buscarIndiceProd(){
         // Buscar producto por codigo
         String codigo;
         codigo = txtCodPro.getText();
         for(int i=0; i<listaProductos.size(); i++){
             if(codigo.equalsIgnoreCase(listaProductos.get(i).getCod())){
-                indice = i;
-            }     
+                indice= i;
+            }    
         }
+      return indice; 
+    }
+    
+    private void btnBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProductoActionPerformed
+        // Buscar producto por codigo
+        indice=buscarIndiceProd();
         if(indice==-1){
             JOptionPane.showMessageDialog(this, "No existe el producto");
         }
@@ -296,7 +312,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
             pnlDatosEntrada.setVisible(true);
         }
     }//GEN-LAST:event_btnBuscarProductoActionPerformed
-
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarProducto;

@@ -4,13 +4,21 @@
  */
 package Clases;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lesly
  */
 public class Entrada extends Proceso{
-    private int cantidad_recibida;
+    
+     private int cantidad_recibida;
+     
 
+    public Entrada(ArrayList<Producto> listaProductos) {
+        this.listaProductos= listaProductos;
+    }
+   
     public int getCantidad_recibida() {
         return cantidad_recibida;
     }
@@ -19,4 +27,19 @@ public class Entrada extends Proceso{
         this.cantidad_recibida = cantidad_recibida;
     }
     
+    public String verificarEstado(){
+        String estado;
+        if(cantidad_solicitada<cantidad_recibida){
+            estado="Revisar";
+        }else{
+           if(cantidad_solicitada>cantidad_recibida){
+               estado="Exceso";
+           }else{
+               estado="Conforme";
+           }
+        }
+        return estado;
+    }
+
+   
 }
