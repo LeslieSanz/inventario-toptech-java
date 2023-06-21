@@ -266,7 +266,7 @@ public class FormMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jmiInventarioActionPerformed
 
     //Para que no se sobrepongan los frames internos
-    public void actualizarInterfaz(){
+    public static void actualizarInterfaz(){
         contenedor.removeAll();
         contenedor.revalidate();
         contenedor.repaint();
@@ -311,7 +311,7 @@ public class FormMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane contenedor;
+    public static javax.swing.JDesktopPane contenedor;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     public static javax.swing.JMenu jMenuInventario;
