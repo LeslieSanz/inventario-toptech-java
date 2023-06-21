@@ -4,7 +4,11 @@
  */
 package Vistas;
 
+import Clases.Salida;
+//Importando el ArrayList Lista productos del IFormProducto
 import static Vistas.IFormProducto.listaProductos;
+import static Vistas.IFormEntrada.listaEntrada;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,36 +18,32 @@ import javax.swing.table.DefaultTableModel;
  */
 public class IFormSalida extends javax.swing.JInternalFrame {
     DefaultTableModel modelo1 = new DefaultTableModel();
-    DefaultTableModel modelo2 = new DefaultTableModel();
     int indice=-1;
+    Salida s;
+    ArrayList<Salida> listaSalidas = new ArrayList<>();
     /**
      * Creates new form IFormSalida
      */
     public IFormSalida() {
         initComponents();
         establecerColumnas1();
-        establecerColumnas2();
         pnlSalidaDatos.setVisible(false);
+        pnlFecha.setVisible(false);
     }
     
      private void establecerColumnas1() {
         modelo1.addColumn("ID");
         modelo1.addColumn("Nombre");
+        modelo1.addColumn("Fecha");
         modelo1.addColumn("Stock");
-        modelo1.addColumn("Prec. Compra");
-        modelo1.addColumn("Prec. Venta");
-        tblsalidaregistro.setModel(modelo1);
+        modelo1.addColumn("Cantidad vendida");
+        tblsalida.setModel(modelo1);
     }
-    
-    private void establecerColumnas2() {
-        modelo2.addColumn("ID");
-        modelo2.addColumn("Nombre");
-        modelo2.addColumn("Cantidad");
-        modelo2.addColumn("Prec. Venta");
-        modelo2.addColumn("Fecha");
-        tblsalidaventa.setModel(modelo2);
-    }
-
+    public void borrarInterfaz(){
+        txtAño.setText(null);
+        txtidproducto.setText(null);
+        cbxMes.setSelectedIndex(0);
+    } 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,15 +59,15 @@ public class IFormSalida extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         pnlSalidaDatos = new javax.swing.JPanel();
-        btnreporte = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblsalidaregistro = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblsalidaventa = new javax.swing.JTable();
+        tblsalida = new javax.swing.JTable();
+        pnlFecha = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txtcantidad = new javax.swing.JTextField();
-        btnagregar = new javax.swing.JButton();
+        cbxMes = new javax.swing.JComboBox<>();
+        txtAño = new javax.swing.JTextField();
+        btnreporte = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Salida");
@@ -90,6 +90,64 @@ public class IFormSalida extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
         jLabel7.setText("Salida de productos");
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton1.setText("Fecha");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        tblsalida.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblsalida);
+
+        jLabel2.setText("Mes");
+
+        jLabel1.setText("Año");
+
+        cbxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+
+        txtAño.setText(" ");
+
+        javax.swing.GroupLayout pnlFechaLayout = new javax.swing.GroupLayout(pnlFecha);
+        pnlFecha.setLayout(pnlFechaLayout);
+        pnlFechaLayout.setHorizontalGroup(
+            pnlFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFechaLayout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addGroup(pnlFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(33, 33, 33)
+                .addGroup(pnlFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAño, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
+        );
+        pnlFechaLayout.setVerticalGroup(
+            pnlFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFechaLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addGroup(pnlFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(cbxMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlFechaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
         btnreporte.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnreporte.setText("Reporte");
         btnreporte.addActionListener(new java.awt.event.ActionListener() {
@@ -98,99 +156,40 @@ public class IFormSalida extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Salida");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        tblsalidaregistro.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tblsalidaregistro);
-
-        tblsalidaventa.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(tblsalidaventa);
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Cantidad");
-
-        txtcantidad.setColumns(10);
-
-        btnagregar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnagregar.setText("Agregar");
-
         javax.swing.GroupLayout pnlSalidaDatosLayout = new javax.swing.GroupLayout(pnlSalidaDatos);
         pnlSalidaDatos.setLayout(pnlSalidaDatosLayout);
         pnlSalidaDatosLayout.setHorizontalGroup(
             pnlSalidaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSalidaDatosLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
                 .addGroup(pnlSalidaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSalidaDatosLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(29, 29, 29)
-                        .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSalidaDatosLayout.createSequentialGroup()
-                        .addGroup(pnlSalidaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(pnlSalidaDatosLayout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                                .addComponent(btnagregar))
-                            .addGroup(pnlSalidaDatosLayout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(pnlSalidaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnreporte, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addGap(28, 28, 28))))
+                        .addGap(118, 118, 118)
+                        .addComponent(jButton1))
+                    .addGroup(pnlSalidaDatosLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(pnlFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlSalidaDatosLayout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(btnreporte)))
+                .addGap(68, 68, 68))
         );
         pnlSalidaDatosLayout.setVerticalGroup(
             pnlSalidaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlSalidaDatosLayout.createSequentialGroup()
                 .addGroup(pnlSalidaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlSalidaDatosLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlSalidaDatosLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(btnreporte)
+                        .addComponent(pnlFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
-                .addGap(18, 18, 18)
-                .addGroup(pnlSalidaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtcantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(pnlSalidaDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnreporte))
                     .addGroup(pnlSalidaDatosLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnagregar)
-                        .addGap(109, 109, 109))
-                    .addGroup(pnlSalidaDatosLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(27, Short.MAX_VALUE))))
+                        .addGap(21, 21, 21)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -210,9 +209,9 @@ public class IFormSalida extends javax.swing.JInternalFrame {
                         .addGap(238, 238, 238)
                         .addComponent(btnbuscar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
+                        .addContainerGap()
                         .addComponent(pnlSalidaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,7 +227,7 @@ public class IFormSalida extends javax.swing.JInternalFrame {
                     .addComponent(btnbuscar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addComponent(pnlSalidaDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -237,7 +236,7 @@ public class IFormSalida extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 923, Short.MAX_VALUE))
+                .addGap(0, 694, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,13 +247,24 @@ public class IFormSalida extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        pnlFecha.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnreporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreporteActionPerformed
+        //Se omite por el momento
+        /*
         FormReporte objREPORTE = new FormReporte();
         objREPORTE.setVisible(true);
         this.setVisible(false);
+        */
+        /*
+        s = new Salida(listaSalidas);
+        s.setCodPro(listaProductos.get(indice).getCod());
+        s.setDesPro(listaProductos.get(indice).getDescripcion());
+        s.setFecha(listaEntrada.get(indice).getFecha());
+        listaSalidas.add(s);
+        */
+       
     }//GEN-LAST:event_btnreporteActionPerformed
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
@@ -276,20 +286,20 @@ public class IFormSalida extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnagregar;
     private javax.swing.JButton btnbuscar;
     private javax.swing.JButton btnreporte;
+    private javax.swing.JComboBox<String> cbxMes;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel pnlFecha;
     private javax.swing.JPanel pnlSalidaDatos;
-    private javax.swing.JTable tblsalidaregistro;
-    private javax.swing.JTable tblsalidaventa;
-    private javax.swing.JTextField txtcantidad;
+    private javax.swing.JTable tblsalida;
+    private javax.swing.JTextField txtAño;
     private javax.swing.JTextField txtidproducto;
     // End of variables declaration//GEN-END:variables
 }
