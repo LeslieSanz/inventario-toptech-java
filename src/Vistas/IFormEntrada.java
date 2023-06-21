@@ -19,29 +19,30 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     int indice=-1;
     DefaultTableModel modelo= new DefaultTableModel();
     Entrada e;
-    ArrayList<Entrada> listaEntrada = new ArrayList<>();
+    public static ArrayList<Entrada> listaEntrada = new ArrayList<>();
     public IFormEntrada() {
         initComponents();
         establecerColumnas();
         pnlDatosEntrada.setVisible(false);
+        //mostrarTablaEntrada();
     }
     
     private void establecerColumnas(){
-        //modelo.addColumn("ID");
+        modelo.addColumn("Código");
+        modelo.addColumn("Descripción");
         modelo.addColumn("Fecha"); 
-        modelo.addColumn("Cant. recibida");
-        modelo.addColumn("Cant. solicitada");
-        //modelo.addColumn("Estado");
-        //modelo.addColumn("Prec. Compra");
-        //modelo.addColumn("Prec. Venta");
-        tblsalida.setModel(modelo);
+        modelo.addColumn("Cant.recibida");
+        modelo.addColumn("Cant.solicitada");
+        modelo.addColumn("Estado");
+        tblentrada.setModel(modelo);
     }
     
     public void borrarInterfaz(){
+        txtCodPro.setText(null);
         txtCantidadRecibida.setText(null);
         txtCantidadSolicitada.setText(null);
-        txtCodPro.setText(null);
-        txtFechaEntrada.requestFocus();
+        txtFechaEntrada.setText(null);
+        txtCodPro.requestFocus();
     }
     
     /** This method is called from within the constructor to
@@ -59,7 +60,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         txtCodPro = new javax.swing.JTextField();
         btnBuscarProducto = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblsalida = new javax.swing.JTable();
+        tblentrada = new javax.swing.JTable();
         pnlDatosEntrada = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -97,7 +98,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
             }
         });
 
-        tblsalida.setModel(new javax.swing.table.DefaultTableModel(
+        tblentrada.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -108,12 +109,12 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblsalida.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblentrada.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tblsalidaKeyPressed(evt);
+                tblentradaKeyPressed(evt);
             }
         });
-        jScrollPane2.setViewportView(tblsalida);
+        jScrollPane2.setViewportView(tblentrada);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Fecha de entrada");
@@ -251,44 +252,59 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodProActionPerformed
 
-    private void tblsalidaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblsalidaKeyPressed
+    private void tblentradaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblentradaKeyPressed
 
-    }//GEN-LAST:event_tblsalidaKeyPressed
+    }//GEN-LAST:event_tblentradaKeyPressed
 
     private void btnIngresarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarProductoActionPerformed
-        e = new Entrada();
+        e = new Entrada(listaProductos);
+        e.setCodPro(listaProductos.get(indice).getCod());
+        e.setDesPro(listaProductos.get(indice).getDescripcion());
         e.setCantidad_recibida(Integer.parseInt(txtCantidadRecibida.getText()));
         e.setCantidad_solicitada(Integer.parseInt(txtCantidadSolicitada.getText()));
         e.setFecha(txtFechaEntrada.getText());
         listaEntrada.add(e);
         borrarInterfaz();
+        pnlDatosEntrada.setVisible(false);
         mostrarTablaEntrada();
     }//GEN-LAST:event_btnIngresarProductoActionPerformed
     
     private void mostrarTablaEntrada(){
-        eliminarElementosTabla();
-        for(int i=0; i<listaEntrada.size(); i++){
-            Object[] data={listaEntrada.get(i).getFecha(),listaEntrada.get(i).getCantidad_recibida(),
-                listaEntrada.get(i).getCantidad_solicitada(),};
-            modelo.addRow(data);
-        }
-    }
+    eliminarElementosTabla();
     
+    for(int i=0; i<listaEntrada.size(); i++){
+        Object[] data={
+            listaEntrada.get(i).getCodPro(),
+            listaEntrada.get(i).getDesPro(),
+            listaEntrada.get(i).getFecha(),
+            listaEntrada.get(i).getCantidad_recibida(),
+            listaEntrada.get(i).getCantidad_solicitada(),
+        };
+        modelo.addRow(data);
+    }    
+}
+   
     public void eliminarElementosTabla(){
-        for(int i=tblsalida.getRowCount()-1; i>=0; i--){
+        for(int i=tblentrada.getRowCount()-1; i>=0; i--){
             modelo.removeRow(i);
         }
     }
     
-    private void btnBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProductoActionPerformed
+    public int buscarIndiceProd(){
         // Buscar producto por codigo
         String codigo;
         codigo = txtCodPro.getText();
         for(int i=0; i<listaProductos.size(); i++){
             if(codigo.equalsIgnoreCase(listaProductos.get(i).getCod())){
-                indice = i;
-            }     
+                indice= i;
+            }    
         }
+      return indice; 
+    }
+    
+    private void btnBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProductoActionPerformed
+        // Buscar producto por codigo
+        indice=buscarIndiceProd();
         if(indice==-1){
             JOptionPane.showMessageDialog(this, "No existe el producto");
         }
@@ -296,7 +312,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
             pnlDatosEntrada.setVisible(true);
         }
     }//GEN-LAST:event_btnBuscarProductoActionPerformed
-
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarProducto;
@@ -310,7 +326,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pnlDatosEntrada;
-    private javax.swing.JTable tblsalida;
+    private javax.swing.JTable tblentrada;
     private javax.swing.JTextField txtCantidadRecibida;
     private javax.swing.JTextField txtCantidadSolicitada;
     private javax.swing.JTextField txtCodPro;
