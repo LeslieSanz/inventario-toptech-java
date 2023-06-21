@@ -4,6 +4,9 @@
  */
 package Vistas;
 
+
+import static Vistas.FormMenu.actualizarInterfaz;
+import static Vistas.FormMenu.contenedor;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,7 +17,6 @@ public class IFormVenta extends javax.swing.JInternalFrame {
 
     DefaultTableModel modelo= new DefaultTableModel();
 
-    
     public IFormVenta() {
         initComponents();
         establecerColumnas();
@@ -191,7 +193,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addComponent(btnAgregar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -205,7 +207,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -223,10 +225,14 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
+        actualizarInterfaz();
+        IFormInventario i = new IFormInventario();
+        contenedor.add(i);
+        i.setVisible(true); 
         
     }//GEN-LAST:event_btnbuscarActionPerformed
-
-
+   
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnbuscar;
@@ -249,6 +255,10 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCodPro;
     private javax.swing.JTextField txtFecha;
     // End of variables declaration//GEN-END:variables
+
+  
+
+
 
     
 
