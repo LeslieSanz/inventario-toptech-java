@@ -18,7 +18,9 @@ import javax.swing.table.DefaultTableModel;
 public class IFormEntrada extends javax.swing.JInternalFrame {
     int indice=-1;
     DefaultTableModel modelo= new DefaultTableModel();
+    //Declarar uun objeto de la clase Entrada
     Entrada e;
+    //Genera un nuevo Array List llamado listaEntrada
     public static ArrayList<Entrada> listaEntrada = new ArrayList<>();
     public IFormEntrada() {
         initComponents();
@@ -30,13 +32,13 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     private void establecerColumnas(){
         modelo.addColumn("Código");
         modelo.addColumn("Descripción");
-        modelo.addColumn("Fecha"); 
-        modelo.addColumn("Cant.recibida");
         modelo.addColumn("Cant.solicitada");
+        modelo.addColumn("Cant.recibida");
+        modelo.addColumn("Fecha");
         modelo.addColumn("Estado");
         tblentrada.setModel(modelo);
     }
-    
+    //Borra el interfaz para una nueva inserción
     public void borrarInterfaz(){
         txtCodPro.setText(null);
         txtCantidadRecibida.setText(null);
@@ -70,6 +72,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         txtCantidadRecibida = new javax.swing.JTextField();
         btnEliminarEntrada = new javax.swing.JButton();
         btnIngresarProducto = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Entrada");
@@ -84,11 +87,6 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         jLabel1.setText("Código del producto");
 
         txtCodPro.setColumns(8);
-        txtCodPro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodProActionPerformed(evt);
-            }
-        });
 
         btnBuscarProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnBuscarProducto.setText("Buscar");
@@ -125,12 +123,6 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Cantidad recibida");
 
-        txtCantidadSolicitada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantidadSolicitadaActionPerformed(evt);
-            }
-        });
-
         btnEliminarEntrada.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnEliminarEntrada.setText("Eliminar");
 
@@ -142,15 +134,22 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel5.setText("DD/MM/YYYY");
+
         javax.swing.GroupLayout pnlDatosEntradaLayout = new javax.swing.GroupLayout(pnlDatosEntrada);
         pnlDatosEntrada.setLayout(pnlDatosEntradaLayout);
         pnlDatosEntradaLayout.setHorizontalGroup(
             pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDatosEntradaLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(btnIngresarProducto))
+                .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosEntradaLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(btnIngresarProducto)))
+                    .addGroup(pnlDatosEntradaLayout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel5)))
                 .addGap(26, 26, 26)
                 .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDatosEntradaLayout.createSequentialGroup()
@@ -184,11 +183,13 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
                         .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtCantidadSolicitada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
-                .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCantidadRecibida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(4, 4, 4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCantidadRecibida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3))
+                    .addComponent(jLabel5))
+                .addGap(12, 12, 12)
                 .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIngresarProducto)
                     .addComponent(btnEliminarEntrada))
@@ -201,7 +202,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -209,9 +210,9 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
                         .addComponent(txtCodPro, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
                         .addComponent(btnBuscarProducto))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlDatosEntrada, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                    .addComponent(pnlDatosEntrada, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(46, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,9 +226,9 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
                     .addComponent(btnBuscarProducto))
                 .addGap(18, 18, 18)
                 .addComponent(pnlDatosEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -244,14 +245,6 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCantidadSolicitadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadSolicitadaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantidadSolicitadaActionPerformed
-
-    private void txtCodProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodProActionPerformed
-
     private void tblentradaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblentradaKeyPressed
 
     }//GEN-LAST:event_tblentradaKeyPressed
@@ -263,6 +256,12 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         e.setCantidad_recibida(Integer.parseInt(txtCantidadRecibida.getText()));
         e.setCantidad_solicitada(Integer.parseInt(txtCantidadSolicitada.getText()));
         e.setFecha(txtFechaEntrada.getText());
+        //Estado del producto 
+        if (Integer.parseInt(txtCantidadRecibida.getText())<Integer.parseInt(txtCantidadSolicitada.getText()) 
+                && Integer.parseInt(txtCantidadRecibida.getText())!=0)
+            e.setEstadoConfirmacion("Disponible");
+        else
+            e.setEstadoConfirmacion("No Disponible");
         listaEntrada.add(e);
         borrarInterfaz();
         pnlDatosEntrada.setVisible(false);
@@ -276,9 +275,10 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         Object[] data={
             listaEntrada.get(i).getCodPro(),
             listaEntrada.get(i).getDesPro(),
-            listaEntrada.get(i).getFecha(),
-            listaEntrada.get(i).getCantidad_recibida(),
             listaEntrada.get(i).getCantidad_solicitada(),
+            listaEntrada.get(i).getCantidad_recibida(),
+            listaEntrada.get(i).getFecha(),
+            listaEntrada.get(i).getEstadoConfirmacion()
         };
         modelo.addRow(data);
     }    
@@ -322,6 +322,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
