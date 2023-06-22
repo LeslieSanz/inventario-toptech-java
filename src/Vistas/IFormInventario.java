@@ -4,8 +4,9 @@
  */
 package Vistas;
 import Clases.Producto;
+import static Vistas.FormMenu.actualizarInterfaz;
+import static Vistas.FormMenu.contenedor;
 import static Vistas.IFormProducto.listaProductos;
-import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,6 +28,7 @@ public class IFormInventario extends javax.swing.JInternalFrame {
         initComponents();
         establecerColumnas();
         mostrarTablaProductos();
+        pnlbuscar.setVisible(false);
     }
     private void establecerColumnas(){
         modelo.addColumn("Codigo");
@@ -59,17 +61,24 @@ public class IFormInventario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         pnlnventario = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        txttitulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblStock = new javax.swing.JTable();
+        pnlbuscar = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        rbtidprod = new javax.swing.JRadioButton();
+        rbtnombreprod = new javax.swing.JRadioButton();
+        txtbuscarpor = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setClosable(true);
 
         pnlnventario.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
-        jLabel1.setText("Inventario de productos");
+        txttitulo.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
+        txttitulo.setText("Inventario de productos");
 
         tblStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -82,7 +91,65 @@ public class IFormInventario extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblStock.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblStockMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblStock);
+
+        pnlbuscar.setBackground(new java.awt.Color(255, 255, 255));
+        pnlbuscar.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setText("Buscar por:");
+
+        buttonGroup1.add(rbtidprod);
+        rbtidprod.setText("ID Producto");
+
+        buttonGroup1.add(rbtnombreprod);
+        rbtnombreprod.setText("Nombre del Producto");
+
+        txtbuscarpor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtbuscarporActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
+        jLabel3.setText("STOCK");
+
+        javax.swing.GroupLayout pnlbuscarLayout = new javax.swing.GroupLayout(pnlbuscar);
+        pnlbuscar.setLayout(pnlbuscarLayout);
+        pnlbuscarLayout.setHorizontalGroup(
+            pnlbuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlbuscarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlbuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtbuscarpor, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlbuscarLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(rbtidprod)
+                        .addGap(42, 42, 42)
+                        .addComponent(rbtnombreprod)))
+                .addContainerGap())
+        );
+        pnlbuscarLayout.setVerticalGroup(
+            pnlbuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlbuscarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(pnlbuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtnombreprod)
+                    .addComponent(rbtidprod)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addComponent(txtbuscarpor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout pnlnventarioLayout = new javax.swing.GroupLayout(pnlnventario);
         pnlnventario.setLayout(pnlnventarioLayout);
@@ -90,19 +157,26 @@ public class IFormInventario extends javax.swing.JInternalFrame {
             pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlnventarioLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addGroup(pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlnventarioLayout.createSequentialGroup()
+                        .addComponent(txttitulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlbuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         pnlnventarioLayout.setVerticalGroup(
             pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlnventarioLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addGroup(pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlnventarioLayout.createSequentialGroup()
+                        .addComponent(txttitulo)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(pnlbuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,11 +193,39 @@ public class IFormInventario extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtbuscarporActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarporActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbuscarporActionPerformed
+
+    private void tblStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStockMouseClicked
+           //IFormVenta c = new IFormVenta();
+           IFormVenta i = new IFormVenta();
+           if(IFormVenta.x == 1){
+            int row = tblStock.getSelectedRow();
+            actualizarInterfaz();
+            contenedor.add(i);
+            i.setVisible(true);
+            i.txtCodPro.setText(tblStock.getValueAt(row, 0).toString());
+            i.txtprecio.setText(tblStock.getValueAt(row, 3).toString());
+            i.txtcantidad.requestFocus();
+            i.x = 0;
+            dispose();
+            
+        }
+    }//GEN-LAST:event_tblStockMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JPanel pnlbuscar;
     private javax.swing.JPanel pnlnventario;
+    private javax.swing.JRadioButton rbtidprod;
+    private javax.swing.JRadioButton rbtnombreprod;
     private javax.swing.JTable tblStock;
+    private javax.swing.JTextField txtbuscarpor;
+    public static javax.swing.JLabel txttitulo;
     // End of variables declaration//GEN-END:variables
 }
