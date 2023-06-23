@@ -3,56 +3,49 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vistas;
-import Clases.Producto;
-import static Vistas.IFormEntrada.listaEntrada;
 import static Vistas.FormMenu.actualizarInterfaz;
-import static Vistas.FormMenu.contenedor;
 import static Vistas.IFormProducto.listaProductos;
+import static Vistas.IFormEntrada.listaEntrada;
+import static Vistas.FormMenu.contenedor;
+import static Vistas.IFormSalida.listaSalidas;
+
+
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import modelo.StockDTO;
 
 /**
  *
  * @author lesly
  */
 public class IFormInventario extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form IFormInventario
-     */
-    //Declarar un objeto de la clase producto
-    Producto p;
-    //Instanciar el ArrayList como public static para que el IFormEntrada y el IFormSalida 
-    //puedan tener acceso
-    //public static ArrayList<Entrada> listaProductos = new ArrayList<>();
+    
     DefaultTableModel modelo = new DefaultTableModel();
+    ArrayList<StockDTO> listaStock = new ArrayList<>();
+    StockDTO stk;
+    
     public IFormInventario() {
         initComponents();
         establecerColumnas();
-        mostrarTablaProductos();
         pnlbuscar.setVisible(false);
     }
     private void establecerColumnas(){
         modelo.addColumn("Codigo");
         modelo.addColumn("Descripción");
-        modelo.addColumn("Categoría");
-        modelo.addColumn("Precio Unit");
+        modelo.addColumn("Entradas");
+        modelo.addColumn("Salidas");
         modelo.addColumn("Stock");
         tblStock.setModel(modelo);
     }
-    public void mostrarTablaProductos(){
+    public void mostrarTablaStock(){
+       
+    }
+    
+    public void eliminarElementosTabla(){
         for(int i=tblStock.getRowCount()-1;i>=0;i--){
             modelo.removeRow(i);
         }
-        //Mostrar productos en la tabla
-        for(int i=0;i<listaProductos.size();i++){
-            Object[] data={listaProductos.get(i).getCod(),listaProductos.get(i).getDescripcion(),
-                //Revisar stock
-                listaProductos.get(i).getCategoria(),listaProductos.get(i).getPrecioUnit(),};
-            modelo.addRow(data);
-        }
-        
     }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,6 +66,7 @@ public class IFormInventario extends javax.swing.JInternalFrame {
         rbtnombreprod = new javax.swing.JRadioButton();
         txtbuscarpor = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        btnMostrar = new javax.swing.JButton();
 
         setClosable(true);
 
@@ -152,20 +146,29 @@ public class IFormInventario extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
+        btnMostrar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlnventarioLayout = new javax.swing.GroupLayout(pnlnventario);
         pnlnventario.setLayout(pnlnventarioLayout);
         pnlnventarioLayout.setHorizontalGroup(
             pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlnventarioLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(txttitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlnventarioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addGroup(pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlnventarioLayout.createSequentialGroup()
+                        .addGroup(pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnMostrar)
+                            .addComponent(txttitulo))
+                        .addGap(39, 39, 39)
+                        .addComponent(pnlbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         pnlnventarioLayout.setVerticalGroup(
             pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,10 +176,14 @@ public class IFormInventario extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlnventarioLayout.createSequentialGroup()
+                        .addComponent(pnlbuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(pnlnventarioLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(txttitulo)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(pnlbuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnMostrar)
+                        .addGap(34, 34, 34)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
         );
@@ -196,7 +203,7 @@ public class IFormInventario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtbuscarporActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtbuscarporActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtbuscarporActionPerformed
 
     private void tblStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStockMouseClicked
@@ -217,8 +224,39 @@ public class IFormInventario extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_tblStockMouseClicked
 
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        
+        //Por cada objeto de la listaEntrada, se instancia un objeto de la clase stock
+        for(int i=0;i<listaEntrada.size();i++){
+        //Instanciando objetos de la clase stock
+        stk= new StockDTO();
+        stk.setProducto(listaProductos.get(i));
+        stk.setEntrada(listaEntrada.get(i));
+        stk.setSalida(listaSalidas.get(i));
+        //Metodo desarrollado en la clase StockDTO
+        int stock = stk.calcularStock();
+        stk.setStock(stock);
+        //Añadiendo el objeto stock a la lista
+        listaStock.add(stk);
+        }
+    
+        //eliminarElementosTabla();
+        //Mostrar productos en la tabla stock
+        for(int i=0;i<listaStock.size();i++){
+            Object[] data={ listaStock.get(i).getProducto().getCod(),
+                listaStock.get(i).getProducto().getDescripcion(),
+                listaStock.get(i).getEntrada().getCantidad_recibida(),
+                listaStock.get(i).getSalida().getCantidad_solicitada(),
+                listaStock.get(i).getStock(),
+            };
+            modelo.addRow(data);
+        }
+        
+    }//GEN-LAST:event_btnMostrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMostrar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

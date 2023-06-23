@@ -4,7 +4,7 @@
  */
 package Vistas;
 
-import Clases.Salida;
+import modelo.Salida;
 import static Vistas.IFormProducto.listaProductos;
 import static Vistas.IFormEntrada.listaEntrada;
 import java.util.ArrayList;

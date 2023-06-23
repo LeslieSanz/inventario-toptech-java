@@ -1,10 +1,11 @@
-package Clases;
+package modelo;
 
 public class Producto {
     private String cod;
     private String categoria;
     private String descripcion;
     private double precioUnit;
+    private Ubicacion ubicacion;
 
     public double getPrecioUnit() {
         return precioUnit;
@@ -36,6 +37,14 @@ public class Producto {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Ubicacion getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(Ubicacion ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
 }

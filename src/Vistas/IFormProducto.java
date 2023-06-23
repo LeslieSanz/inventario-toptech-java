@@ -4,8 +4,8 @@
  */
 package Vistas;
 
-import Clases.Entrada;
-import Clases.Producto;
+
+import modelo.Producto;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 

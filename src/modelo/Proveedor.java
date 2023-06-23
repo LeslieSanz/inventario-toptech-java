@@ -1,5 +1,5 @@
 
-package Clases;
+package modelo;
 
 public class Proveedor {
     private int codigoprov;

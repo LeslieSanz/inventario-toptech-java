@@ -5,7 +5,7 @@
 
 package Vistas;
 //Importando el ArrayList Lista productos del IFormProducto
-import Clases.Entrada;
+import modelo.Entrada;
 import static Vistas.IFormProducto.listaProductos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -26,7 +26,8 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         initComponents();
         establecerColumnas();
         pnlDatosEntrada.setVisible(false);
-        //mostrarTablaEntrada();
+        //Para mantener los productos en la tabla si se cambia de frame
+        mostrarTablaEntrada();
     }
     
     private void establecerColumnas(){
@@ -211,8 +212,11 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
                         .addGap(37, 37, 37)
                         .addComponent(btnBuscarProducto))
                     .addComponent(pnlDatosEntrada, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(46, Short.MAX_VALUE))
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(42, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,11 +254,12 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblentradaKeyPressed
 
     private void btnIngresarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarProductoActionPerformed
-        e = new Entrada(listaProductos);
-        e.setCodPro(listaProductos.get(indice).getCod());
-        e.setDesPro(listaProductos.get(indice).getDescripcion());
-        e.setCantidad_recibida(Integer.parseInt(txtCantidadRecibida.getText()));
+        //Instanciando un objeto de la clase Entrada
+        e = new Entrada();
+        //Pasando un producto del array listaProductos al objeto "e" de Entrada
+        e.setProducto(listaProductos.get(indice));
         e.setCantidad_solicitada(Integer.parseInt(txtCantidadSolicitada.getText()));
+        e.setCantidad_recibida(Integer.parseInt(txtCantidadRecibida.getText()));
         e.setFecha(txtFechaEntrada.getText()); 
         String estado=e.verificarEstado();
         e.setEstadoConfirmacion(estado);
@@ -269,8 +274,8 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     
     for(int i=0; i<listaEntrada.size(); i++){
         Object[] data={
-            listaEntrada.get(i).getCodPro(),
-            listaEntrada.get(i).getDesPro(),
+            listaEntrada.get(i).getProducto().getCod(),
+            listaEntrada.get(i).getProducto().getDescripcion(),
             listaEntrada.get(i).getCantidad_solicitada(),
             listaEntrada.get(i).getCantidad_recibida(),
             listaEntrada.get(i).getFecha(),

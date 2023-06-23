@@ -1,4 +1,4 @@
-package Clases;
+package modelo;
 
 
 public class Ubicacion {
