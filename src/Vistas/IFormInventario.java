@@ -4,6 +4,7 @@
  */
 package Vistas;
 import Clases.Producto;
+import static Vistas.IFormEntrada.listaEntrada;
 import static Vistas.FormMenu.actualizarInterfaz;
 import static Vistas.FormMenu.contenedor;
 import static Vistas.IFormProducto.listaProductos;
@@ -22,7 +23,7 @@ public class IFormInventario extends javax.swing.JInternalFrame {
     Producto p;
     //Instanciar el ArrayList como public static para que el IFormEntrada y el IFormSalida 
     //puedan tener acceso
-    //public static ArrayList<Producto> listaProductos = new ArrayList<>();
+    //public static ArrayList<Entrada> listaProductos = new ArrayList<>();
     DefaultTableModel modelo = new DefaultTableModel();
     public IFormInventario() {
         initComponents();
@@ -124,7 +125,7 @@ public class IFormInventario extends javax.swing.JInternalFrame {
         pnlbuscarLayout.setHorizontalGroup(
             pnlbuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlbuscarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(pnlbuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtbuscarpor, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,13 +158,14 @@ public class IFormInventario extends javax.swing.JInternalFrame {
             pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlnventarioLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlnventarioLayout.createSequentialGroup()
-                        .addComponent(txttitulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pnlbuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(txttitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(77, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlnventarioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlnventarioLayout.setVerticalGroup(
             pnlnventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,6 +209,7 @@ public class IFormInventario extends javax.swing.JInternalFrame {
             i.setVisible(true);
             i.txtCodPro.setText(tblStock.getValueAt(row, 0).toString());
             i.txtprecio.setText(tblStock.getValueAt(row, 3).toString());
+            //i.t.setText(tblStock.getValueAt(row, 4).toString());
             i.txtcantidad.requestFocus();
             i.x = 0;
             dispose();

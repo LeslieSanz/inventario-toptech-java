@@ -29,17 +29,22 @@ public class Entrada extends Proceso{
     
     public String verificarEstado(){
         String estado;
-        if(cantidad_solicitada<cantidad_recibida){
-            estado="Revisar";
-        }else{
-           if(cantidad_solicitada>cantidad_recibida){
+        if (cantidad_solicitada<cantidad_recibida){
                estado="Exceso";
-           }else{
+        }else if (cantidad_recibida==cantidad_solicitada ){
                estado="Conforme";
-           }
+        }else{
+               estado="Revisar";
         }
         return estado;
+        //aplicar excepcion en el formulario !!!!!!!!!!!!!!!
+        //else if(cantidad_recibida==0){
+        //estado="No Llega";
     }
+}
+        
+   
+
 
    
-}
+

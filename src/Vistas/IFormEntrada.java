@@ -255,13 +255,9 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         e.setDesPro(listaProductos.get(indice).getDescripcion());
         e.setCantidad_recibida(Integer.parseInt(txtCantidadRecibida.getText()));
         e.setCantidad_solicitada(Integer.parseInt(txtCantidadSolicitada.getText()));
-        e.setFecha(txtFechaEntrada.getText());
-        //Estado del producto 
-        if (Integer.parseInt(txtCantidadRecibida.getText())<Integer.parseInt(txtCantidadSolicitada.getText()) 
-                && Integer.parseInt(txtCantidadRecibida.getText())!=0)
-            e.setEstadoConfirmacion("Disponible");
-        else
-            e.setEstadoConfirmacion("No Disponible");
+        e.setFecha(txtFechaEntrada.getText()); 
+        String estado=e.verificarEstado();
+        e.setEstadoConfirmacion(estado);
         listaEntrada.add(e);
         borrarInterfaz();
         pnlDatosEntrada.setVisible(false);
