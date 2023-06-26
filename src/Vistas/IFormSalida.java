@@ -7,7 +7,7 @@ package Vistas;
 import modelo.Salida;
 //Importando el ArrayList Lista productos del IFormProducto
 import static Vistas.IFormProducto.listaProductos;
-import static Vistas.IFormEntrada.listaEntrada;
+import static Vistas.IFormProducto.listaStock;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class IFormSalida extends javax.swing.JInternalFrame {
     DefaultTableModel modelo1 = new DefaultTableModel();
     int indice=-1;
+    int indiceStk=-1;
     Salida s;
     public static ArrayList<Salida> listaSalidas = new ArrayList<>();
     /**
@@ -234,6 +235,10 @@ public class IFormSalida extends javax.swing.JInternalFrame {
         s.setFecha(txtFechaSalida.getText()); 
         //Añadiendo el objeto al array listaSalidas
         listaSalidas.add(s);
+        
+        buscarStockProd(txtCodPro.getText());
+        listaStock.get(indiceStk).agregarSalida(s);
+        
         borrarInterfaz();
         pnlDatosSalida.setVisible(false);
         mostrarTablaSalida();
@@ -272,6 +277,14 @@ public class IFormSalida extends javax.swing.JInternalFrame {
     public void eliminarElementosTabla(){
         for(int i=tblsalida.getRowCount()-1; i>=0; i--){
             modelo1.removeRow(i);
+        }
+    }
+    
+    public void buscarStockProd(String codigo){
+        for(int i=0; i<listaStock.size(); i++){
+            if(codigo.equalsIgnoreCase(listaStock.get(i).getProducto().getCod())){
+                indiceStk= i;
+            }    
         }
     }
 

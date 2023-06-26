@@ -7,6 +7,7 @@ package Vistas;
 //Importando el ArrayList Lista productos del IFormProducto
 import modelo.Entrada;
 import static Vistas.IFormProducto.listaProductos;
+import static Vistas.IFormProducto.listaStock;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -17,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class IFormEntrada extends javax.swing.JInternalFrame {
     int indice=-1;
+    int indiceStk=-1;
     DefaultTableModel modelo= new DefaultTableModel();
     //Declarar uun objeto de la clase Entrada
     Entrada e;
@@ -264,6 +266,10 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         String estado=e.verificarEstado();
         e.setEstadoConfirmacion(estado);
         listaEntrada.add(e);
+        
+        buscarStockProd(txtCodPro.getText());
+        listaStock.get(indiceStk).agregarEntrada(e);
+        
         borrarInterfaz();
         pnlDatosEntrada.setVisible(false);
         mostrarTablaEntrada();
@@ -301,6 +307,14 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
             }    
         }
       return indice; 
+    }
+    
+    public void buscarStockProd(String codigo){
+        for(int i=0; i<listaStock.size(); i++){
+            if(codigo.equalsIgnoreCase(listaStock.get(i).getProducto().getCod())){
+                indiceStk= i;
+            }    
+        }
     }
     
     private void btnBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProductoActionPerformed

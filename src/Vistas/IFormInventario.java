@@ -4,11 +4,8 @@
  */
 package Vistas;
 import static Vistas.FormMenu.actualizarInterfaz;
-import static Vistas.IFormProducto.listaProductos;
-import static Vistas.IFormEntrada.listaEntrada;
 import static Vistas.FormMenu.contenedor;
-import static Vistas.IFormSalida.listaSalidas;
-
+import static Vistas.IFormProducto.listaStock;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -21,31 +18,22 @@ import modelo.StockDTO;
 public class IFormInventario extends javax.swing.JInternalFrame {
     
     DefaultTableModel modelo = new DefaultTableModel();
-    ArrayList<StockDTO> listaStock = new ArrayList<>();
+    
     StockDTO stk;
     
     public IFormInventario() {
         initComponents();
         establecerColumnas();
-        pnlbuscar.setVisible(false);
+        pnlbuscar.setVisible(false); 
     }
     private void establecerColumnas(){
         modelo.addColumn("Codigo");
         modelo.addColumn("Descripción");
-        modelo.addColumn("Entradas");
-        modelo.addColumn("Salidas");
+        modelo.addColumn("Precio");
         modelo.addColumn("Stock");
         tblStock.setModel(modelo);
     }
-    public void mostrarTablaStock(){
-       
-    }
-    
-    public void eliminarElementosTabla(){
-        for(int i=tblStock.getRowCount()-1;i>=0;i--){
-            modelo.removeRow(i);
-        }
-    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -225,35 +213,27 @@ public class IFormInventario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblStockMouseClicked
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-        
-        //Por cada objeto de la listaEntrada, se instancia un objeto de la clase stock
-        for(int i=0;i<listaEntrada.size();i++){
-        //Instanciando objetos de la clase stock
-        stk= new StockDTO();
-        stk.setProducto(listaProductos.get(i));
-        stk.setEntrada(listaEntrada.get(i));
-        stk.setSalida(listaSalidas.get(i));
-        //Metodo desarrollado en la clase StockDTO
-        int stock = stk.calcularStock();
-        stk.setStock(stock);
-        //Añadiendo el objeto stock a la lista
-        listaStock.add(stk);
-        }
-    
-        //eliminarElementosTabla();
+        mostrarTablaStock();  
+    }//GEN-LAST:event_btnMostrarActionPerformed
+     public void mostrarTablaStock(){
+        eliminarElementosTabla();
         //Mostrar productos en la tabla stock
         for(int i=0;i<listaStock.size();i++){
-            Object[] data={ listaStock.get(i).getProducto().getCod(),
+            Object[] data={ 
+                listaStock.get(i).getProducto().getCod(),
                 listaStock.get(i).getProducto().getDescripcion(),
-                listaStock.get(i).getEntrada().getCantidad_recibida(),
-                listaStock.get(i).getSalida().getCantidad_solicitada(),
-                listaStock.get(i).getStock(),
+                listaStock.get(i).getProducto().getPrecioUnit(),
+                listaStock.get(i).calcularStock(),
             };
             modelo.addRow(data);
+        }  
+    }
+    
+    public void eliminarElementosTabla(){
+        for(int i=tblStock.getRowCount()-1;i>=0;i--){
+            modelo.removeRow(i);
         }
-        
-    }//GEN-LAST:event_btnMostrarActionPerformed
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMostrar;

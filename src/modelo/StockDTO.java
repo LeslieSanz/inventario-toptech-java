@@ -1,39 +1,55 @@
 package modelo;
 
+import java.util.ArrayList;
+
 
 public class StockDTO {
     private Producto producto;
-    private Entrada entrada;
-    private Salida salida;
+    private ArrayList<Entrada> entradas;
+    private ArrayList<Salida> salidas;
     private int stock;
+
+    public StockDTO(Producto producto) {
+        this.producto = producto;
+        this.entradas = new ArrayList<>();
+        this.salidas = new ArrayList<>();
+        this.stock = 0;
+    }
     
-    public int calcularStock(){
-        setStock(entrada.getCantidad_recibida()-salida.getCantidad_solicitada());
-        return getStock();
+    public void agregarEntrada(Entrada entrada) {
+    entradas.add(entrada);
     }
 
+    public void agregarSalida(Salida salida) {
+    salidas.add(salida);
+    }
+    
+    public int calcularStock() {
+        int totalEntradas = 0;
+        for (int i = 0; i < entradas.size(); i++) {
+            Entrada entrada = entradas.get(i);
+            totalEntradas = totalEntradas + entrada.getCantidad_recibida();
+        }
+        
+        int totalSalidas = 0;
+        for (int i = 0; i < salidas.size(); i++) {
+            Salida salida = salidas.get(i);
+            totalEntradas = totalEntradas - salida.getCantidad_solicitada();
+        }
+        //Calculo del stock de un producto
+        stock = totalEntradas - totalSalidas;
+        
+        return stock;
+    }
+    
+    
+    //Getters y setters
     public Producto getProducto() {
         return producto;
     }
 
     public void setProducto(Producto producto) {
         this.producto = producto;
-    }
-
-    public Entrada getEntrada() {
-        return entrada;
-    }
-
-    public void setEntrada(Entrada entrada) {
-        this.entrada = entrada;
-    }
-
-    public Salida getSalida() {
-        return salida;
-    }
-
-    public void setSalida(Salida salida) {
-        this.salida = salida;
     }
 
     public int getStock() {
@@ -43,4 +59,20 @@ public class StockDTO {
     public void setStock(int stock) {
         this.stock = stock;
     }
+
+    public ArrayList<Entrada> getEntradas() {
+        return entradas;
+    }
+
+    public void setEntradas(ArrayList<Entrada> entradas) {
+        this.entradas = entradas;
+    }
+
+    public ArrayList<Salida> getSalidas() {
+        return salidas;
+    }
+
+    public void setSalidas(ArrayList<Salida> salidas) {
+        this.salidas = salidas;
+    }  
 }
