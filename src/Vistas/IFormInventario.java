@@ -6,7 +6,7 @@ package Vistas;
 import static Vistas.FormMenu.actualizarInterfaz;
 import static Vistas.FormMenu.contenedor;
 import static Vistas.IFormProducto.listaStock;
-
+import modelo.StockDTO;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.StockDTO;
@@ -203,7 +203,8 @@ public class IFormInventario extends javax.swing.JInternalFrame {
             contenedor.add(i);
             i.setVisible(true);
             i.txtCodPro.setText(tblStock.getValueAt(row, 0).toString());
-            i.txtprecio.setText(tblStock.getValueAt(row, 3).toString());
+            i.txtprecio.setText(tblStock.getValueAt(row, 2).toString());
+            i.txtStock.setText(tblStock.getValueAt(row, 3).toString());
             //i.t.setText(tblStock.getValueAt(row, 4).toString());
             i.txtcantidad.requestFocus();
             i.x = 0;
@@ -223,7 +224,7 @@ public class IFormInventario extends javax.swing.JInternalFrame {
                 listaStock.get(i).getProducto().getCod(),
                 listaStock.get(i).getProducto().getDescripcion(),
                 listaStock.get(i).getProducto().getPrecioUnit(),
-                listaStock.get(i).calcularStock(),
+                listaStock.get(i).calcularStock()
             };
             modelo.addRow(data);
         }  

@@ -45,7 +45,7 @@ public class IFormSalida extends javax.swing.JInternalFrame {
     public void borrarInterfaz(){
         txtCodPro.setText(null);
         txtFechaSalida.setText(null);
-        txtCantidad.setText(null);
+        txtCantidadSalida.setText(null);
         txtCodPro.requestFocus();
         
     } 
@@ -74,7 +74,7 @@ public class IFormSalida extends javax.swing.JInternalFrame {
         txtFechaSalida = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtCantidad = new javax.swing.JTextField();
+        txtCantidadSalida = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblsalida = new javax.swing.JTable();
 
@@ -141,7 +141,7 @@ public class IFormSalida extends javax.swing.JInternalFrame {
                             .addGroup(pnlDatosSalidaLayout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCantidadSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnRegistrar))))
                 .addContainerGap(212, Short.MAX_VALUE))
         );
@@ -153,7 +153,7 @@ public class IFormSalida extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCantidadSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -231,7 +231,7 @@ public class IFormSalida extends javax.swing.JInternalFrame {
         s = new Salida();
         //Pasando un producto del array listaProductos al objeto "s" de Salida
         s.setProducto(listaProductos.get(indice));
-        s.setCantidad_solicitada(Integer.parseInt(txtCantidad.getText()));
+        s.setCantidad_solicitada(Integer.parseInt(txtCantidadSalida.getText()));
         s.setFecha(txtFechaSalida.getText()); 
         //Añadiendo el objeto al array listaSalidas
         listaSalidas.add(s);
@@ -303,7 +303,7 @@ public class IFormSalida extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnlDatosSalida;
     private javax.swing.JTable tblsalida;
-    private javax.swing.JTextField txtCantidad;
+    private javax.swing.JTextField txtCantidadSalida;
     private javax.swing.JTextField txtCantidadSolicitada;
     private javax.swing.JTextField txtCodPro;
     private javax.swing.JTextField txtFechaEntrada;

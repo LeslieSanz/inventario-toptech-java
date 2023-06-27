@@ -38,7 +38,6 @@ public class StockDTO {
         }
         //Calculo del stock de un producto
         stock = totalEntradas - totalSalidas;
-        
         return stock;
     }
     

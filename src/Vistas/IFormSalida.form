@@ -165,7 +165,7 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="txtCantidad" min="-2" pref="95" max="-2" attributes="0"/>
+                                      <Component id="txtCantidadSalida" min="-2" pref="95" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="btnRegistrar" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -183,7 +183,7 @@
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtFechaSalida" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCantidadSalida" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
@@ -232,7 +232,7 @@
                 <Property name="text" type="java.lang.String" value="DD/MM/AA"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCantidad">
+            <Component class="javax.swing.JTextField" name="txtCantidadSalida">
             </Component>
           </SubComponents>
         </Container>
