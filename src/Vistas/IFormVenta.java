@@ -26,11 +26,9 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     
     private void establecerColumnas() {
         modelo.addColumn("ID");
-        modelo.addColumn("nom.prod.");
-        modelo.addColumn("Cant.");
-        modelo.addColumn("Fecha"); 
-        modelo.addColumn("Prec. Unid.");
-        modelo.addColumn("Importe");
+        modelo.addColumn("Nom.prod.");
+        modelo.addColumn("Precio unit");
+        modelo.addColumn("Subtotal"); 
         tblventa.setModel(modelo);
     }
 
@@ -115,7 +113,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tblventa);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Subtotal");
+        jLabel7.setText("Total");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel8.setText("IGV");

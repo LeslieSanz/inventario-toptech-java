@@ -11,7 +11,7 @@ package modelo;
 public class Venta {
     private String fecha;
     private double total; //se calcula
-    private double impuestoIGV; //se calcula
+    private double impuestoIGV=0.18; //se calcula
     private double descuento; //se calcula
 
     public String getFecha() {
