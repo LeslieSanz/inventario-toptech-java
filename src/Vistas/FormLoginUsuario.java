@@ -235,7 +235,6 @@ public class FormLoginUsuario extends javax.swing.JFrame {
         btnIngresar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setText("Ingresar");
-        btnIngresar.setOpaque(true);
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);

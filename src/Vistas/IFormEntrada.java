@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class IFormEntrada extends javax.swing.JInternalFrame {
     int indice=-1;
     int indiceStk=-1;
+    int a;
     DefaultTableModel modelo= new DefaultTableModel();
     //Declarar uun objeto de la clase Entrada
     Entrada e;
@@ -245,7 +246,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
         );
 
         pack();
@@ -260,6 +261,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         e = new Entrada();
         //Pasando un producto del array listaProductos al objeto "e" de Entrada
         e.setProducto(listaProductos.get(indice));
+        //e.setCantidad_solicitada(a);   !!!
         e.setCantidad_solicitada(Integer.parseInt(txtCantidadSolicitada.getText()));
         e.setCantidad_recibida(Integer.parseInt(txtCantidadRecibida.getText()));
         e.setFecha(txtFechaEntrada.getText()); 
@@ -326,6 +328,9 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         else{
             pnlDatosEntrada.setVisible(true);
         }
+        //Revisar !!!!!!!!!!!!!!!!!!! "cantidad solicitada random y visible en el form"
+        //e.setCantidad_solicitada(a);
+        //txtCantidadSolicitada.setText(a);
     }//GEN-LAST:event_btnBuscarProductoActionPerformed
  
 

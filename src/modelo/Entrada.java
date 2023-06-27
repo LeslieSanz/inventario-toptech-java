@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import java.util.Random;
+
 
 /**
  *
@@ -35,6 +37,14 @@ public class Entrada extends ProcesoDTO{
         //else if(cantidad_recibida==0){
         //estado="No Llega";
     }
+    //Revisar !!!
+    public int cantidadSolicitadaRandom(){
+        int cantidadRandom = 0;
+        Random random = new Random();
+        cantidadRandom=random.nextInt(10000)+1;
+        return cantidadRandom;
+    }
+    
 }
         
    
