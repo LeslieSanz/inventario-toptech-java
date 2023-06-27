@@ -9,9 +9,13 @@ package modelo;
  * @author lesly
  */
 public class Detalle {
-    
+    private Producto producto;
     private int cantidad;
     private double subtotal;
+    
+    public void calcularSubtotal(){
+        subtotal=cantidad*producto.getPrecioUnit();
+    }
 
     public int getCantidad() {
         return cantidad;
@@ -27,6 +31,20 @@ public class Detalle {
 
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
+    }
+
+    /**
+     * @return the producto
+     */
+    private Producto getProducto() {
+        return producto;
+    }
+
+    /**
+     * @param producto the producto to set
+     */
+    private void setProducto(Producto producto) {
+        this.producto = producto;
     }
     
 }
