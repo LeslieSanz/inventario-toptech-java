@@ -137,7 +137,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel5.setText("DD/MM/YYYY");
+        jLabel5.setText("DD-MM-YYYY");
 
         javax.swing.GroupLayout pnlDatosEntradaLayout = new javax.swing.GroupLayout(pnlDatosEntrada);
         pnlDatosEntrada.setLayout(pnlDatosEntradaLayout);

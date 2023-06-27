@@ -280,7 +280,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
-                <Property name="text" type="java.lang.String" value="DD/MM/YYYY"/>
+                <Property name="text" type="java.lang.String" value="DD-MM-YYYY"/>
               </Properties>
             </Component>
           </SubComponents>
