@@ -1,6 +1,7 @@
 
 package Vistas;
 
+import Vistas.FormMenu;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Font;
@@ -18,12 +19,13 @@ public class FormLoginUsuario extends javax.swing.JFrame {
         pnlDatos.setVisible(false);
         restrictToNumbers(txtUsuario);
         setPlaceholderText(txtUsuario, "Usuario/DNI");
-        setPlaceholderText2(jPasswordField1, "**************");
+        setPlaceholderText2(jPasswordField1, "...........");
     }
 
-        // Para que el txtUsuario solo permita numeros enteros jeje
+        // Para que el txtUsuario solo permita numeros enteros jeje la queremos profe
     private void restrictToNumbers(javax.swing.JTextField textField) {
         textField.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 char c = evt.getKeyChar();
                 if (!Character.isDigit(c) || textField.getText().length() >= 8) {
@@ -33,7 +35,7 @@ public class FormLoginUsuario extends javax.swing.JFrame {
         });
     }
 
-    // Para poner Dni... en el txtUsuario
+    // Para poner Usuario/Dni... en el txtUsuario
     private void setPlaceholderText(javax.swing.JTextField textField, String placeholder) {
         textField.setText(placeholder);
         textField.setForeground(Color.GRAY);
@@ -103,10 +105,11 @@ public class FormLoginUsuario extends javax.swing.JFrame {
 
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
         LblTipoUsuario = new javax.swing.JLabel();
         cbxTipoUsuario = new javax.swing.JComboBox<>();
         pnlDatos = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         txtUsuario = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -130,10 +133,24 @@ public class FormLoginUsuario extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        jFormattedTextField1.setText("jFormattedTextField1");
+
+        jInternalFrame1.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar Sesión");
         setBackground(new java.awt.Color(102, 204, 255));
-        setPreferredSize(new java.awt.Dimension(500, 650));
 
         LblTipoUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         LblTipoUsuario.setText("Tipo de usuario");
@@ -146,22 +163,10 @@ public class FormLoginUsuario extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 51, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 53, Short.MAX_VALUE)
-        );
-
-        jPanel5.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel5.setBackground(new java.awt.Color(0, 51, 102));
 
         txtUsuario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("########"))));
-        txtUsuario.setMinimumSize(new java.awt.Dimension(64, 31));
-        txtUsuario.setPreferredSize(new java.awt.Dimension(64, 31));
+        txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/UsuarioLogo.png"))); // NOI18N
 
@@ -177,11 +182,11 @@ public class FormLoginUsuario extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(txtUsuario)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
         );
 
-        jPanel6.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel6.setBackground(new java.awt.Color(0, 51, 102));
         jPanel6.setPreferredSize(new java.awt.Dimension(341, 69));
 
         jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
@@ -215,9 +220,7 @@ public class FormLoginUsuario extends javax.swing.JFrame {
                 .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(454, 454, 454))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         pnlDatosLayout.setVerticalGroup(
             pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,34 +228,33 @@ public class FormLoginUsuario extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
-                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        btnIngresar.setBackground(new java.awt.Color(51, 153, 255));
+        btnIngresar.setBackground(new java.awt.Color(0, 51, 102));
         btnIngresar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setText("Ingresar");
+        btnIngresar.setOpaque(true);
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Nuevo Logo.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ddddd 1 (1).png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(123, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(62, 62, 62))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,7 +270,7 @@ public class FormLoginUsuario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(LblTipoUsuario)
@@ -276,7 +278,7 @@ public class FormLoginUsuario extends javax.swing.JFrame {
                         .addComponent(cbxTipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(89, 89, 89))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,40 +297,53 @@ public class FormLoginUsuario extends javax.swing.JFrame {
                 .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        if(cbxTipoUsuario.getSelectedItem().equals("Administrador")){
-            FormMenu m= new FormMenu();
-            m.setVisible(true);
-           
-        }else{
-            if(cbxTipoUsuario.getSelectedItem().equals("Invitado")){
-                FormMenu m= new FormMenu();
-                m.setVisible(true);
-                m.jMenuProceso.setVisible(false);              
-                m.jMenuProductos.setVisible(true);
-                m.jMenuProveedores.setVisible(true);
-                m.jMenuVenta.setVisible(true);
-            }else{
-                if(cbxTipoUsuario.getSelectedItem().equals("Vendedor")){
-                    FormMenu m= new FormMenu();
-                    m.setVisible(true);
-                    m.jMenuProceso.setVisible(false);              
-                    m.jMenuProductos.setVisible(false);
-                     m.jMenuProveedores.setVisible(false);
-                     m.jMenuVenta.setVisible(true);
-                }else{
-                    JOptionPane.showMessageDialog(null, "Por favor, seleccione un tipo de usuario"); 
-                }   
-            }
-        }      
-        
-        
+        String codUsuario = txtUsuario.getText();
+    if (codUsuario.length() != 8) {
+        if (cbxTipoUsuario.getSelectedItem().equals("Administrador")
+                || cbxTipoUsuario.getSelectedItem().equals("Vendedor")) {
+            JOptionPane.showMessageDialog(null, "Ingresar un número de DNI válido");
+            return; // Agregar esta línea para salir del método si ocurre un error
+        }
+    }
+
+    if (cbxTipoUsuario.getSelectedItem().equals("Administrador")) {
+        FormMenu m = new FormMenu();
+        m.setVisible(true);
+        setPlaceholderText2(jPasswordField1, "**************"); // Reiniciar campo de contraseña
+    } else if (cbxTipoUsuario.getSelectedItem().equals("Invitado")) {
+        FormMenu m = new FormMenu();
+        m.setVisible(true);
+        m.jMenuProceso.setVisible(false);
+        m.jMenuProductos.setVisible(false);
+        m.jMenuProveedores.setVisible(false);
+        m.jMenuVenta.setVisible(false);
+
+    } else if (cbxTipoUsuario.getSelectedItem().equals("Vendedor")) {
+        FormMenu m = new FormMenu();
+        m.setVisible(true);
+        m.jMenuProceso.setVisible(false);
+        m.jMenuProductos.setVisible(false);
+        m.jMenuProveedores.setVisible(false);
+        m.jMenuVenta.setVisible(true);
+        setPlaceholderText2(jPasswordField1, "**************"); // Reiniciar campo de contraseña
+    } else {
+        JOptionPane.showMessageDialog(null, "Tipo de usuario inválido");
+        return; // Agregar esta línea para salir del método si ocurre un error
+    }
+
+    // Restablecer campo de usuario
+    txtUsuario.setText("Usuario/DNI");
+    txtUsuario.setForeground(Color.GRAY);
+    txtUsuario.setFont(txtUsuario.getFont().deriveFont(Font.BOLD));
+  
+          
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void cbxTipoUsuarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxTipoUsuarioItemStateChanged
@@ -358,13 +373,14 @@ public class FormLoginUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel LblTipoUsuario;
     private javax.swing.JButton btnIngresar;
     private javax.swing.JComboBox<String> cbxTipoUsuario;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPasswordField jPasswordField1;

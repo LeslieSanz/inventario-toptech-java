@@ -6,6 +6,7 @@ public class Producto {
     private String descripcion;
     private double precioUnit;
     private Ubicacion ubicacion;
+    private String proveedor;
 
     public double getPrecioUnit() {
         return precioUnit;
@@ -45,6 +46,15 @@ public class Producto {
 
     public void setUbicacion(Ubicacion ubicacion) {
         this.ubicacion = ubicacion;
+    }
+    
+    public void setProveedor(String proveedor) {
+     this.proveedor = proveedor;
+    }
+
+
+    public Object getProveedor() {
+      return proveedor;    
     }
 
 }
