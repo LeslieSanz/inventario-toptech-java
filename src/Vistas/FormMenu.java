@@ -43,6 +43,7 @@ public class FormMenu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuProductos = new javax.swing.JMenu();
         jmiProducto = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuProveedores = new javax.swing.JMenu();
         jmiProveedores = new javax.swing.JMenuItem();
         jMenuProceso = new javax.swing.JMenu();
@@ -102,13 +103,21 @@ public class FormMenu extends javax.swing.JFrame {
             }
         });
 
-        jmiProducto.setText("Registrar");
+        jmiProducto.setText("Registrar Producto");
         jmiProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiProductoActionPerformed(evt);
             }
         });
         jMenuProductos.add(jmiProducto);
+
+        jMenuItem1.setText("Registrar Categoria");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenuProductos.add(jMenuItem1);
 
         jMenuBar1.add(jMenuProductos);
 
@@ -265,6 +274,13 @@ public class FormMenu extends javax.swing.JFrame {
         i.show();
     }//GEN-LAST:event_jmiInventarioActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        actualizarInterfaz();
+        IFormCategoría i = new IFormCategoría();
+        contenedor.add(i);
+        i.show();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     //Para que no se sobrepongan los frames internos
     public static void actualizarInterfaz(){
         contenedor.removeAll();
@@ -315,6 +331,7 @@ public class FormMenu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar jMenuBar1;
     public static javax.swing.JMenu jMenuInventario;
+    private javax.swing.JMenuItem jMenuItem1;
     public static javax.swing.JMenu jMenuProceso;
     public static javax.swing.JMenu jMenuProductos;
     public static javax.swing.JMenu jMenuProveedores;
