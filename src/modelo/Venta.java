@@ -7,12 +7,14 @@ package modelo;
 /**
  *
  * @author lesly
+ * // Luis^2 y Esther
  */
 public class Venta {
     private String fecha;
     private double total; //se calcula
     private double impuestoIGV=0.18; //se calcula
     private double descuento; //se calcula
+    //cod, fecha, subtotal , IGV, total
 
     public String getFecha() {
         return fecha;

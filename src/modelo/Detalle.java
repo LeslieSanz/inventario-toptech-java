@@ -7,11 +7,13 @@ package modelo;
 /**
  *
  * @author lesly
+ * // Luis^2 y Esther
  */
 public class Detalle {
-    private Producto producto;
+    private Producto producto; //object
     private int cantidad;
     private double subtotal;
+    //super f , cod.pro, descripcion, precio, cant , importe, String codventa
     
     public void calcularSubtotal(){
         subtotal=cantidad*producto.getPrecioUnit();
