@@ -159,8 +159,6 @@ package Vistas;
     
     private void btnRegistrarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProveedorActionPerformed
         
-      
-
         if (txtNomProv.getText().isEmpty() || FtextTelf.getText().isEmpty() || txtDireccion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Se necesita llenar todos los campos para registrar un proveedor",
                 "Campos vacíos", JOptionPane.ERROR_MESSAGE);
