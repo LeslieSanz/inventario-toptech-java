@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import misInterfaces.ProveedorInterface;
-import modelo.CategoriaProducto;
 import modelo.Proveedor;
 
 /**
