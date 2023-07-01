@@ -14,7 +14,7 @@ import modeloDAO.CategoriaProductoDAO;
  * @author LAB-USR-PT116-C407
  */
 public class IFormCategoría extends javax.swing.JInternalFrame {
-
+    CategoriaProductoDAO cd;
     DefaultTableModel modelo = new DefaultTableModel();
     
     public IFormCategoría() {
@@ -47,6 +47,7 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
         btnAceptar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCategoria = new javax.swing.JTable();
+        btnMostrar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Categoría");
@@ -85,6 +86,14 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblCategoria);
 
+        btnMostrar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        btnMostrar.setText("Mostrar");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -99,11 +108,12 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
                             .addComponent(jLabel3))
                         .addGap(52, 52, 52)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txtCod, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47)
-                                .addComponent(btnAceptar))))
+                            .addComponent(txtCod, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMostrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(120, Short.MAX_VALUE))
         );
@@ -120,10 +130,11 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMostrar))
                 .addGap(41, 41, 41)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -155,14 +166,25 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         CategoriaProducto c = new CategoriaProducto();
-        CategoriaProductoDAO cd = new CategoriaProductoDAO();
+        cd = new CategoriaProductoDAO();
         c.setCodigo(txtCod.getText());
         c.setNombre(txtNombre.getText());
         cd.agregar(c);
-        
         borrarInterfaz();
-        mostrarTablaCategorias();
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        /*limpiarTabla();
+        cd = new CategoriaProductoDAO();
+        ArrayList<CategoriaProducto> lista = new ArrayList<>();
+        lista = cd.listarTodos();
+        for(int i=0; i<lista.size(); i++){
+            Object[] data = {
+                lista.get(i).getCodigo(), 
+                lista.get(i).getNombre()};
+            modelo.addRow(data);
+        }*/
+    }//GEN-LAST:event_btnMostrarActionPerformed
     
     public void borrarInterfaz(){
         txtCod.setText(null);
@@ -175,10 +197,10 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
             tblCategoria.remove(i);
         }
     }
-    
+    /*
     public void mostrarTablaCategorias(){
         limpiarTabla();
-        CategoriaProductoDAO cd = new CategoriaProductoDAO();
+        cd = new CategoriaProductoDAO();
         ArrayList<CategoriaProducto> lista = new ArrayList<>();
         lista = cd.listarTodos();
         for(int i=0; i<lista.size(); i++){
@@ -187,10 +209,11 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
                 lista.get(i).getNombre(),};
             modelo.addRow(data);
         }
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnMostrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

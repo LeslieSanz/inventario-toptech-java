@@ -1,15 +1,20 @@
 
 package Vistas;
 
-
 import modelo.ProductoDTO;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.CategoriaProducto;
 import modelo.StockDTO;
+import modeloDAO.CategoriaProductoDAO;
 
 
 public final class IFormProducto extends javax.swing.JInternalFrame {
+    CategoriaProducto c;
+    CategoriaProductoDAO cd = new CategoriaProductoDAO();
+    ArrayList<CategoriaProducto> listaCategorias = new ArrayList<>();
+    
     //Declarar un objeto de la clase producto
     ProductoDTO p;
     //Declarar un objeto de la clase stock
@@ -18,12 +23,14 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
     //puedan tener acceso
     public static ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
     public static ArrayList<StockDTO> listaStock = new ArrayList<>();
+    
     DefaultTableModel modelo = new DefaultTableModel();
     
     
     public IFormProducto() {
         initComponents();
         establecerColumnas();
+        mostrarCategoriaProducto();
         //Para mantener los productos en la tabla si se cambia de frame
         mostrarTablaProductos();
     }
@@ -35,6 +42,15 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         modelo.addColumn("Precio Unit");
         modelo.addColumn("Proveedor");
         tblProducto.setModel(modelo);
+    }
+    
+    //Funcion que recorre la lista de categorias, obtiene su nombre y las agrega una por una
+    //al cbxCategoria
+    private void mostrarCategoriaProducto(){
+        listaCategorias = cd.listarTodos();
+        for(int i=0; i<listaCategorias.size(); i++){
+            cbxCategoria.addItem(listaCategorias.get(i).getNombre());
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -80,7 +96,6 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         jLabel3.setText("Categoría");
 
         cbxCategoria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Laptop", "Monitor", "Procesador", "Tarjeta Gráfica", "Teclado", "Mouse", "Disco duro", "Memoria RAM" }));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Precio unitario");
@@ -207,9 +222,8 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         mostrarMensajeError("Se debe llenar todos los campos para registrar un producto.");
         return;
         }
-        //Registrar Productos 
         
-
+        //Registrar Productos 
         p = new ProductoDTO();
         p.setCod(txtCodPro.getText());
         p.setDescripcion(txtDescrip.getText());
