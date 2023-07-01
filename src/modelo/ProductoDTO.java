@@ -2,11 +2,11 @@ package modelo;
 
 public class ProductoDTO {
     private String cod;
-    private String categoria;
+    private CategoriaProducto categoria;
     private String descripcion;
     private double precioUnit;
-    private Ubicacion ubicacion;
-    private String proveedor;
+    private String ubicacion;
+    private Proveedor proveedor;
 
     public double getPrecioUnit() {
         return precioUnit;
@@ -24,14 +24,6 @@ public class ProductoDTO {
         this.cod = cod;
     }
 
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -40,21 +32,46 @@ public class ProductoDTO {
         this.descripcion = descripcion;
     }
 
-    public Ubicacion getUbicacion() {
+    /**
+     * @return the categoria
+     */
+    public CategoriaProducto getCategoria() {
+        return categoria;
+    }
+
+    /**
+     * @param categoria the categoria to set
+     */
+    public void setCategoria(CategoriaProducto categoria) {
+        this.categoria = categoria;
+    }
+
+    /**
+     * @return the ubicacion
+     */
+    public String getUbicacion() {
         return ubicacion;
     }
 
-    public void setUbicacion(Ubicacion ubicacion) {
+    /**
+     * @param ubicacion the ubicacion to set
+     */
+    public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
-    
-    public void setProveedor(String proveedor) {
-     this.proveedor = proveedor;
+
+    /**
+     * @return the proveedor
+     */
+    public Proveedor getProveedor() {
+        return proveedor;
     }
 
-
-    public Object getProveedor() {
-      return proveedor;    
+    /**
+     * @param proveedor the proveedor to set
+     */
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
     }
 
 }

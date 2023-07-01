@@ -227,8 +227,8 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         p = new ProductoDTO();
         p.setCod(txtCodPro.getText());
         p.setDescripcion(txtDescrip.getText());
-        p.setCategoria(cbxCategoria.getSelectedItem().toString());
-        p.setProveedor(cbxProveedor.getSelectedItem().toString());
+        //p.setCategoria(cbxCategoria.getSelectedItem().toString());
+        //p.setProveedor(cbxProveedor.getSelectedItem().toString());
         
         try {
         double precioUnit = Double.parseDouble(txtPrecioUnit.getText());

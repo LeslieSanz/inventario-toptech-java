@@ -35,7 +35,7 @@ public class productoDAO implements ProductoInterface{
             ps.setString(1, p.getCod());
             ps.setString(2, p.getDescripcion());
             ps.setDouble(3, p.getPrecioUnit());
-            ps.setInt(4, p.getUbicacion().getNumAnaquel());
+            ps.setString(4, p.getUbicacion());
             //ps.setInt(4, p.getStock());
             //ps.setString(5, p.getTipo().getCodigo());
             ps.executeUpdate();
@@ -68,7 +68,7 @@ public class productoDAO implements ProductoInterface{
             ps.setString(1, p.getCod());
             ps.setString(2, p.getDescripcion());
             ps.setDouble(3, p.getPrecioUnit());
-            ps.setInt(4, p.getUbicacion().getNumAnaquel());
+            ps.setString(4, p.getUbicacion());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(productoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -102,8 +102,25 @@ public class productoDAO implements ProductoInterface{
 
     @Override
     public ProductoDTO listarUno(String codigo) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-
+        try {
+            String sql = "select * from producto";
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                p = new ProductoDTO();
+                p.setCod(rs.getString("codpro"));
+                p.setDescripcion(rs.getString("despro"));
+                p.setPrecioUnit(rs.getDouble("prepro"));
+                //p.setStock(rs.getInt("stcpro"));
+                String cc = rs.getString("codpro");
+                c = cd.listarUno(cc);
+                p.setCategoria(c);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(productoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return p;
    }
     
 }
