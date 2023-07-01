@@ -16,7 +16,9 @@ public class Venta {
     private double subtotal; //se calcula
     private double impuestoIGV=0.18; //se calcula
     private double total; //se calcula
-
+    
+    
+    
     public String getFecha() {
         return fecha;
     }

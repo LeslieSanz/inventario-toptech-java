@@ -17,6 +17,10 @@ public class DetalleDTO {
     private int cantidad;
     //super f
     
+    public void calcularImporte(){
+        importe=cantidad*producto.getPrecioUnit();
+    }
+    
     public int getCantidad() {
         return cantidad;
     }
