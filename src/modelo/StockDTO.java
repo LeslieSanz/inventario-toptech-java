@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 
 public class StockDTO {
-    private Producto producto;
+    private ProductoDTO producto;
     private ArrayList<Entrada> entradas;
     private ArrayList<Salida> salidas;
     private int stock;
 
-    public StockDTO(Producto producto) {
+    public StockDTO(ProductoDTO producto) {
         this.producto = producto;
         this.entradas = new ArrayList<>();
         this.salidas = new ArrayList<>();
@@ -43,11 +43,11 @@ public class StockDTO {
     
     
     //Getters y setters
-    public Producto getProducto() {
+    public ProductoDTO getProducto() {
         return producto;
     }
 
-    public void setProducto(Producto producto) {
+    public void setProducto(ProductoDTO producto) {
         this.producto = producto;
     }
 

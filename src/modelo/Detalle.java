@@ -10,7 +10,7 @@ package modelo;
  * // Luis^2 y Esther
  */
 public class Detalle {
-    private Producto producto; //object
+    private ProductoDTO producto; //object
     private int cantidad;
     private double subtotal;
     //super f , cod.pro, descripcion, precio, cant , importe, String codventa
@@ -38,14 +38,14 @@ public class Detalle {
     /**
      * @return the producto
      */
-    private Producto getProducto() {
+    private ProductoDTO getProducto() {
         return producto;
     }
 
     /**
      * @param producto the producto to set
      */
-    private void setProducto(Producto producto) {
+    private void setProducto(ProductoDTO producto) {
         this.producto = producto;
     }
     

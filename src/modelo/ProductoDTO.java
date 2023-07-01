@@ -1,6 +1,6 @@
 package modelo;
 
-public class Producto {
+public class ProductoDTO {
     private String cod;
     private String categoria;
     private String descripcion;

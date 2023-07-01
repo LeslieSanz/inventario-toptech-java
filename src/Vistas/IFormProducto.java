@@ -2,7 +2,7 @@
 package Vistas;
 
 
-import modelo.Producto;
+import modelo.ProductoDTO;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -11,12 +11,12 @@ import modelo.StockDTO;
 
 public final class IFormProducto extends javax.swing.JInternalFrame {
     //Declarar un objeto de la clase producto
-    Producto p;
+    ProductoDTO p;
     //Declarar un objeto de la clase stock
     StockDTO stk;
     //Instanciar el ArrayList como public static para que el IFormEntrada y el IFormSalida 
     //puedan tener acceso
-    public static ArrayList<Producto> listaProductos = new ArrayList<>();
+    public static ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
     public static ArrayList<StockDTO> listaStock = new ArrayList<>();
     DefaultTableModel modelo = new DefaultTableModel();
     
@@ -210,7 +210,7 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         //Registrar Productos 
         
 
-        p = new Producto();
+        p = new ProductoDTO();
         p.setCod(txtCodPro.getText());
         p.setDescripcion(txtDescrip.getText());
         p.setCategoria(cbxCategoria.getSelectedItem().toString());
