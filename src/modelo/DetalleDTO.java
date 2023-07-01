@@ -9,16 +9,14 @@ package modelo;
  * @author lesly
  * // Luis^2 y Esther
  */
-public class Detalle {
-    private ProductoDTO producto; //object
+public class DetalleDTO {
+    private ProductoDTO producto; //object 
+    // atributos cod_pro , descripcion, precioUnit ↑↑↑
+    private String codigoVenta;
+    private double importe;//cantidad*precio unitario
     private int cantidad;
-    private double subtotal;
-    //super f , cod.pro, descripcion, precio, cant , importe, String codventa
+    //super f
     
-    public void calcularSubtotal(){
-        subtotal=cantidad*producto.getPrecioUnit();
-    }
-
     public int getCantidad() {
         return cantidad;
     }
@@ -26,15 +24,6 @@ public class Detalle {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-
-    public double getSubtotal() {
-        return subtotal;
-    }
-
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
-    }
-
     /**
      * @return the producto
      */
@@ -47,6 +36,22 @@ public class Detalle {
      */
     private void setProducto(ProductoDTO producto) {
         this.producto = producto;
+    }
+
+    public String getCodigoVenta() {
+        return codigoVenta;
+    }
+
+    public void setCodigoVenta(String codigoVenta) {
+        this.codigoVenta = codigoVenta;
+    }
+
+    public double getImporte() {
+        return importe;
+    }
+
+    public void setImporte(double importe) {
+        this.importe = importe;
     }
     
 }

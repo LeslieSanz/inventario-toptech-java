@@ -10,11 +10,12 @@ package modelo;
  * // Luis^2 y Esther
  */
 public class Venta {
+    
+    private String codigo;
     private String fecha;
-    private double total; //se calcula
+    private double subtotal; //se calcula
     private double impuestoIGV=0.18; //se calcula
-    private double descuento; //se calcula
-    //cod, fecha, subtotal , IGV, total
+    private double total; //se calcula
 
     public String getFecha() {
         return fecha;
@@ -40,11 +41,20 @@ public class Venta {
         this.impuestoIGV = impuestoIGV;
     }
 
-    public double getDescuento() {
-        return descuento;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setDescuento(double descuento) {
-        this.descuento = descuento;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
+
+    public double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
+    }
+
 }
