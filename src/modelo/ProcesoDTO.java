@@ -10,7 +10,7 @@ public class ProcesoDTO {
     protected int cantidad_solicitada; //Ingresar
     protected String estadoConfirmacion; //Estado para la clase Entrada: se aprueba si la cantidad
     //solicitada es igual a la cantidad recibida y Confirmacion para la clase Salida
-    private ProductoDTO producto; //Para acceder al codigo y descripcion de producto
+    protected ProductoDTO producto; //Para acceder al codigo y descripcion de producto
     
     //Getters y setters
     public String getFecha() {

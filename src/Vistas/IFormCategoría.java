@@ -198,6 +198,7 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
         de la base de datos, incluida la nueva categoria. Pero si se vuelve 
         a ingresar otra, y luego se presiona mostrar, sale un error que
         tiene que ver con un indice fuera de rango:(*/
+        modelo.setRowCount(0);
         cd = new CategoriaProductoDAO();
         ArrayList<CategoriaProducto> lista = new ArrayList<>();
         lista = cd.listarTodos();

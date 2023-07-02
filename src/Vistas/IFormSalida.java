@@ -4,13 +4,14 @@
  */
 package Vistas;
 
+import static Vistas.IFormProducto.listaProductos;
 import modelo.Salida;
 //Importando el ArrayList Lista productos del IFormProducto
-import static Vistas.IFormProducto.listaProductos;
-import static Vistas.IFormProducto.listaStock;
+//import static Vistas.IFormProducto.listaStock;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.ProductoDTO;
 
 /**
  *
@@ -234,15 +235,18 @@ public class IFormSalida extends javax.swing.JInternalFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
        //Instanciando un objeto de la clase Salida
         s = new Salida();
+        
+        ProductoDTO producto = listaProductos.get(indice);
         //Pasando un producto del array listaProductos al objeto "s" de Salida
-        s.setProducto(listaProductos.get(indice));
+        s.setProducto(producto);
         s.setCantidad_solicitada(Integer.parseInt(txtCantidadSalida.getText()));
         s.setFecha(txtFechaSalida.getText()); 
         //Añadiendo el objeto al array listaSalidas
         listaSalidas.add(s);
-        
-        buscarStockProd(txtCodPro.getText());
-        listaStock.get(indiceStk).agregarSalida(s);
+
+        int cantidad = s.getCantidad_solicitada();   
+        //Resta la cantidad al stock del producto, ver el metodo en la clase productoDTO
+        producto.agregarSalida(cantidad);
         
         borrarInterfaz();
         pnlDatosSalida.setVisible(false);
@@ -285,13 +289,6 @@ public class IFormSalida extends javax.swing.JInternalFrame {
         }
     }
     
-    public void buscarStockProd(String codigo){
-        for(int i=0; i<listaStock.size(); i++){
-            if(codigo.equalsIgnoreCase(listaStock.get(i).getProducto().getCod())){
-                indiceStk= i;
-            }    
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;

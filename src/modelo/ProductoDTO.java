@@ -1,13 +1,26 @@
 package modelo;
 
-public class ProductoDTO {
+public class ProductoDTO {    
     private String cod;
     private CategoriaProducto categoria;
     private String descripcion;
     private double precioUnit;
     private String ubicacion;
     private Proveedor proveedor;
+    private int stock;
 
+    public ProductoDTO() {
+        this.stock = 0;
+    }
+    
+    public void agregarEntrada(int cantidad){
+        stock = stock + cantidad;
+    }
+    
+    public void agregarSalida(int cantidad){
+        stock = stock - cantidad;
+    }
+    
     public double getPrecioUnit() {
         return precioUnit;
     }
@@ -72,6 +85,14 @@ public class ProductoDTO {
      */
     public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
+    }
+    
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
 }
