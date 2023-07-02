@@ -5,12 +5,12 @@
 
 package Vistas;
 //Importando el ArrayList Lista productos del IFormProducto
-import modelo.Entrada;
 import static Vistas.IFormProducto.listaProductos;
-import static Vistas.IFormProducto.listaStock;
+import modelo.Entrada;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.ProductoDTO;
 
 /**
  *
@@ -259,8 +259,9 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     private void btnIngresarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarProductoActionPerformed
         //Instanciando un objeto de la clase Entrada
         e = new Entrada();
+        ProductoDTO producto = listaProductos.get(indice);
         //Pasando un producto del array listaProductos al objeto "e" de Entrada
-        e.setProducto(listaProductos.get(indice));
+        e.setProducto(producto);
         //e.setCantidad_solicitada(a);   !!!
         e.setCantidad_solicitada(Integer.parseInt(txtCantidadSolicitada.getText()));
         e.setCantidad_recibida(Integer.parseInt(txtCantidadRecibida.getText()));
@@ -269,8 +270,9 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         e.setEstadoConfirmacion(estado);
         listaEntrada.add(e);
         
-        buscarStockProd(txtCodPro.getText());
-        listaStock.get(indiceStk).agregarEntrada(e);
+        int cantidad = e.getCantidad_recibida();        
+        //Suma la cantidad al stock del producto, ver el metodo en la clase productoDTO
+        producto.agregarEntrada(cantidad); 
         
         borrarInterfaz();
         pnlDatosEntrada.setVisible(false);
@@ -309,14 +311,6 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
             }    
         }
       return indice; 
-    }
-    
-    public void buscarStockProd(String codigo){
-        for(int i=0; i<listaStock.size(); i++){
-            if(codigo.equalsIgnoreCase(listaStock.get(i).getProducto().getCod())){
-                indiceStk= i;
-            }    
-        }
     }
     
     private void btnBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProductoActionPerformed

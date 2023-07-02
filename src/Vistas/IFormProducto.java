@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.CategoriaProducto;
 import modelo.Proveedor;
-import modelo.StockDTO;
 import modeloDAO.CategoriaProductoDAO;
 import modeloDAO.productoDAO;
 import modeloDAO.proveedorDAO;
@@ -25,12 +24,9 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
     
     //Declarar un objeto de la clase producto
     ProductoDTO p;
-    //Declarar un objeto de la clase stock
-    StockDTO stk;
     //Instanciar el ArrayList como public static para que el IFormEntrada y el IFormSalida 
     //puedan tener acceso
     public static ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
-    public static ArrayList<StockDTO> listaStock = new ArrayList<>();
     
     DefaultTableModel modelo = new DefaultTableModel();
     
@@ -260,13 +256,6 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
          }
         //Agregar al array list
         listaProductos.add(p);
-        //Crear un objeto de la clase stock y se le pasa como parametro el producto
-        stk = new StockDTO(p);
-        stk.setProducto(p);
-        //stk.setEntradas(entradas);
-        //stk.setSalidas(salidas);
-        stk.setStock(0);//Inicialmente es 0
-        listaStock.add(stk);
         
         borrarInterfaz();
         mostrarTablaProductos();
