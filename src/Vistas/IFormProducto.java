@@ -6,14 +6,21 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.CategoriaProducto;
+import modelo.Proveedor;
 import modelo.StockDTO;
 import modeloDAO.CategoriaProductoDAO;
+import modeloDAO.proveedorDAO;
 
 
 public final class IFormProducto extends javax.swing.JInternalFrame {
     CategoriaProducto c;
+    Proveedor prov;
+    
     CategoriaProductoDAO cd = new CategoriaProductoDAO();
+    proveedorDAO provd = new proveedorDAO();
+     
     ArrayList<CategoriaProducto> listaCategorias = new ArrayList<>();
+    ArrayList<Proveedor> listaProvs = new ArrayList<>();
     
     //Declarar un objeto de la clase producto
     ProductoDTO p;
@@ -31,6 +38,7 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         initComponents();
         establecerColumnas();
         mostrarCategoriaProducto();
+        mostrarProveedores();
         //Para mantener los productos en la tabla si se cambia de frame
         mostrarTablaProductos();
     }
@@ -50,6 +58,13 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         listaCategorias = cd.listarTodos();
         for(int i=0; i<listaCategorias.size(); i++){
             cbxCategoria.addItem(listaCategorias.get(i).getNombre());
+        }
+    }
+    
+     private void mostrarProveedores(){
+        listaProvs = provd.listarTodos();
+        for(int i=0; i<listaProvs.size(); i++){
+            cbxProveedor.addItem(listaProvs.get(i).getNombreprov());
         }
     }
     
@@ -128,7 +143,6 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         jLabel6.setText("Proveedor");
 
         cbxProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbxProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Samsung", "Intel", "AMD", "Nvidia", "Apple", "Hp", "Micronics" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
