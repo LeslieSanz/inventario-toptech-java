@@ -9,6 +9,7 @@ import modelo.CategoriaProducto;
 import modelo.Proveedor;
 import modelo.StockDTO;
 import modeloDAO.CategoriaProductoDAO;
+import modeloDAO.productoDAO;
 import modeloDAO.proveedorDAO;
 
 
@@ -239,10 +240,16 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         
         //Registrar Productos 
         p = new ProductoDTO();
+        productoDAO pd = new productoDAO();
         p.setCod(txtCodPro.getText());
         p.setDescripcion(txtDescrip.getText());
-        //p.setCategoria(cbxCategoria.getSelectedItem().toString());
-        //p.setProveedor(cbxProveedor.getSelectedItem().toString());
+        p.setPrecioUnit(Double.parseDouble(txtPrecioUnit.getText()));
+        int indice_cat = cbxCategoria.getSelectedIndex();
+        p.setCategoria(listaCategorias.get(indice_cat));
+        int indice_prov = cbxProveedor.getSelectedIndex();
+        p.setProveedor(listaProvs.get(indice_prov));
+        pd.agregar(p);
+        
         
         try {
         double precioUnit = Double.parseDouble(txtPrecioUnit.getText());

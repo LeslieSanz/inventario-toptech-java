@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import misInterfaces.ProductoInterface;
 import modelo.CategoriaProducto;
 import modelo.ProductoDTO;
+import modelo.Proveedor;
 
 public class productoDAO implements ProductoInterface{
     
@@ -20,6 +21,8 @@ public class productoDAO implements ProductoInterface{
     ProductoDTO p;
     CategoriaProducto c;
     CategoriaProductoDAO cd;
+    Proveedor prov;
+    proveedorDAO td = new proveedorDAO();
     Statement st;
     PreparedStatement ps;
     ResultSet rs;
@@ -28,16 +31,15 @@ public class productoDAO implements ProductoInterface{
     @Override
     public boolean agregar(ProductoDTO p) {
         try {
-            String sql = "insert into producto (cod_pro, des_pro, pre_pro, ubi_pro)"
-                    + " values (?, ?, ?, ?)";
+            String sql = "insert into producto (cod_pro, des_pro, cod_cat, pre_pro,cod_prov)"
+                    + " values (?, ?, ?, ?, ?)";
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             ps.setString(1, p.getCod());
             ps.setString(2, p.getDescripcion());
-            ps.setDouble(3, p.getPrecioUnit());
-            ps.setString(4, p.getUbicacion());
-            //ps.setInt(4, p.getStock());
-            //ps.setString(5, p.getTipo().getCodigo());
+            ps.setString(3, p.getCategoria().getCodigo());
+            ps.setDouble(4, p.getPrecioUnit());
+            ps.setString(5, p.getProveedor().getCodigoprov());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(productoDAO.class.getName()).log(Level.SEVERE, null, ex);
