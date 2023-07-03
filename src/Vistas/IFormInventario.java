@@ -5,11 +5,8 @@
 package Vistas;
 import static Vistas.FormMenu.actualizarInterfaz;
 import static Vistas.FormMenu.contenedor;
-import static Vistas.IFormProducto.listaStock;
-import modelo.StockDTO;
-import java.util.ArrayList;
+import static Vistas.IFormProducto.listaProductos;
 import javax.swing.table.DefaultTableModel;
-import modelo.StockDTO;
 
 /**
  *
@@ -18,8 +15,6 @@ import modelo.StockDTO;
 public class IFormInventario extends javax.swing.JInternalFrame {
     
     DefaultTableModel modelo = new DefaultTableModel();
-    
-    StockDTO stk;
     
     public IFormInventario() {
         initComponents();
@@ -219,12 +214,12 @@ public class IFormInventario extends javax.swing.JInternalFrame {
      public void mostrarTablaStock(){
         eliminarElementosTabla();
         //Mostrar productos en la tabla stock
-        for(int i=0;i<listaStock.size();i++){
+        for(int i=0;i<listaProductos.size();i++){
             Object[] data={ 
-                listaStock.get(i).getProducto().getCod(),
-                listaStock.get(i).getProducto().getDescripcion(),
-                listaStock.get(i).getProducto().getPrecioUnit(),
-                listaStock.get(i).calcularStock()
+                listaProductos.get(i).getCod(),
+                listaProductos.get(i).getDescripcion(),
+                listaProductos.get(i).getPrecioUnit(),
+                listaProductos.get(i).getStock(),
             };
             modelo.addRow(data);
         }  

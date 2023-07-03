@@ -6,23 +6,28 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.CategoriaProducto;
-import modelo.StockDTO;
+import modelo.Proveedor;
 import modeloDAO.CategoriaProductoDAO;
+import modeloDAO.productoDAO;
+import modeloDAO.proveedorDAO;
 
 
 public final class IFormProducto extends javax.swing.JInternalFrame {
     CategoriaProducto c;
+    Proveedor prov;
+    
     CategoriaProductoDAO cd = new CategoriaProductoDAO();
+    proveedorDAO provd = new proveedorDAO();
+     
     ArrayList<CategoriaProducto> listaCategorias = new ArrayList<>();
+    ArrayList<Proveedor> listaProvs = new ArrayList<>();
     
     //Declarar un objeto de la clase producto
     ProductoDTO p;
-    //Declarar un objeto de la clase stock
-    StockDTO stk;
+    productoDAO pd;
     //Instanciar el ArrayList como public static para que el IFormEntrada y el IFormSalida 
     //puedan tener acceso
     public static ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
-    public static ArrayList<StockDTO> listaStock = new ArrayList<>();
     
     DefaultTableModel modelo = new DefaultTableModel();
     
@@ -31,6 +36,7 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         initComponents();
         establecerColumnas();
         mostrarCategoriaProducto();
+        mostrarProveedores();
         //Para mantener los productos en la tabla si se cambia de frame
         mostrarTablaProductos();
     }
@@ -50,6 +56,13 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         listaCategorias = cd.listarTodos();
         for(int i=0; i<listaCategorias.size(); i++){
             cbxCategoria.addItem(listaCategorias.get(i).getNombre());
+        }
+    }
+    
+     private void mostrarProveedores(){
+        listaProvs = provd.listarTodos();
+        for(int i=0; i<listaProvs.size(); i++){
+            cbxProveedor.addItem(listaProvs.get(i).getNombreprov());
         }
     }
     
@@ -128,7 +141,6 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         jLabel6.setText("Proveedor");
 
         cbxProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbxProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Samsung", "Intel", "AMD", "Nvidia", "Apple", "Hp", "Micronics" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -225,10 +237,16 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         
         //Registrar Productos 
         p = new ProductoDTO();
+        pd = new productoDAO();
         p.setCod(txtCodPro.getText());
         p.setDescripcion(txtDescrip.getText());
-        //p.setCategoria(cbxCategoria.getSelectedItem().toString());
-        //p.setProveedor(cbxProveedor.getSelectedItem().toString());
+        p.setPrecioUnit(Double.parseDouble(txtPrecioUnit.getText()));
+        int indice_cat = cbxCategoria.getSelectedIndex();
+        p.setCategoria(listaCategorias.get(indice_cat));
+        int indice_prov = cbxProveedor.getSelectedIndex();
+        p.setProveedor(listaProvs.get(indice_prov));
+        pd.agregar(p);
+        
         
         try {
         double precioUnit = Double.parseDouble(txtPrecioUnit.getText());
@@ -239,13 +257,6 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
          }
         //Agregar al array list
         listaProductos.add(p);
-        //Crear un objeto de la clase stock y se le pasa como parametro el producto
-        stk = new StockDTO(p);
-        stk.setProducto(p);
-        //stk.setEntradas(entradas);
-        //stk.setSalidas(salidas);
-        stk.setStock(0);//Inicialmente es 0
-        listaStock.add(stk);
         
         borrarInterfaz();
         mostrarTablaProductos();
@@ -275,14 +286,22 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
     }
     //Agrega los datos a la tabla según posición
     public void mostrarTablaProductos(){
-        eliminarElementosTablaProductos();
+        //eliminarElementosTablaProductos();
         //Mostrar productos en la tabla
-        for(int i=0;i<listaProductos.size();i++){
-            Object[] data={listaProductos.get(i).getCod(),listaProductos.get(i).getDescripcion(),
-            listaProductos.get(i).getCategoria(),listaProductos.get(i).getPrecioUnit(),listaProductos.get(i).getProveedor()};
+        modelo.setRowCount(0);
+        pd = new productoDAO();
+        ArrayList<ProductoDTO> lista = new ArrayList<>();
+        lista = pd.listarTodos();
+        for(int i=0; i<lista.size(); i++){
+            Object[] data = {
+                lista.get(i).getCod(), 
+                lista.get(i).getDescripcion(),
+                lista.get(i).getCategoria().getNombre(),
+                lista.get(i).getPrecioUnit(),
+                lista.get(i).getProveedor().getNombreprov(),
+                };
             modelo.addRow(data);
-        
-          }
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;
