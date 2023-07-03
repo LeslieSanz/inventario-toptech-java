@@ -14,9 +14,8 @@ import modeloDAO.proveedorDAO;
 
 public final class IFormProducto extends javax.swing.JInternalFrame {
     CategoriaProducto c;
-    Proveedor prov;
-    
     CategoriaProductoDAO cd = new CategoriaProductoDAO();
+    Proveedor prov;
     proveedorDAO provd = new proveedorDAO();
      
     ArrayList<CategoriaProducto> listaCategorias = new ArrayList<>();
@@ -24,9 +23,11 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
     
     //Declarar un objeto de la clase producto
     ProductoDTO p;
+    //Declarar un objeto de la clase productoDAO
     productoDAO pd;
+    
     //Instanciar el ArrayList como public static para que el IFormEntrada y el IFormSalida 
-    //puedan tener acceso
+    //puedan tener acceso;
     public static ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
     
     DefaultTableModel modelo = new DefaultTableModel();
@@ -37,7 +38,7 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         establecerColumnas();
         mostrarCategoriaProducto();
         mostrarProveedores();
-        //Para mantener los productos en la tabla si se cambia de frame
+        //Para mantener los productos en tabla al iniciar el formulario
         mostrarTablaProductos();
     }
     
@@ -59,6 +60,8 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         }
     }
     
+    //Funcion que recorre la lista de proveedores, obtiene su nombre y los agrega uno por uno
+    //al cbxProveedor
      private void mostrarProveedores(){
         listaProvs = provd.listarTodos();
         for(int i=0; i<listaProvs.size(); i++){
@@ -109,6 +112,7 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         jLabel3.setText("Categoría");
 
         cbxCategoria.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Precio unitario");
@@ -141,6 +145,12 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         jLabel6.setText("Proveedor");
 
         cbxProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbxProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar" }));
+        cbxProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxProveedorActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -220,15 +230,14 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-      
+     //Metodo para mostrar el mensaje de error en las excepciones
      private void mostrarMensajeError(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
         }   
-     
-    
+         
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-                                                   
         
+        //Excepción para validar que todos los campos estén llenos
         if (txtCodPro.getText().isEmpty() || txtDescrip.getText().isEmpty() ||
             cbxCategoria.getSelectedIndex() == 0 ||cbxProveedor.getSelectedIndex()== 0 || txtPrecioUnit.getText().isEmpty()) {
         mostrarMensajeError("Se debe llenar todos los campos para registrar un producto.");
@@ -240,14 +249,8 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         pd = new productoDAO();
         p.setCod(txtCodPro.getText());
         p.setDescripcion(txtDescrip.getText());
-        p.setPrecioUnit(Double.parseDouble(txtPrecioUnit.getText()));
-        int indice_cat = cbxCategoria.getSelectedIndex();
-        p.setCategoria(listaCategorias.get(indice_cat));
-        int indice_prov = cbxProveedor.getSelectedIndex();
-        p.setProveedor(listaProvs.get(indice_prov));
-        pd.agregar(p);
         
-        
+        //Excepción para validar el precio del producto
         try {
         double precioUnit = Double.parseDouble(txtPrecioUnit.getText());
         p.setPrecioUnit(precioUnit);
@@ -255,8 +258,12 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         mostrarMensajeError("El precio unitario debe ser un número válido.");
         return;
          }
-        //Agregar al array list
-        listaProductos.add(p);
+        
+        int indice_cat = cbxCategoria.getSelectedIndex();
+        p.setCategoria(listaCategorias.get(indice_cat-1));
+        int indice_prov = cbxProveedor.getSelectedIndex();
+        p.setProveedor(listaProvs.get(indice_prov-1));
+        pd.agregar(p);
         
         borrarInterfaz();
         mostrarTablaProductos();
@@ -266,6 +273,10 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
     private void txtCodProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodProActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodProActionPerformed
+
+    private void cbxProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxProveedorActionPerformed
     
     
     //Limpia la tabla 
@@ -289,16 +300,15 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         //eliminarElementosTablaProductos();
         //Mostrar productos en la tabla
         modelo.setRowCount(0);
-        pd = new productoDAO();
-        ArrayList<ProductoDTO> lista = new ArrayList<>();
-        lista = pd.listarTodos();
-        for(int i=0; i<lista.size(); i++){
+        pd = new productoDAO();       
+        listaProductos = pd.listarTodos();
+        for(int i=0; i<listaProductos.size(); i++){
             Object[] data = {
-                lista.get(i).getCod(), 
-                lista.get(i).getDescripcion(),
-                lista.get(i).getCategoria().getNombre(),
-                lista.get(i).getPrecioUnit(),
-                lista.get(i).getProveedor().getNombreprov(),
+                listaProductos.get(i).getCod(), 
+                listaProductos.get(i).getDescripcion(),
+                listaProductos.get(i).getCategoria().getNombre(),
+                listaProductos.get(i).getPrecioUnit(),
+                listaProductos.get(i).getProveedor().getNombreprov(),
                 };
             modelo.addRow(data);
         }
