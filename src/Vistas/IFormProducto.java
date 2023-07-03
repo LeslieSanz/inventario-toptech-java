@@ -24,6 +24,7 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
     
     //Declarar un objeto de la clase producto
     ProductoDTO p;
+    productoDAO pd;
     //Instanciar el ArrayList como public static para que el IFormEntrada y el IFormSalida 
     //puedan tener acceso
     public static ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
@@ -236,7 +237,7 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         
         //Registrar Productos 
         p = new ProductoDTO();
-        productoDAO pd = new productoDAO();
+        pd = new productoDAO();
         p.setCod(txtCodPro.getText());
         p.setDescripcion(txtDescrip.getText());
         p.setPrecioUnit(Double.parseDouble(txtPrecioUnit.getText()));
@@ -285,14 +286,22 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
     }
     //Agrega los datos a la tabla según posición
     public void mostrarTablaProductos(){
-        eliminarElementosTablaProductos();
+        //eliminarElementosTablaProductos();
         //Mostrar productos en la tabla
-        for(int i=0;i<listaProductos.size();i++){
-            Object[] data={listaProductos.get(i).getCod(),listaProductos.get(i).getDescripcion(),
-            listaProductos.get(i).getCategoria(),listaProductos.get(i).getPrecioUnit(),listaProductos.get(i).getProveedor()};
+        modelo.setRowCount(0);
+        pd = new productoDAO();
+        ArrayList<ProductoDTO> lista = new ArrayList<>();
+        lista = pd.listarTodos();
+        for(int i=0; i<lista.size(); i++){
+            Object[] data = {
+                lista.get(i).getCod(), 
+                lista.get(i).getDescripcion(),
+                lista.get(i).getCategoria().getNombre(),
+                lista.get(i).getPrecioUnit(),
+                lista.get(i).getProveedor().getNombreprov(),
+                };
             modelo.addRow(data);
-        
-          }
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrar;

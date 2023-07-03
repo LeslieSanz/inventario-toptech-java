@@ -20,9 +20,9 @@ public class productoDAO implements ProductoInterface{
     Conexion con = new Conexion();
     ProductoDTO p;
     CategoriaProducto c;
-    CategoriaProductoDAO cd;
+    CategoriaProductoDAO cd = new CategoriaProductoDAO();
     Proveedor prov;
-    proveedorDAO td = new proveedorDAO();
+    proveedorDAO provd = new proveedorDAO();
     Statement st;
     PreparedStatement ps;
     ResultSet rs;
@@ -31,8 +31,8 @@ public class productoDAO implements ProductoInterface{
     @Override
     public boolean agregar(ProductoDTO p) {
         try {
-            String sql = "insert into producto (cod_pro, des_pro, cod_cat, pre_pro,cod_prov)"
-                    + " values (?, ?, ?, ?, ?)";
+            String sql = "insert into producto (cod_pro, des_pro, cod_cat, pre_pro,cod_prov,stk_pro)"
+                    + " values (?, ?, ?, ?, ?,?)";
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             ps.setString(1, p.getCod());
@@ -40,6 +40,7 @@ public class productoDAO implements ProductoInterface{
             ps.setString(3, p.getCategoria().getCodigo());
             ps.setDouble(4, p.getPrecioUnit());
             ps.setString(5, p.getProveedor().getCodigoprov());
+            ps.setInt(6, p.getStock());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(productoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -63,14 +64,16 @@ public class productoDAO implements ProductoInterface{
     public boolean modificar(ProductoDTO c) {
         try {
             String sql = "update producto set cod_pro=?, des_pro=?,"
-                    + " pre_pro=?, ubi_pro=?"
+                    + " cod_cat=?, pre_pro=?, cod_prov=?,stk_prov=?"
                     + " where cod_pro = "+p.getCod();
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             ps.setString(1, p.getCod());
             ps.setString(2, p.getDescripcion());
-            ps.setDouble(3, p.getPrecioUnit());
-            ps.setString(4, p.getUbicacion());
+            ps.setString(3, p.getCategoria().getCodigo());
+            ps.setDouble(4, p.getPrecioUnit());
+            ps.setString(5, p.getProveedor().getCodigoprov());
+            ps.setInt(6, p.getStock());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(productoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -89,10 +92,15 @@ public class productoDAO implements ProductoInterface{
                 p = new ProductoDTO();
                 p.setCod(rs.getString("cod_pro"));
                 p.setDescripcion(rs.getString("des_pro"));
-                p.setPrecioUnit(rs.getDouble("pre_pro"));
-                //p.setStock(rs.getInt("stcpro"));
+                //Para la categoria
                 String cc = rs.getString("cod_cat");
                 c= cd.listarUno(cc);
+                p.setCategoria(c);
+                p.setPrecioUnit(rs.getDouble("pre_pro"));
+                //Para el proveedor
+                String cp = rs.getString("cod_prov");
+                prov= provd.listarUno(cp);
+                p.setProveedor(prov);
                 lista.add(p);
             }
         } catch (SQLException ex) {
