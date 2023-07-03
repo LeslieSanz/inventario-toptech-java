@@ -3,7 +3,7 @@ package modelo;
 public class ProductoDTO {
     private String cod;
     private CategoriaProducto categoria;
-    private String descripcion;
+    public String descripcion;
     private double precioUnit;
     private String ubicacion;
     private Proveedor proveedor;
@@ -72,6 +72,10 @@ public class ProductoDTO {
      */
     public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
+    }
+
+    public Object getimpuesto() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

@@ -31,14 +31,14 @@ public class DetalleDTO {
     /**
      * @return the producto
      */
-    private ProductoDTO getProducto() {
+    public ProductoDTO getProducto() {
         return producto;
     }
 
     /**
      * @param producto the producto to set
      */
-    private void setProducto(ProductoDTO producto) {
+    public void setProducto(ProductoDTO producto) {
         this.producto = producto;
     }
 
@@ -56,6 +56,16 @@ public class DetalleDTO {
 
     public void setImporte(double importe) {
         this.importe = importe;
+    }
+
+    public void setCategoria(CategoriaProducto c) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public static class listaDetalle {
+
+        public listaDetalle() {
+        }
     }
     
 }
