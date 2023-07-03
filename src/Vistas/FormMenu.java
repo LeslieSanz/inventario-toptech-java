@@ -73,7 +73,7 @@ public class FormMenu extends javax.swing.JFrame {
             .addGap(0, 549, Short.MAX_VALUE)
         );
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FraseMenu.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/frase_motivadora_menu.png"))); // NOI18N
 
         javax.swing.GroupLayout pnlFondoBlancoLayout = new javax.swing.GroupLayout(pnlFondoBlanco);
         pnlFondoBlanco.setLayout(pnlFondoBlancoLayout);
