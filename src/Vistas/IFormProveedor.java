@@ -6,15 +6,18 @@ package Vistas;
     import javax.swing.JOptionPane;
     import javax.swing.table.DefaultTableModel;
 import modeloDAO.proveedorDAO;
-
-
-    public class IFormProveedor extends javax.swing.JInternalFrame {
     
+    
+    public class IFormProveedor extends javax.swing.JInternalFrame {
+    Proveedor p;
+    proveedorDAO pd;
+    DefaultTableModel modelo = new DefaultTableModel();
     
     public IFormProveedor() {
     initComponents();
     establecerColumnas();
     restrictToNumbers(FtextTelf);
+    mostrarTablaProveedor();
     }
     
     private void restrictToNumbers(javax.swing.JTextField textField) {
@@ -32,9 +35,10 @@ import modeloDAO.proveedorDAO;
     
      public static ArrayList<Proveedor> listaProveedores = new ArrayList<>();
     
-    DefaultTableModel modelo = new DefaultTableModel();
+    
 
     private void establecerColumnas(){
+        modelo.addColumn("Cod. Prov");
         modelo.addColumn("Nombre");
         modelo.addColumn("Telefono");
         modelo.addColumn("Dirección");
@@ -99,6 +103,7 @@ import modeloDAO.proveedorDAO;
 
         FtextTelf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#########"))));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Código");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -131,7 +136,7 @@ import modeloDAO.proveedorDAO;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtCódigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -168,7 +173,7 @@ import modeloDAO.proveedorDAO;
     }// </editor-fold>//GEN-END:initComponents
     
     private void btnRegistrarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProveedorActionPerformed
-        
+       
         if (txtNomProv.getText().isEmpty() || FtextTelf.getText().isEmpty() || txtDireccion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Se necesita llenar todos los campos para registrar un proveedor",
                 "Campos vacíos", JOptionPane.ERROR_MESSAGE);
@@ -191,11 +196,27 @@ import modeloDAO.proveedorDAO;
         provd.agregar(pr);
         listaProveedores.add(pr);
         // Después de registrar el proveedor, actualiza el JComboBox en el formulario de productos
+        mostrarTablaProveedor();
         borrarInterfazPr();
-        mostrarTablaProveedores();
             } 
          }
         }
+        public void mostrarTablaProveedor(){
+            modelo.setRowCount(0);
+            pd = new proveedorDAO();
+            ArrayList<Proveedor> lista = new ArrayList<>();
+            lista= pd.listarTodos();
+            for (int i=0;i<lista.size();i++){
+                Object[] data = {
+                    lista.get(i).getCodigoprov(),
+                    lista.get(i).getNombreprov(),
+                    lista.get(i).getTelefono(),
+                    lista.get(i).getDireccion(),
+                };
+                modelo.addRow(data);
+            }
+        }
+        
         public void eliminarElementosTablaProveedores(){
                 for(int i=tblProveedor.getRowCount()-1;i>=0;i--){
                  modelo.removeRow(i);        
@@ -203,6 +224,7 @@ import modeloDAO.proveedorDAO;
         }
         
         public void borrarInterfazPr() {
+         txtCódigo.setText(null);
          txtNomProv.setText(null);
          FtextTelf.setText(null);
          txtDireccion.setText(null);
@@ -211,7 +233,7 @@ import modeloDAO.proveedorDAO;
         eliminarElementosTablaProveedores();
         //Mostrar productos en la tabla
         for(int i=0;i<listaProveedores.size();i++){
-            Object[] data={listaProveedores.get(i).getNombreprov(),listaProveedores.get(i).getTelefono(),
+            Object[] data={listaProveedores.get(i).getCodigoprov(),listaProveedores.get(i).getNombreprov(),listaProveedores.get(i).getTelefono(),
                 listaProveedores.get(i).getDireccion()};
             modelo.addRow(data);
         }       
