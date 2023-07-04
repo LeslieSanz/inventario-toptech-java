@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modeloDAO;
-
 import config.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,85 +12,78 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import misInterfaces.DetalleInterface;
-import modelo.CategoriaProducto;
-import modelo.DetalleDTO;
-/**
- *
- * @author esther
- */
-public class DetalleDAO implements DetalleInterface{
-    Connection conn;
+import misInterfaces.VentaInterface;
+import modelo.Venta;
+
+public class VentaDAO implements VentaInterface{
+     Connection conn;
     Conexion con = new Conexion();
-    DetalleDTO dd;
-    CategoriaProducto c;
-    CategoriaProductoDAO cd;
+    Venta v;
     Statement st;
     PreparedStatement ps;
     ResultSet rs;
-    ArrayList<DetalleDTO> listaDetalle = new ArrayList<>(); 
+    ArrayList<Venta> listaDetalle = new ArrayList<>(); 
 
     @Override
-    public boolean agregar(DetalleDTO dd) {
+    public boolean agregar(Venta v) {
 try {
-            String sql = "insert into detalle (cant_deta,monto_deta,cod_pro, cod_ven)"
-                    + " values (?, ?, ?, ?)";
+            String sql = "insert into venta (cod_ven,fec_ven,subtot_ven, igv_ven,tot_ven)"
+                    + " values (?, ?, ?, ?, ?)";
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, dd.getCantidad());
-            ps.setDouble(2, dd.getImporte());
-            ps.setString(3, dd.getProducto().getCod());
-            ps.setString(4, dd.getCodigoVenta());
+            ps.setString(1, v.getCodigo());
+            ps.setString(2, v.getFecha());
+            ps.setDouble(3, v.getTotalN());
+            ps.setDouble(4, v.getImpuestoIGV());
+            ps.setDouble(5, v.getTotalN());
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(DetalleDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VentaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;    }
 
     @Override
     public boolean eliminar(String codigo) {
         try {
-            String sql = "delete from detalle where cod_pro = "+codigo;
+            String sql = "delete from venta where cod_pro = "+codigo;
             conn = con.getConexion();
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(DetalleDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VentaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;    }
 
     @Override
-    public boolean modificar(DetalleDTO dd) {
+    public boolean modificar(Venta v) {
         try {
-            String sql = "update detalle set cod_ven=?, can_pro=?,"
+            String sql = "update venta set cod_ven=?, can_pro=?,"
                     + " sub_pro=?"
-                    + " where cod_ven = "+dd.getCodigoVenta();
+                    + " where cod_ven = "+v.getCodigo();
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
-            ps.setString(1, dd.getCodigoVenta());
-            ps.setInt(2, dd.getCantidad());
-            ps.setDouble(3, dd.getImporte());
+            ps.setString(1, v.getCodigo());
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(DetalleDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VentaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;    }
 
     @Override
-    public ArrayList<DetalleDTO> listarTodos() {
+    public ArrayList<Venta> listarTodos() {
         try {
-            String sql = "select * from detalle";
+            String sql = "select * from venta";
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                dd = new DetalleDTO();
-                dd.setCodigoVenta(rs.getString("cod_ven"));
+               /* v = new DetalleDTO();
+                v.setCodigoVenta(rs.getString("cod_ven"));
                 dd.setCantidad(rs.getInt("can_pro"));
                 dd.setImporte(rs.getDouble("sub_total"));
                 //p.setStock(rs.getInt("stcpro"));
                 String cc = rs.getString("cod_cat");
                 c= cd.listarUno(cc);
-                listaDetalle.add(dd);
+                listaDetalle.add(dd);*/
             }
         } catch (SQLException ex) {
             Logger.getLogger(DetalleDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -100,22 +92,22 @@ try {
     }
 
     @Override
-    public DetalleDTO listarUno(String codigo) {
+    public Venta listarUno(String codigo) {
 try {
             String sql = "select * from producto";
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            while(rs.next()){
-                dd.setCodigoVenta(rs.getString("cod_ven"));
+           while(rs.next()){
+                /*dd.setCodigoVenta(rs.getString("cod_ven"));
                 dd.setCantidad(rs.getInt("can_pro"));
                 dd.setImporte(rs.getDouble("sub-total"));
                 String cc = rs.getString("codpro");
-                c = cd.listarUno(cc);
+                c = cd.listarUno(cc);*/
             }
         } catch (SQLException ex) {
             Logger.getLogger(DetalleDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return dd;    }
+        return v;    }
     
 }

@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lesly
@@ -13,11 +15,24 @@ public class Venta {
     
     private String codigo;
     private String fecha;
-    private double subtotal; //se calcula
-    private double impuestoIGV=0.18; //se calcula
-    private double total; //se calcula
+    private double totalN; //se calcula
+    private double impuestoIGV; //se calcula
+    private double totalB; //se calcula
     
+    public void calcularTotalBruto(ArrayList<DetalleDTO> listaDetalle){
+        totalB=0;
+        for(int i=0; i<listaDetalle.size(); i++){
+            totalB=totalB + listaDetalle.get(i).getImporte();
+        }
+    }
     
+    public void calcularIGV(){
+        impuestoIGV=getTotalB()*0.18;
+    }
+    
+    public void cacularTtotalNeto(){
+        totalN=totalB-impuestoIGV;
+    }
     
     public String getFecha() {
         return fecha;
@@ -27,13 +42,7 @@ public class Venta {
         this.fecha = fecha;
     }
 
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double importeTotal) {
-        this.total = importeTotal;
-    }
+    
 
     public double getImpuestoIGV() {
         return impuestoIGV;
@@ -51,12 +60,33 @@ public class Venta {
         this.codigo = codigo;
     }
 
-    public double getSubtotal() {
-        return subtotal;
+    /**
+     * @return the totalN
+     */
+    public double getTotalN() {
+        return totalN;
     }
 
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
+    /**
+     * @param totalN the totalN to set
+     */
+    public void setTotalN(double totalN) {
+        this.totalN = totalN;
     }
 
+    /**
+     * @return the totalB
+     */
+    public double getTotalB() {
+        return totalB;
+    }
+
+    /**
+     * @param totalB the totalB to set
+     */
+    public void setTotalB(double totalB) {
+        this.totalB = totalB;
+    }
+
+    
 }

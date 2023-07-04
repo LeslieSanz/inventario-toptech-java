@@ -57,15 +57,4 @@ public class DetalleDTO {
     public void setImporte(double importe) {
         this.importe = importe;
     }
-
-    public void setCategoria(CategoriaProducto c) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public static class listaDetalle {
-
-        public listaDetalle() {
-        }
-    }
-    
 }

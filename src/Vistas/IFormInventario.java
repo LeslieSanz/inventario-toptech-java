@@ -6,7 +6,9 @@ package Vistas;
 import static Vistas.FormMenu.actualizarInterfaz;
 import static Vistas.FormMenu.contenedor;
 import static Vistas.IFormProducto.listaProductos;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modeloDAO.productoDAO;
 
 /**
  *
@@ -15,7 +17,6 @@ import javax.swing.table.DefaultTableModel;
 public class IFormInventario extends javax.swing.JInternalFrame {
     
     DefaultTableModel modelo = new DefaultTableModel();
-    
     public IFormInventario() {
         initComponents();
         establecerColumnas();
@@ -88,9 +89,22 @@ public class IFormInventario extends javax.swing.JInternalFrame {
         buttonGroup1.add(rbtnombreprod);
         rbtnombreprod.setText("Nombre del Producto");
 
+        txtbuscarpor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtbuscarporMouseClicked(evt);
+            }
+        });
         txtbuscarpor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtbuscarporActionPerformed(evt);
+            }
+        });
+        txtbuscarpor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtbuscarporKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtbuscarporKeyReleased(evt);
             }
         });
 
@@ -190,7 +204,8 @@ public class IFormInventario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtbuscarporActionPerformed
 
     private void tblStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStockMouseClicked
-           //IFormVenta c = new IFormVenta();
+
+//IFormVenta c = new IFormVenta();
            IFormVenta i = new IFormVenta();
            if(IFormVenta.x == 1){
             int row = tblStock.getSelectedRow();
@@ -211,6 +226,18 @@ public class IFormInventario extends javax.swing.JInternalFrame {
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
         mostrarTablaStock();  
     }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void txtbuscarporMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtbuscarporMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbuscarporMouseClicked
+
+    private void txtbuscarporKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarporKeyPressed
+          
+    }//GEN-LAST:event_txtbuscarporKeyPressed
+
+    private void txtbuscarporKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtbuscarporKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtbuscarporKeyReleased
      public void mostrarTablaStock(){
         eliminarElementosTabla();
         //Mostrar productos en la tabla stock
