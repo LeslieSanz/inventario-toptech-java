@@ -53,6 +53,10 @@ public class FormMenu extends javax.swing.JFrame {
         jmiVenta = new javax.swing.JMenuItem();
         jMenuInventario = new javax.swing.JMenu();
         jmiInventario = new javax.swing.JMenuItem();
+        jMenuRegistro = new javax.swing.JMenu();
+        jMiRegistrar = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMCerrarSesion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -73,7 +77,7 @@ public class FormMenu extends javax.swing.JFrame {
             .addGap(0, 549, Short.MAX_VALUE)
         );
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/FraseMenu.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/frase_motivadora_menu.png"))); // NOI18N
 
         javax.swing.GroupLayout pnlFondoBlancoLayout = new javax.swing.GroupLayout(pnlFondoBlanco);
         pnlFondoBlanco.setLayout(pnlFondoBlancoLayout);
@@ -121,7 +125,7 @@ public class FormMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuProductos);
 
-        jMenuProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedores.png"))); // NOI18N
+        jMenuProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CAMIÓN 1 (1).png"))); // NOI18N
         jMenuProveedores.setText("Proveedores");
 
         jmiProveedores.setText("Registrar");
@@ -199,6 +203,36 @@ public class FormMenu extends javax.swing.JFrame {
         jMenuInventario.add(jmiInventario);
 
         jMenuBar1.add(jMenuInventario);
+
+        jMenuRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedores.png"))); // NOI18N
+        jMenuRegistro.setText("Registro");
+        jMenuRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuRegistroActionPerformed(evt);
+            }
+        });
+
+        jMiRegistrar.setText("Registrar usuarios");
+        jMiRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMiRegistrarActionPerformed(evt);
+            }
+        });
+        jMenuRegistro.add(jMiRegistrar);
+
+        jMenuBar1.add(jMenuRegistro);
+
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo cerrar 1 (5).png"))); // NOI18N
+
+        jMCerrarSesion.setText("Cerrar Sesión");
+        jMCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMCerrarSesionActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMCerrarSesion);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -281,6 +315,28 @@ public class FormMenu extends javax.swing.JFrame {
         i.show();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCerrarSesionActionPerformed
+     
+        // Cerrar el formMenú
+        dispose();
+
+        // Abrir el formulario FormLoginUsuario
+        FormLoginUsuario loginForm = new FormLoginUsuario();
+        loginForm.setVisible(true);
+        
+    }//GEN-LAST:event_jMCerrarSesionActionPerformed
+
+    private void jMenuRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRegistroActionPerformed
+        
+    }//GEN-LAST:event_jMenuRegistroActionPerformed
+
+    private void jMiRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMiRegistrarActionPerformed
+        actualizarInterfaz();
+        IFormRegistroUsuarios i = new IFormRegistroUsuarios();
+        contenedor.add(i);
+        i.show();
+    }//GEN-LAST:event_jMiRegistrarActionPerformed
+
     //Para que no se sobrepongan los frames internos
     public static void actualizarInterfaz(){
         contenedor.removeAll();
@@ -329,13 +385,17 @@ public class FormMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane contenedor;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenuItem jMCerrarSesion;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     public static javax.swing.JMenu jMenuInventario;
     private javax.swing.JMenuItem jMenuItem1;
     public static javax.swing.JMenu jMenuProceso;
     public static javax.swing.JMenu jMenuProductos;
     public static javax.swing.JMenu jMenuProveedores;
+    private javax.swing.JMenu jMenuRegistro;
     public static javax.swing.JMenu jMenuVenta;
+    private javax.swing.JMenuItem jMiRegistrar;
     private javax.swing.JMenuItem jmiEntrada;
     private javax.swing.JMenuItem jmiInventario;
     private javax.swing.JMenuItem jmiProducto;
