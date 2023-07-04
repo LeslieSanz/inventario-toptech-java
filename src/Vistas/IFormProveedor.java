@@ -50,13 +50,12 @@ import modeloDAO.proveedorDAO;
         jLabel3 = new javax.swing.JLabel();
         txtNomProv = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
-        btnRegistrarProveedor = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProveedor = new javax.swing.JTable();
         FtextTelf = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
         txtCódigo = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnRegistrarProveedor = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Proveedores");
@@ -74,14 +73,6 @@ import modeloDAO.proveedorDAO;
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Dirección:");
-
-        btnRegistrarProveedor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnRegistrarProveedor.setText("Registrar");
-        btnRegistrarProveedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarProveedorActionPerformed(evt);
-            }
-        });
 
         tblProveedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,10 +92,10 @@ import modeloDAO.proveedorDAO;
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Código");
 
-        jButton1.setText("RegistrarProveedor");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrarProveedor.setText("RegistrarProveedor");
+        btnRegistrarProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegistrarProveedorActionPerformed(evt);
             }
         });
 
@@ -116,23 +107,24 @@ import modeloDAO.proveedorDAO;
                 .addGap(54, 54, 54)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                            .addComponent(txtNomProv, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                            .addComponent(FtextTelf, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                            .addComponent(txtCódigo))
-                        .addGap(120, 120, 120)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnRegistrarProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                                    .addComponent(txtNomProv, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                                    .addComponent(FtextTelf, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                                    .addComponent(txtCódigo))
+                                .addGap(84, 84, 84)
+                                .addComponent(btnRegistrarProveedor)))
+                        .addGap(6, 6, 6)))
                 .addGap(0, 86, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -140,28 +132,30 @@ import modeloDAO.proveedorDAO;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtCódigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNomProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNomProv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(btnRegistrarProveedor)))
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(FtextTelf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistrarProveedor))
-                .addGap(26, 26, 26)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addGap(93, 93, 93))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -177,12 +171,8 @@ import modeloDAO.proveedorDAO;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+                   
     private void btnRegistrarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProveedorActionPerformed
-        
-    }//GEN-LAST:event_btnRegistrarProveedorActionPerformed
-               
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (txtNomProv.getText().isEmpty() || FtextTelf.getText().isEmpty() || txtDireccion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Se necesita llenar todos los campos para registrar un proveedor",
                 "Campos vacíos", JOptionPane.ERROR_MESSAGE);
@@ -204,10 +194,10 @@ import modeloDAO.proveedorDAO;
         p.setTelefono(telefono);
         p.setDireccion(txtDireccion.getText());
         provd.agregar(p);
-        // Después de registrar el proveedor, actualiza el JComboBox en el formulario de productos
+        // Después de registrar el proveedor, actualiza la tabla proveedor 
         borrarInterfazPr();
         mostrarTablaProveedor();          
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRegistrarProveedorActionPerformed
     
     public void mostrarTablaProveedor(){
             modelo.setRowCount(0);
@@ -235,7 +225,6 @@ import modeloDAO.proveedorDAO;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField FtextTelf;
     private javax.swing.JButton btnRegistrarProveedor;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

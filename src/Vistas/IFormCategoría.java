@@ -5,6 +5,7 @@
 package Vistas;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.CategoriaProducto;
 import modeloDAO.CategoriaProductoDAO;
@@ -155,6 +156,12 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        //evita que se inserte valores vacios
+        if (txtCod.getText().isEmpty() || txtNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Se necesita llenar todos los campos para registrar una categoría",
+                "Campos vacíos", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
         c = new CategoriaProducto();
         cd = new CategoriaProductoDAO();
         c.setCodigo(txtCod.getText());

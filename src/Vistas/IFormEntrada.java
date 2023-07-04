@@ -246,6 +246,12 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblentradaKeyPressed
 
     private void btnRegistrarEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEntradaActionPerformed
+        //evita que se inserte valores vacios
+        if (txtFechaEntrada.getText().isEmpty() || txtCantidadSolicitada.getText().isEmpty()|| txtCantidadRecibida.getText().isEmpty() ) {
+            JOptionPane.showMessageDialog(this, "Se necesita llenar todos los campos para registrar una entrada",
+                "Campos vacíos", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
         //Instanciando un objeto de la clase Entrada
         e = new Entrada();
         procesoDAO pd = new procesoDAO();
@@ -295,6 +301,12 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     }
         
     private void btnBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProductoActionPerformed
+        //evita que se inserte valores vacios
+        if (txtCodPro.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "llenar el campo código de producto",
+                "Campos vacíos", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
         pd = new productoDAO();
         listaProductos = pd.listarTodos();
         // Buscar producto por codigo
