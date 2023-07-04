@@ -30,13 +30,7 @@ import modeloDAO.proveedorDAO;
              }
         });
     }
-
-        Proveedor pr;
     
-     public static ArrayList<Proveedor> listaProveedores = new ArrayList<>();
-    
-    
-
     private void establecerColumnas(){
         modelo.addColumn("Cod. Prov");
         modelo.addColumn("Nombre");
@@ -62,6 +56,7 @@ import modeloDAO.proveedorDAO;
         FtextTelf = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
         txtCódigo = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Proveedores");
@@ -106,6 +101,13 @@ import modeloDAO.proveedorDAO;
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Código");
 
+        jButton1.setText("RegistrarProveedor");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -114,6 +116,7 @@ import modeloDAO.proveedorDAO;
                 .addGap(54, 54, 54)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -127,16 +130,17 @@ import modeloDAO.proveedorDAO;
                             .addComponent(FtextTelf, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
                             .addComponent(txtCódigo))
                         .addGap(120, 120, 120)
-                        .addComponent(btnRegistrarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 605, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 97, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRegistrarProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(0, 86, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtCódigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -148,7 +152,9 @@ import modeloDAO.proveedorDAO;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(FtextTelf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,35 +179,37 @@ import modeloDAO.proveedorDAO;
     }// </editor-fold>//GEN-END:initComponents
     
     private void btnRegistrarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarProveedorActionPerformed
-       
+        
+    }//GEN-LAST:event_btnRegistrarProveedorActionPerformed
+               
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (txtNomProv.getText().isEmpty() || FtextTelf.getText().isEmpty() || txtDireccion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Se necesita llenar todos los campos para registrar un proveedor",
                 "Campos vacíos", JOptionPane.ERROR_MESSAGE);
         return;
-        } else {
+        }else{
         String phoneNumber = FtextTelf.getText();
         if (phoneNumber.length() != 9) {
         JOptionPane.showMessageDialog(null, "Ingresar un número de teléfono válido");
-             } else {
-        
-        //Registrar proveedores
-        pr = new Proveedor();
-        proveedorDAO provd = new proveedorDAO();
-        pr.setCodigoprov(txtCódigo.getText());
-        pr.setNombreprov(txtNomProv.getText());
-        // Convertir el número de teléfono a tipo int
-            int telefono = Integer.parseInt(FtextTelf.getText());
-            pr.setTelefono(telefono);
-        pr.setDireccion(txtDireccion.getText());
-        provd.agregar(pr);
-        listaProveedores.add(pr);
-        // Después de registrar el proveedor, actualiza el JComboBox en el formulario de productos
-        mostrarTablaProveedor();
-        borrarInterfazPr();
-            } 
-         }
         }
-        public void mostrarTablaProveedor(){
+       }
+        
+         //Registrar proveedores
+        p = new Proveedor();
+        proveedorDAO provd = new proveedorDAO();
+        p.setCodigoprov(txtCódigo.getText());
+        p.setNombreprov(txtNomProv.getText());
+        // Convertir el número de teléfono a tipo int
+        int telefono = Integer.parseInt(FtextTelf.getText());
+        p.setTelefono(telefono);
+        p.setDireccion(txtDireccion.getText());
+        provd.agregar(p);
+        // Después de registrar el proveedor, actualiza el JComboBox en el formulario de productos
+        borrarInterfazPr();
+        mostrarTablaProveedor();          
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    public void mostrarTablaProveedor(){
             modelo.setRowCount(0);
             pd = new proveedorDAO();
             ArrayList<Proveedor> lista = new ArrayList<>();
@@ -216,35 +224,18 @@ import modeloDAO.proveedorDAO;
                 modelo.addRow(data);
             }
         }
-        
-        public void eliminarElementosTablaProveedores(){
-                for(int i=tblProveedor.getRowCount()-1;i>=0;i--){
-                 modelo.removeRow(i);        
-                }
-        }
-        
-        public void borrarInterfazPr() {
+    
+    public void borrarInterfazPr() {
          txtCódigo.setText(null);
          txtNomProv.setText(null);
          FtextTelf.setText(null);
          txtDireccion.setText(null);
         }
-        public void mostrarTablaProveedores(){
-        eliminarElementosTablaProveedores();
-        //Mostrar productos en la tabla
-        for(int i=0;i<listaProveedores.size();i++){
-            Object[] data={listaProveedores.get(i).getCodigoprov(),listaProveedores.get(i).getNombreprov(),listaProveedores.get(i).getTelefono(),
-                listaProveedores.get(i).getDireccion()};
-            modelo.addRow(data);
-        }       
-        
-        
-    }//GEN-LAST:event_btnRegistrarProveedorActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField FtextTelf;
     private javax.swing.JButton btnRegistrarProveedor;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
