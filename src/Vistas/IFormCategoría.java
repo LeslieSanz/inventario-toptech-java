@@ -5,6 +5,7 @@
 package Vistas;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.CategoriaProducto;
 import modeloDAO.CategoriaProductoDAO;
@@ -21,7 +22,7 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
     public IFormCategoría() {
         initComponents();
         establecerColumnas();
-        //mostrarTablaCategorias();
+        mostrarTablaCategorias();
     }
     
     private void establecerColumnas(){
@@ -49,7 +50,6 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
         btnAceptar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCategoria = new javax.swing.JTable();
-        btnMostrar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Categoría");
@@ -88,14 +88,6 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblCategoria);
 
-        btnMostrar.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        btnMostrar.setText("Mostrar");
-        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -113,9 +105,7 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
                             .addComponent(txtCod, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(47, 47, 47)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAceptar)
-                            .addComponent(btnMostrar)))
+                        .addComponent(btnAceptar))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(120, Short.MAX_VALUE))
         );
@@ -129,12 +119,11 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAceptar))
-                .addGap(22, 22, 22)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMostrar))
-                .addGap(43, 43, 43)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(57, Short.MAX_VALUE))
         );
@@ -167,17 +156,20 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        //evita que se inserte valores vacios
+        if (txtCod.getText().isEmpty() || txtNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Se necesita llenar todos los campos para registrar una categoría",
+                "Campos vacíos", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
         c = new CategoriaProducto();
         cd = new CategoriaProductoDAO();
         c.setCodigo(txtCod.getText());
         c.setNombre(txtNombre.getText());
         cd.agregar(c);
         borrarInterfaz();
-    }//GEN-LAST:event_btnAceptarActionPerformed
-
-    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
         mostrarTablaCategorias();
-    }//GEN-LAST:event_btnMostrarActionPerformed
+    }//GEN-LAST:event_btnAceptarActionPerformed
     
     public void borrarInterfaz(){
         txtCod.setText(null);
@@ -213,7 +205,6 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
-    private javax.swing.JButton btnMostrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

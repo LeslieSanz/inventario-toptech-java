@@ -6,8 +6,8 @@ package modelo;
 
 public class ProcesoDTO {
     //Atributos
-    protected String fecha; //Ingresar
-    protected int cantidad_solicitada; //Ingresar
+    protected String fecha; 
+    protected int cantidad_solicitada; 
     protected String estadoConfirmacion; //Estado para la clase Entrada: se aprueba si la cantidad
     //solicitada es igual a la cantidad recibida y Confirmacion para la clase Salida
     protected ProductoDTO producto; //Para acceder al codigo y descripcion de producto
@@ -43,7 +43,5 @@ public class ProcesoDTO {
 
     public void setProducto(ProductoDTO producto) {
         this.producto = producto;
-    }
-    
-    
+    }   
 }
