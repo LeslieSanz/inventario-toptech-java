@@ -134,7 +134,7 @@ public class FormMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuProductos);
 
-        jMenuProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CAMIÓN 1 (1).png"))); // NOI18N
+        jMenuProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/camion.png"))); // NOI18N
         jMenuProveedores.setText("Proveedores");
 
         jmiProveedores.setText("Registrar");

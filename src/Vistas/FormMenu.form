@@ -39,7 +39,7 @@
         <Menu class="javax.swing.JMenu" name="jMenuProveedores">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/CAMI&#xd3;N 1 (1).png"/>
+              <Image iconType="3" name="/Imagenes/camion.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Proveedores"/>
           </Properties>

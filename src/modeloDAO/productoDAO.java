@@ -65,7 +65,7 @@ public class productoDAO implements ProductoInterface{
         try {
             String sql = "update producto set cod_pro=?, des_pro=?,"
                     + " cod_cat=?, pre_pro=?, cod_prov=?,stk_pro=?"
-                    + " where cod_pro = "+p.getCod();
+                    + " where cod_pro = '"+p.getCod()+"'";
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             ps.setString(1, p.getCod());
@@ -114,7 +114,7 @@ public class productoDAO implements ProductoInterface{
     @Override
     public ProductoDTO listarUno(String codigo) {
         try {
-            String sql = "select * from producto where cod_pro="+codigo;
+            String sql = "select * from producto where cod_pro='"+codigo+"'";
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
