@@ -25,11 +25,7 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
     ProductoDTO p;
     //Declarar un objeto de la clase productoDAO
     productoDAO pd;
-    
-    //Instanciar el ArrayList como public static para que el IFormEntrada y el IFormSalida 
-    //puedan tener acceso;
-    public static ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
-    
+   
     DefaultTableModel modelo = new DefaultTableModel();
     
     
@@ -300,7 +296,8 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         //eliminarElementosTablaProductos();
         //Mostrar productos en la tabla
         modelo.setRowCount(0);
-        pd = new productoDAO();       
+        pd = new productoDAO();   
+        ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
         listaProductos = pd.listarTodos();
         for(int i=0; i<listaProductos.size(); i++){
             Object[] data = {

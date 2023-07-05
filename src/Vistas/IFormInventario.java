@@ -5,9 +5,9 @@
 package Vistas;
 import static Vistas.FormMenu.actualizarInterfaz;
 import static Vistas.FormMenu.contenedor;
-import static Vistas.IFormProducto.listaProductos;
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import modelo.ProductoDTO;
 import modeloDAO.productoDAO;
 
 /**
@@ -15,6 +15,9 @@ import modeloDAO.productoDAO;
  * @author lesly
  */
 public class IFormInventario extends javax.swing.JInternalFrame {
+    //Declarar un objeto de la clase productoDAO
+    productoDAO pd;
+    ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
     
     DefaultTableModel modelo = new DefaultTableModel();
     public IFormInventario() {
@@ -240,6 +243,8 @@ public class IFormInventario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtbuscarporKeyReleased
      public void mostrarTablaStock(){
         eliminarElementosTabla();
+         pd = new productoDAO();   
+         listaProductos = pd.listarTodos();
         //Mostrar productos en la tabla stock
         for(int i=0;i<listaProductos.size();i++){
             Object[] data={ 

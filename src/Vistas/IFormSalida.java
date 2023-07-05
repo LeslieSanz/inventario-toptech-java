@@ -1,6 +1,4 @@
 package Vistas;
-//Importando el ArrayList Lista productos del IFormProducto
-import static Vistas.IFormProducto.listaProductos;
 import modelo.Salida;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -13,10 +11,12 @@ import modeloDAO.productoDAO;
 public class IFormSalida extends javax.swing.JInternalFrame {
     int indice=-1;
     DefaultTableModel modelo = new DefaultTableModel();
-    //Declarar un objeto de la clase Entrada
+    //Declarar un objeto de la clase Salida
     Salida s;
     //Declarar un objeto de la clase productoDAO
     productoDAO pd;
+    ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
+    ProductoDTO producto;
     public static ArrayList<Salida> listaSalidas = new ArrayList<>();
     
     public IFormSalida() {
@@ -226,24 +226,34 @@ public class IFormSalida extends javax.swing.JInternalFrame {
                 "Campos vacíos", JOptionPane.ERROR_MESSAGE);
         return;
         }
+        pd = new productoDAO(); 
+        listaProductos = pd.listarTodos();
         //Instanciando un objeto de la clase Salida
         s = new Salida();
-        procesoDAO pd = new procesoDAO();
+        //Declarando e instanciando un DAO de proceso para agregar la salida a la tabla proceso
+        procesoDAO proceDAO = new procesoDAO();
         
-        ProductoDTO producto = listaProductos.get(indice);
+        //Obteniendo el producto encontrado en la lista segun el indice        
+        producto = listaProductos.get(indice);
+        String codigo = producto.getCod();
+        
         //Pasando un producto del array listaProductos al objeto "s" de Salida
         s.setProducto(producto);
         s.setFecha(txtFechaSalida.getText()); 
         s.setCantidad_solicitada(Integer.parseInt(txtCantidadSalida.getText()));
-        
-        //Añadiendo el objeto al array listaSalidas
         listaSalidas.add(s);
         
-        pd.agregar(s, "S");
-
-        int cantidad = s.getCantidad_solicitada();   
-        //Resta la cantidad al stock del producto, ver el metodo en la clase productoDTO
-        producto.agregarSalida(cantidad);
+       //Primera consulta sql: para insertar la entrada en la tabla proceso
+        proceDAO.agregar(s, "S");
+        
+        //Segunda consulta sql: para listar un producto de la base de datos
+        producto = pd.listarUno(codigo);
+        
+        //Tercera consulta: para modificar o actualizar el stock del producto listado
+        int cantidad = s.getCantidad_solicitada();  
+        //Suma la cantidad al stock del producto, ver el metodo en la clase productoDTO
+        producto.agregarSalida(cantidad);       
+        pd.modificar(producto);
         
         borrarInterfaz();
         pnlDatosSalida.setVisible(false);

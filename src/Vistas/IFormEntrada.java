@@ -1,6 +1,4 @@
 package Vistas;
-//Importando el ArrayList Lista productos del IFormProducto
-import static Vistas.IFormProducto.listaProductos;
 import modelo.Entrada;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -18,6 +16,8 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     Entrada e;
     //Declarar un objeto de la clase productoDAO
     productoDAO pd;
+    ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
+    ProductoDTO producto;
     //Genera un nuevo Array List llamado listaEntrada
     public static ArrayList<Entrada> listaEntrada = new ArrayList<>();
     public IFormEntrada() {
@@ -224,7 +224,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
                 .addComponent(pnlDatosEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -235,7 +235,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
         );
 
         pack();
@@ -252,27 +252,39 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
                 "Campos vacíos", JOptionPane.ERROR_MESSAGE);
         return;
         }
+        
+        pd = new productoDAO(); 
+        listaProductos = pd.listarTodos();
         //Instanciando un objeto de la clase Entrada
         e = new Entrada();
-        procesoDAO pd = new procesoDAO();
-        ProductoDTO producto = listaProductos.get(indice);
+        //Declarando e instanciando un DAO de proceso para agregar la entrada a la tabla proceso
+        procesoDAO proceDAO = new procesoDAO();
+
+        //Obteniendo el producto encontrado en la lista segun el indice        
+        producto = listaProductos.get(indice);
+        String codigo = producto.getCod();
 
         //Pasando un producto del array listaProductos al objeto "e" de Entrada
         e.setProducto(producto);
         e.setFecha(txtFechaEntrada.getText()); 
-        //e.setCantidad_solicitada(a);   !!!
         e.setCantidad_solicitada(Integer.parseInt(txtCantidadSolicitada.getText()));
         e.setCantidad_recibida(Integer.parseInt(txtCantidadRecibida.getText()));
         String estado=e.verificarEstado();
         e.setEstadoConfirmacion(estado);
         listaEntrada.add(e);
         
-        pd.agregar(e, "E");
+        //Primera consulta sql: para insertar la entrada en la tabla proceso
+        proceDAO.agregar(e, "E");
         
-        int cantidad = e.getCantidad_recibida();        
+        //Segunda consulta sql: para listar un producto de la base de datos
+        producto = pd.listarUno(codigo);
+        
+        //Tercera consulta: para modificar o actualizar el stock del producto listado
+        int cantidad = e.getCantidad_recibida();  
         //Suma la cantidad al stock del producto, ver el metodo en la clase productoDTO
-        producto.agregarEntrada(cantidad); 
-        
+        producto.agregarEntrada(cantidad);       
+        pd.modificar(producto);
+                     
         borrarInterfaz();
         pnlDatosEntrada.setVisible(false);
         mostrarTablaEntrada();
@@ -301,13 +313,15 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     }
         
     private void btnBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProductoActionPerformed
-        //evita que se inserte valores vacios
+        //Evita que se inserte valores vacios
         if (txtCodPro.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "llenar el campo código de producto",
                 "Campos vacíos", JOptionPane.ERROR_MESSAGE);
         return;
         }
+        //Instanciando un DAO de producto
         pd = new productoDAO();
+        //Obteniendo la lista de productos de la base de datos
         listaProductos = pd.listarTodos();
         // Buscar producto por codigo
         String codigo;
@@ -323,9 +337,6 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         else{
             pnlDatosEntrada.setVisible(true);
         }
-        //Revisar !!!!!!!!!!!!!!!!!!! "cantidad solicitada random y visible en el form"
-        //e.setCantidad_solicitada(a);
-        //txtCantidadSolicitada.setText(a);
     }//GEN-LAST:event_btnBuscarProductoActionPerformed
  
 

@@ -61,10 +61,10 @@ public class productoDAO implements ProductoInterface{
     }
 
     @Override
-    public boolean modificar(ProductoDTO c) {
+    public boolean modificar(ProductoDTO p) {
         try {
             String sql = "update producto set cod_pro=?, des_pro=?,"
-                    + " cod_cat=?, pre_pro=?, cod_prov=?,stk_prov=?"
+                    + " cod_cat=?, pre_pro=?, cod_prov=?,stk_pro=?"
                     + " where cod_pro = "+p.getCod();
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
@@ -101,6 +101,7 @@ public class productoDAO implements ProductoInterface{
                 String cp = rs.getString("cod_prov");
                 prov= provd.listarUno(cp);
                 p.setProveedor(prov);
+                p.setStock(rs.getInt("stk_pro"));
                 lista.add(p);
             }
         } catch (SQLException ex) {
@@ -113,19 +114,24 @@ public class productoDAO implements ProductoInterface{
     @Override
     public ProductoDTO listarUno(String codigo) {
         try {
-            String sql = "select * from producto";
+            String sql = "select * from producto where cod_pro="+codigo;
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
                 p = new ProductoDTO();
-                p.setCod(rs.getString("codpro"));
-                p.setDescripcion(rs.getString("despro"));
-                p.setPrecioUnit(rs.getDouble("prepro"));
-                //p.setStock(rs.getInt("stcpro"));
-                String cc = rs.getString("codpro");
-                c = cd.listarUno(cc);
+                p.setCod(rs.getString("cod_pro"));
+                p.setDescripcion(rs.getString("des_pro"));
+                //Para la categoria
+                String cc = rs.getString("cod_cat");
+                c= cd.listarUno(cc);
                 p.setCategoria(c);
+                p.setPrecioUnit(rs.getDouble("pre_pro"));
+                //Para el proveedor
+                String cp = rs.getString("cod_prov");
+                prov= provd.listarUno(cp);
+                p.setProveedor(prov);
+                p.setStock(rs.getInt("stk_pro"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(productoDAO.class.getName()).log(Level.SEVERE, null, ex);

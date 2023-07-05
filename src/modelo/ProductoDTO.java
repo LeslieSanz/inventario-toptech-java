@@ -8,10 +8,6 @@ public class ProductoDTO {
     private String ubicacion;
     private Proveedor proveedor;
     private int stock;
-
-    public ProductoDTO() {
-        this.stock = 0;
-    }
     
     public void agregarEntrada(int cantidad){
         stock = stock + cantidad;

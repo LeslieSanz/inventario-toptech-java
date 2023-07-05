@@ -5,8 +5,8 @@
 package Vistas;
 
 import modelo.Salida;
-import static Vistas.IFormProducto.listaProductos;
-import static Vistas.IFormEntrada.listaEntrada;
+//import static Vistas.IFormProducto.listaProductos;
+//import static Vistas.IFormEntrada.listaEntrada;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -236,7 +236,7 @@ public class IFormReporte extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
-        // Buscar producto por codigo
+        /* Buscar producto por codigo
         String codigo;
         codigo = txtidproducto.getText();
         for(int i=0; i<listaProductos.size(); i++){
@@ -249,7 +249,7 @@ public class IFormReporte extends javax.swing.JInternalFrame {
         }
         else{
             pnlSalidaDatos.setVisible(true);
-        }
+        }*/
     }//GEN-LAST:event_btnbuscarActionPerformed
 
     private void btnreporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreporteActionPerformed
