@@ -63,7 +63,6 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         txtFechaEntrada = new javax.swing.JTextField();
         txtCantidadSolicitada = new javax.swing.JTextField();
         txtCantidadRecibida = new javax.swing.JTextField();
-        btnEliminarEntrada = new javax.swing.JButton();
         btnRegistrarEntrada = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
@@ -116,9 +115,6 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Cantidad recibida");
 
-        btnEliminarEntrada.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnEliminarEntrada.setText("Eliminar");
-
         btnRegistrarEntrada.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnRegistrarEntrada.setText("Registrar");
         btnRegistrarEntrada.addActionListener(new java.awt.event.ActionListener() {
@@ -144,23 +140,18 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
                         .addGap(31, 31, 31)
                         .addComponent(jLabel5)))
                 .addGap(26, 26, 26)
+                .addComponent(txtFechaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDatosEntradaLayout.createSequentialGroup()
-                        .addComponent(txtFechaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                        .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlDatosEntradaLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                                .addComponent(txtCantidadSolicitada, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlDatosEntradaLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtCantidadRecibida, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(113, 113, 113))
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addComponent(txtCantidadSolicitada, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlDatosEntradaLayout.createSequentialGroup()
-                        .addComponent(btnEliminarEntrada)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtCantidadRecibida, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(113, 113, 113))
         );
         pnlDatosEntradaLayout.setVerticalGroup(
             pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,9 +174,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
                         .addComponent(jLabel3))
                     .addComponent(jLabel5))
                 .addGap(12, 12, 12)
-                .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrarEntrada)
-                    .addComponent(btnEliminarEntrada))
+                .addComponent(btnRegistrarEntrada)
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
@@ -342,7 +331,6 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarProducto;
-    private javax.swing.JButton btnEliminarEntrada;
     private javax.swing.JButton btnRegistrarEntrada;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

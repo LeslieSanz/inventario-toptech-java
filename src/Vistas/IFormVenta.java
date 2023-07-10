@@ -5,11 +5,10 @@
 package Vistas;
 
 
-//import static Vistas.FormMenu.actualizarInterfaz;
-//import static Vistas.FormMenu.contenedor;
+import static Vistas.FormMenu.actualizarInterfaz;
+import static Vistas.FormMenu.contenedor;
 //import static Vistas.IFormProducto.listaProductos;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.DetalleDTO;
 import modelo.ProductoDTO;
@@ -23,21 +22,24 @@ import modeloDAO.productoDAO;
  * @author esther
  */
 public class IFormVenta extends javax.swing.JInternalFrame {
-    int indice=-1;
 
     DefaultTableModel modelo= new DefaultTableModel();
     Venta v;
     public static int x = 0;
     DetalleDTO dt;
+
     
     //Declarar un objeto de la clase productoDAO
     productoDAO pd;
+    ProductoDTO producto;
     ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
-    ArrayList<DetalleDTO> listaDetalle; 
+    ArrayList<DetalleDTO> listaDetalle = new ArrayList<>(); 
+    
 
     public IFormVenta() {
         initComponents();
-        establecerColumnas();
+        establecerColumnas();    
+        
     }
     
     private void establecerColumnas() {
@@ -328,35 +330,14 @@ public class IFormVenta extends javax.swing.JInternalFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
-        /*x=1;
+        x=1;
         actualizarInterfaz();
         IFormInventario i = new IFormInventario();
         contenedor.add(i);
         i.setVisible(true); 
         IFormInventario.pnlbuscar.setVisible(true);
-        IFormInventario.txttitulo.setVisible(false);*/
-        pd =new productoDAO();
-        listaProductos = pd.listarTodos();
-        // Buscar producto por codigo
-        String codigo;
-        codigo = txtCodPro.getText();
-        for(int i=0; i<listaProductos.size(); i++){
-            if(codigo.equalsIgnoreCase(listaProductos.get(i).getCod())){
-                indice = i;
-            }     
-        }
-        if(indice==-1){
-            JOptionPane.showMessageDialog(this, "No existe el producto");
-        }else{
-            JOptionPane.showMessageDialog(this, "Producto encontrado");
-            pnlDatos.setVisible(true);
-            double precio =listaProductos.get(indice).getPrecioUnit();
-            int stk =listaProductos.get(indice).getStock();
-            txtStock.setText(stk+"");
-            txtprecio.setText(precio+"");
-        }
-        
-        
+        IFormInventario.txttitulo.setVisible(false);
+               
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtcantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcantidadActionPerformed
@@ -364,7 +345,9 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtcantidadActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        ProductoDTO producto = listaProductos.get(indice);
+        String codigo= txtCodPro.getText();
+        pd = new productoDAO();
+        producto = pd.listarUno(codigo);
         dt = new DetalleDTO();
         dt.setProducto(producto);
         dt.setCantidad(Integer.parseInt(txtcantidad.getText()));
@@ -387,15 +370,19 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         txttotalB.setText(v.getTotalB()+"");
         vd.agregar(v);
         
-        
+        //Agregando detalles a la venta
         for(int i=0; i<listaDetalle.size(); i++){
             DetalleDAO dd=new DetalleDAO();
             dd.agregar(listaDetalle.get(i));
-        }        
+        }
+        
+        // Limpiar la listaDetalle para la próxima venta
+        listaDetalle.clear(); 
+
+        
     }//GEN-LAST:event_btnVentaActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        listaDetalle = new ArrayList<>();        
         txtCodVenta.setText(null);
         txtCodPro.setText(null);
         txtcantidad.setText(null);
@@ -404,6 +391,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         txttotalN.setText(null);
         modelo.setRowCount(0);
         pnlDatos.setVisible(false);
+         
     }//GEN-LAST:event_btnLimpiarActionPerformed
    
     public void eliminarElementosTabla(){
@@ -442,7 +430,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel pnlDatos;
+    public javax.swing.JPanel pnlDatos;
     private javax.swing.JTable tblventa;
     public javax.swing.JTextField txtCodPro;
     private javax.swing.JTextField txtCodVenta;

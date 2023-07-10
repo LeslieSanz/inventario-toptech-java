@@ -110,6 +110,7 @@ public class FormMenu extends javax.swing.JFrame {
 
         jMenuProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/productos.png"))); // NOI18N
         jMenuProductos.setText("Productos");
+        jMenuProductos.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jMenuProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuProductosActionPerformed(evt);
@@ -136,6 +137,7 @@ public class FormMenu extends javax.swing.JFrame {
 
         jMenuProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/camion.png"))); // NOI18N
         jMenuProveedores.setText("Proveedores");
+        jMenuProveedores.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
 
         jmiProveedores.setText("Registrar");
         jmiProveedores.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +151,7 @@ public class FormMenu extends javax.swing.JFrame {
 
         jMenuProceso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proceso.png"))); // NOI18N
         jMenuProceso.setText("Proceso");
+        jMenuProceso.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jMenuProceso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuProcesoActionPerformed(evt);
@@ -177,6 +180,7 @@ public class FormMenu extends javax.swing.JFrame {
 
         jMenuVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ventas.png"))); // NOI18N
         jMenuVenta.setText("Venta");
+        jMenuVenta.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jMenuVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuVentaActionPerformed(evt);
@@ -196,6 +200,7 @@ public class FormMenu extends javax.swing.JFrame {
 
         jMenuInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inventario.png"))); // NOI18N
         jMenuInventario.setText("Inventario");
+        jMenuInventario.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jMenuInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuInventarioActionPerformed(evt);
@@ -215,6 +220,7 @@ public class FormMenu extends javax.swing.JFrame {
 
         jMenuRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedores.png"))); // NOI18N
         jMenuRegistro.setText("Registro");
+        jMenuRegistro.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jMenuRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuRegistroActionPerformed(evt);
