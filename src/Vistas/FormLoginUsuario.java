@@ -314,12 +314,15 @@ public class FormLoginUsuario extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         
-        Usuario u = new Usuario();
+    Usuario u = new Usuario();
     usuarioDAO ud = new usuarioDAO();
-    String usu, pas;
+    String usu, pas,tipo="";
     usu = txtUsuario.getText();
     pas = String.valueOf(txtPassword.getPassword());
     
+    
+        
+        
     if (cbxTipoUsuario.getSelectedItem().equals("Invitado")) {
         // Mostrar la ventana principal sin validar credenciales
         FormMenu m = new FormMenu();
@@ -328,6 +331,7 @@ public class FormLoginUsuario extends javax.swing.JFrame {
         m.jMenuProductos.setVisible(false);
         m.jMenuProveedores.setVisible(false);
         m.jMenuVenta.setVisible(false);
+        m.jMenuRegistro.setVisible(false);
         setPlaceholderText2(txtPassword, "**************"); // Reiniciar campo de contraseña
         
         // Restablecer campo de usuario
@@ -337,10 +341,16 @@ public class FormLoginUsuario extends javax.swing.JFrame {
         
         // Cerrar ventana de Login
         dispose();
-    } else {
-        u = ud.validarLogueo(usu, pas);
+        } else { 
+        if (cbxTipoUsuario.getSelectedItem().equals("Administrador")) {
+            tipo = "A";
+            } else if (cbxTipoUsuario.getSelectedItem().equals("Vendedor")) {
+        tipo = "V";
+            } 
+
+        u = ud.validarLogueo(usu, pas, tipo);
         if (u == null){
-            JOptionPane.showMessageDialog(this, "Usuario o Contraseña incorrectos");
+            JOptionPane.showMessageDialog(this, "Por favorcito, no te olvides de seleccionar tipo de usuario");
         } else {
             String codUsuario = txtUsuario.getText();
             if (codUsuario.length() != 8) {
@@ -352,20 +362,24 @@ public class FormLoginUsuario extends javax.swing.JFrame {
             }
 
             if (cbxTipoUsuario.getSelectedItem().equals("Administrador")) {
+                
                 FormMenu m = new FormMenu();
                 m.setVisible(true);
+                
                 setPlaceholderText2(txtPassword, "**************"); // Reiniciar campo de contraseña
             } else if (cbxTipoUsuario.getSelectedItem().equals("Vendedor")) {
+                
                 FormMenu m = new FormMenu();
                 m.setVisible(true);
                 m.jMenuProceso.setVisible(false);
                 m.jMenuProductos.setVisible(false);
                 m.jMenuProveedores.setVisible(false);
                 m.jMenuVenta.setVisible(true);
+                m.jMenuRegistro.setVisible(false);
                 setPlaceholderText2(txtPassword, "**************"); // Reiniciar campo de contraseña
             } else {
-                JOptionPane.showMessageDialog(null, "Tipo de usuario inválido");
-                return;
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione un tipo de usuario");
+                //return;
             }
 
             // Restablecer campo de usuario

@@ -409,7 +409,7 @@ public class FormMenu extends javax.swing.JFrame {
     public static javax.swing.JMenu jMenuProceso;
     public static javax.swing.JMenu jMenuProductos;
     public static javax.swing.JMenu jMenuProveedores;
-    private javax.swing.JMenu jMenuRegistro;
+    public static javax.swing.JMenu jMenuRegistro;
     public static javax.swing.JMenu jMenuVenta;
     private javax.swing.JMenuItem jMiRegistrar;
     private javax.swing.JMenuItem jmiEntrada;

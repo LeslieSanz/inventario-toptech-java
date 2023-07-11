@@ -20,10 +20,10 @@ public class usuarioDAO implements UsuarioInterface{
     
     
     @Override
-    public Usuario validarLogueo(String usu, String pas) {
+    public Usuario validarLogueo(String usu, String pas, String Tipo) {
         
         try {
-            String sql = "Select * from usuarios where nomusu ='"+usu+"' and pasusu = '"+pas+"'";
+            String sql = "Select * from usuarios where nomusu ='"+usu+"' and pasusu = '"+pas+"' and tipo = '"+Tipo+"'";
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -39,31 +39,31 @@ public class usuarioDAO implements UsuarioInterface{
         return u; 
         
     }
-    public void registrarUsuario(String usu, String pas) {
+    public void registrarUsuario(String usu, String pas, String Tipo) {
         try {
-            String sql = "INSERT INTO usuarios (nomusu, pasusu) VALUES (?, ?)";
-            conn = con.getConexion();
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, usu);
-            ps.setString(2, pas);
-            ps.executeUpdate();
+        String sql = "INSERT INTO usuarios (nomusu, pasusu, tipo) VALUES (?, ?, ?)";
+        conn = con.getConexion();
+        ps = conn.prepareStatement(sql);
+        ps.setString(1, usu);
+        ps.setString(2, pas);
+        ps.setString(3, Tipo);
+        ps.executeUpdate();
+    } catch (SQLException ex) {
+        Logger.getLogger(usuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        // Cerrar recursos (Statement, ResultSet, etc.) y la conexión
+        try {
+            if (ps != null) {
+                ps.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
         } catch (SQLException ex) {
             Logger.getLogger(usuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            // Cerrar recursos (Statement, ResultSet, etc.) y la conexión
-            try {
-                if (ps != null) {
-                    ps.close();
-                }
-                if (rs != null) {
-                    rs.close();
-                }
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(usuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
-    }
+    }}
 }

@@ -8,7 +8,7 @@ import modelo.Usuario;
  */
 public interface UsuarioInterface {
     
-    public Usuario validarLogueo(String usu, String pas);
+    public Usuario validarLogueo(String usu, String pas, String tipo);
     
     
 }
