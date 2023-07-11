@@ -313,17 +313,16 @@ public class FormLoginUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        
     Usuario u = new Usuario();
     usuarioDAO ud = new usuarioDAO();
     String usu, pas,tipo="";
     usu = txtUsuario.getText();
     pas = String.valueOf(txtPassword.getPassword());
     
-    
-        
-        
-    if (cbxTipoUsuario.getSelectedItem().equals("Invitado")) {
+    if (cbxTipoUsuario.getSelectedIndex()==0){
+        JOptionPane.showMessageDialog(null, "Por favor, seleccione un tipo de usuario");
+    }else{
+        if (cbxTipoUsuario.getSelectedItem().equals("Invitado")) {
         // Mostrar la ventana principal sin validar credenciales
         FormMenu m = new FormMenu();
         m.setVisible(true);
@@ -342,55 +341,52 @@ public class FormLoginUsuario extends javax.swing.JFrame {
         // Cerrar ventana de Login
         dispose();
         } else { 
-        if (cbxTipoUsuario.getSelectedItem().equals("Administrador")) {
-            tipo = "A";
-            } else if (cbxTipoUsuario.getSelectedItem().equals("Vendedor")) {
-        tipo = "V";
-            } 
-
-        u = ud.validarLogueo(usu, pas, tipo);
-        if (u == null){
-            JOptionPane.showMessageDialog(this, "Por favorcito, no te olvides de seleccionar tipo de usuario");
-        } else {
-            String codUsuario = txtUsuario.getText();
-            if (codUsuario.length() != 8) {
-                if (cbxTipoUsuario.getSelectedItem().equals("Administrador")
-                        || cbxTipoUsuario.getSelectedItem().equals("Vendedor")) {
-                    JOptionPane.showMessageDialog(null, "Ingresar un número de DNI válido");
-                    return;
-                }
-            }
-
             if (cbxTipoUsuario.getSelectedItem().equals("Administrador")) {
-                
-                FormMenu m = new FormMenu();
-                m.setVisible(true);
-                
-                setPlaceholderText2(txtPassword, "**************"); // Reiniciar campo de contraseña
-            } else if (cbxTipoUsuario.getSelectedItem().equals("Vendedor")) {
-                
-                FormMenu m = new FormMenu();
-                m.setVisible(true);
-                m.jMenuProceso.setVisible(false);
-                m.jMenuProductos.setVisible(false);
-                m.jMenuProveedores.setVisible(false);
-                m.jMenuVenta.setVisible(true);
-                m.jMenuRegistro.setVisible(false);
-                setPlaceholderText2(txtPassword, "**************"); // Reiniciar campo de contraseña
+                tipo = "A";
+                } else if (cbxTipoUsuario.getSelectedItem().equals("Vendedor")) {
+                tipo = "V";
+                }        
+            u = ud.validarLogueo(usu, pas, tipo);
+            if (u == null){
+                    JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
             } else {
-                JOptionPane.showMessageDialog(null, "Por favor, seleccione un tipo de usuario");
-                //return;
-            }
+                String codUsuario = txtUsuario.getText();
+                if (codUsuario.length() != 8) {
+                    if (cbxTipoUsuario.getSelectedItem().equals("Administrador")
+                            || cbxTipoUsuario.getSelectedItem().equals("Vendedor")) {
+                        JOptionPane.showMessageDialog(null, "Ingresar un número de DNI válido");
+                        return;
+                    }
+                }
 
-            // Restablecer campo de usuario
-            txtUsuario.setText("Usuario/DNI");
-            txtUsuario.setForeground(Color.GRAY);
-            txtUsuario.setFont(txtUsuario.getFont().deriveFont(Font.BOLD));
+                if (cbxTipoUsuario.getSelectedItem().equals("Administrador")) {
 
-            // Cerrar ventana de Login
-            dispose();
-        }
-    }  
+                    FormMenu m = new FormMenu();
+                    m.setVisible(true);
+
+                    setPlaceholderText2(txtPassword, "**************"); // Reiniciar campo de contraseña
+                } else if (cbxTipoUsuario.getSelectedItem().equals("Vendedor")) {
+
+                    FormMenu m = new FormMenu();
+                    m.setVisible(true);
+                    m.jMenuProceso.setVisible(false);
+                    m.jMenuProductos.setVisible(false);
+                    m.jMenuProveedores.setVisible(false);
+                    m.jMenuVenta.setVisible(true);
+                    m.jMenuRegistro.setVisible(false);
+                    setPlaceholderText2(txtPassword, "**************"); // Reiniciar campo de contraseña
+                } 
+
+                // Restablecer campo de usuario
+                txtUsuario.setText("Usuario/DNI");
+                txtUsuario.setForeground(Color.GRAY);
+                txtUsuario.setFont(txtUsuario.getFont().deriveFont(Font.BOLD));
+
+                // Cerrar ventana de Login
+                dispose();
+                }
+            }          
+        }              
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void cbxTipoUsuarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxTipoUsuarioItemStateChanged
