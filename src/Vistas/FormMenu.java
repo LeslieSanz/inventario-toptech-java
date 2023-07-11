@@ -52,6 +52,7 @@ public class FormMenu extends javax.swing.JFrame {
         jmiSalida = new javax.swing.JMenuItem();
         jMenuVenta = new javax.swing.JMenu();
         jmiVenta = new javax.swing.JMenuItem();
+        jMenuReporte = new javax.swing.JMenuItem();
         jMenuInventario = new javax.swing.JMenu();
         jmiInventario = new javax.swing.JMenuItem();
         jMenuRegistro = new javax.swing.JMenu();
@@ -195,6 +196,15 @@ public class FormMenu extends javax.swing.JFrame {
             }
         });
         jMenuVenta.add(jmiVenta);
+
+        jMenuReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inventario.png"))); // NOI18N
+        jMenuReporte.setText(" Reporte");
+        jMenuReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuReporteActionPerformed(evt);
+            }
+        });
+        jMenuVenta.add(jMenuReporte);
 
         jMenuBar1.add(jMenuVenta);
 
@@ -352,6 +362,13 @@ public class FormMenu extends javax.swing.JFrame {
         i.show();
     }//GEN-LAST:event_jMiRegistrarActionPerformed
 
+    private void jMenuReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuReporteActionPerformed
+        actualizarInterfaz();
+        IFormReporteVentas rv = new IFormReporteVentas();
+        contenedor.add(rv);
+        rv.show();
+    }//GEN-LAST:event_jMenuReporteActionPerformed
+
     //Para que no se sobrepongan los frames internos
     public static void actualizarInterfaz(){
         contenedor.removeAll();
@@ -410,6 +427,7 @@ public class FormMenu extends javax.swing.JFrame {
     public static javax.swing.JMenu jMenuProductos;
     public static javax.swing.JMenu jMenuProveedores;
     private javax.swing.JMenu jMenuRegistro;
+    private javax.swing.JMenuItem jMenuReporte;
     public static javax.swing.JMenu jMenuVenta;
     private javax.swing.JMenuItem jMiRegistrar;
     private javax.swing.JMenuItem jmiEntrada;
