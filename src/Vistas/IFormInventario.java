@@ -31,7 +31,7 @@ public class IFormInventario extends javax.swing.JInternalFrame {
         modelo.addColumn("Descripción");
         modelo.addColumn("Precio");
         modelo.addColumn("Stock");
-        tblStock.setModel(modelo);
+        tblInventario.setModel(modelo);
     }
    
     /**
@@ -47,7 +47,7 @@ public class IFormInventario extends javax.swing.JInternalFrame {
         pnlnventario = new javax.swing.JPanel();
         txttitulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblStock = new javax.swing.JTable();
+        tblInventario = new javax.swing.JTable();
         pnlbuscar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         rbtidprod = new javax.swing.JRadioButton();
@@ -63,7 +63,7 @@ public class IFormInventario extends javax.swing.JInternalFrame {
         txttitulo.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         txttitulo.setText("Inventario de productos");
 
-        tblStock.setModel(new javax.swing.table.DefaultTableModel(
+        tblInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -74,12 +74,12 @@ public class IFormInventario extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblStock.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblInventario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblStockMouseClicked(evt);
+                tblInventarioMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblStock);
+        jScrollPane1.setViewportView(tblInventario);
 
         pnlbuscar.setBackground(new java.awt.Color(255, 255, 255));
         pnlbuscar.setForeground(new java.awt.Color(255, 255, 255));
@@ -207,31 +207,9 @@ public class IFormInventario extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_txtbuscarporActionPerformed
 
-    private void tblStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStockMouseClicked
-    int row = tblStock.getSelectedRow();
-    try {
-    // Verificar el stock
-    int stock = Integer.parseInt(tblStock.getValueAt(row, 3).toString());
-    if (stock == 0) {
-        throw new IllegalArgumentException("Stock insuficiente. No se puede agregar el producto.");
-    }
+    private void tblInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblInventarioMouseClicked
     
-    // Si el stock es suficiente, continuar con el formulario "IFormVenta"
-    IFormVenta i = new IFormVenta();
-    actualizarInterfaz();
-    contenedor.add(i);
-    i.setVisible(true);
-    i.txtCodPro.setText(tblStock.getValueAt(row, 0).toString());
-    i.txtprecio.setText(tblStock.getValueAt(row, 2).toString());
-    i.txtStock.setText(tblStock.getValueAt(row, 3).toString());
-    i.txtcantidad.requestFocus();
-    i.x = 0;
-    i.pnlDatos.setVisible(true);
-    dispose();
-    } catch (IllegalArgumentException e) {
-    JOptionPane.showMessageDialog(this, e.getMessage(), "Error de Stock", JOptionPane.ERROR_MESSAGE);
-}   
-    }//GEN-LAST:event_tblStockMouseClicked
+    }//GEN-LAST:event_tblInventarioMouseClicked
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
         mostrarTablaStock();  
@@ -265,7 +243,7 @@ public class IFormInventario extends javax.swing.JInternalFrame {
     }
     
     public void eliminarElementosTabla(){
-        for(int i=tblStock.getRowCount()-1;i>=0;i--){
+        for(int i=tblInventario.getRowCount()-1;i>=0;i--){
             modelo.removeRow(i);
         }
     }
@@ -280,7 +258,7 @@ public class IFormInventario extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnlnventario;
     private javax.swing.JRadioButton rbtidprod;
     private javax.swing.JRadioButton rbtnombreprod;
-    private javax.swing.JTable tblStock;
+    private javax.swing.JTable tblInventario;
     private javax.swing.JTextField txtbuscarpor;
     public static javax.swing.JLabel txttitulo;
     // End of variables declaration//GEN-END:variables

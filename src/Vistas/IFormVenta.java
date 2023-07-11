@@ -9,6 +9,7 @@ import static Vistas.FormMenu.actualizarInterfaz;
 import static Vistas.FormMenu.contenedor;
 //import static Vistas.IFormProducto.listaProductos;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.DetalleDTO;
 import modelo.ProductoDTO;
@@ -25,7 +26,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
 
     DefaultTableModel modelo= new DefaultTableModel();
     Venta v;
-    public static int x = 0;
+    //public static int x = 0;
     DetalleDTO dt;
 
     
@@ -39,7 +40,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     public IFormVenta() {
         initComponents();
         establecerColumnas();    
-        
+        pnlDatos.setVisible(true);
     }
     
     private void establecerColumnas() {
@@ -329,14 +330,14 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
-        x=1;
-        actualizarInterfaz();
-        IFormInventario i = new IFormInventario();
-        contenedor.add(i);
-        i.setVisible(true); 
-        IFormInventario.pnlbuscar.setVisible(true);
-        IFormInventario.txttitulo.setVisible(false);
+        //x=1;
+        //actualizarInterfaz();
+        FormStockVenta s = new FormStockVenta();
+        s.setVisible(true);
+        //this.setVisible(false);
+        //IFormInventario.pnlbuscar.setVisible(true);
+        //IFormInventario.txttitulo.setVisible(false);
+        
                
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -351,10 +352,17 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         dt = new DetalleDTO();
         dt.setProducto(producto);
         dt.setCantidad(Integer.parseInt(txtcantidad.getText()));
+        int stock = Integer.parseInt(txtStock.getText());
+        int cant = Integer.parseInt(txtcantidad.getText());
+        if(cant > stock){
+            JOptionPane.showMessageDialog(null, "No hay stock suficiente");
+            txtcantidad.requestFocus();
+        }else {
         dt.setCodigoVenta(txtCodVenta.getText());
         dt.calcularImporte();
         listaDetalle.add(dt);
         mostrarTablaDetalle();
+    }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
