@@ -272,7 +272,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         int cantidad = e.getCantidad_recibida();  
         //Suma la cantidad al stock del producto, ver el metodo en la clase productoDTO
         producto.agregarEntrada(cantidad);       
-        pd.modificar(producto);
+        pd.actualizarStock(producto);
                      
         borrarInterfaz();
         pnlDatosEntrada.setVisible(false);
