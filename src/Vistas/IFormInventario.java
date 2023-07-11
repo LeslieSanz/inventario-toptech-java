@@ -6,6 +6,7 @@ package Vistas;
 import static Vistas.FormMenu.actualizarInterfaz;
 import static Vistas.FormMenu.contenedor;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.ProductoDTO;
 import modeloDAO.productoDAO;
@@ -207,23 +208,29 @@ public class IFormInventario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtbuscarporActionPerformed
 
     private void tblStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStockMouseClicked
-
-//IFormVenta c = new IFormVenta();
-           IFormVenta i = new IFormVenta();
-           if(IFormVenta.x == 1){
-            int row = tblStock.getSelectedRow();
-            actualizarInterfaz();
-            contenedor.add(i);
-            i.setVisible(true);
-            i.txtCodPro.setText(tblStock.getValueAt(row, 0).toString());
-            i.txtprecio.setText(tblStock.getValueAt(row, 2).toString());
-            i.txtStock.setText(tblStock.getValueAt(row, 3).toString());
-            //i.t.setText(tblStock.getValueAt(row, 4).toString());
-            i.txtcantidad.requestFocus();
-            i.x = 0;
-            dispose();
-            
-        }
+    int row = tblStock.getSelectedRow();
+    try {
+    // Verificar el stock
+    int stock = Integer.parseInt(tblStock.getValueAt(row, 3).toString());
+    if (stock == 0) {
+        throw new IllegalArgumentException("Stock insuficiente. No se puede agregar el producto.");
+    }
+    
+    // Si el stock es suficiente, continuar con el formulario "IFormVenta"
+    IFormVenta i = new IFormVenta();
+    actualizarInterfaz();
+    contenedor.add(i);
+    i.setVisible(true);
+    i.txtCodPro.setText(tblStock.getValueAt(row, 0).toString());
+    i.txtprecio.setText(tblStock.getValueAt(row, 2).toString());
+    i.txtStock.setText(tblStock.getValueAt(row, 3).toString());
+    i.txtcantidad.requestFocus();
+    i.x = 0;
+    i.pnlDatos.setVisible(true);
+    dispose();
+    } catch (IllegalArgumentException e) {
+    JOptionPane.showMessageDialog(this, e.getMessage(), "Error de Stock", JOptionPane.ERROR_MESSAGE);
+}   
     }//GEN-LAST:event_tblStockMouseClicked
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed

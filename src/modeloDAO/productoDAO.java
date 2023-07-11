@@ -64,8 +64,8 @@ public class productoDAO implements ProductoInterface{
     public boolean modificar(ProductoDTO p) {
         try {
             String sql = "update producto set cod_pro=?, des_pro=?,"
-                    + " cod_cat=?, pre_pro=?, cod_prov=?,stk_pro=?"
-                    + " where cod_pro = "+p.getCod();
+                    + " cod_cat=?, pre_pro=?, cod_prov=?"
+                    + " where cod_pro = '"+p.getCod()+"'";
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             ps.setString(1, p.getCod());
@@ -73,7 +73,6 @@ public class productoDAO implements ProductoInterface{
             ps.setString(3, p.getCategoria().getCodigo());
             ps.setDouble(4, p.getPrecioUnit());
             ps.setString(5, p.getProveedor().getCodigoprov());
-            ps.setInt(6, p.getStock());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(productoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -114,7 +113,7 @@ public class productoDAO implements ProductoInterface{
     @Override
     public ProductoDTO listarUno(String codigo) {
         try {
-            String sql = "select * from producto where cod_pro="+codigo;
+            String sql = "select * from producto where cod_pro='"+codigo+"'";
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -138,5 +137,19 @@ public class productoDAO implements ProductoInterface{
         }
         return p;
    }
+    
+   public boolean actualizarStock(ProductoDTO p) {
+        try {
+            String sql = "update producto set stk_pro=?"
+                    + " where cod_pro = '"+p.getCod()+"'";
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, p.getStock());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(productoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
     
 }

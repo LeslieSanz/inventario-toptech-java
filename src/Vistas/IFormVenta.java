@@ -5,11 +5,10 @@
 package Vistas;
 
 
-//import static Vistas.FormMenu.actualizarInterfaz;
-//import static Vistas.FormMenu.contenedor;
+import static Vistas.FormMenu.actualizarInterfaz;
+import static Vistas.FormMenu.contenedor;
 //import static Vistas.IFormProducto.listaProductos;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.DetalleDTO;
 import modelo.ProductoDTO;
@@ -23,20 +22,24 @@ import modeloDAO.productoDAO;
  * @author esther
  */
 public class IFormVenta extends javax.swing.JInternalFrame {
-    int indice=-1;
 
     DefaultTableModel modelo= new DefaultTableModel();
     Venta v;
     public static int x = 0;
-    ArrayList<DetalleDTO> listaDetalle = new ArrayList<>(); 
+    DetalleDTO dt;
+
     
     //Declarar un objeto de la clase productoDAO
     productoDAO pd;
+    ProductoDTO producto;
     ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
+    ArrayList<DetalleDTO> listaDetalle = new ArrayList<>(); 
+    
 
     public IFormVenta() {
         initComponents();
-        establecerColumnas();
+        establecerColumnas();    
+        
     }
     
     private void establecerColumnas() {
@@ -65,10 +68,10 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         txttotalN = new javax.swing.JTextField();
         txtIgv = new javax.swing.JTextField();
         txttotalB = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnVenta = new javax.swing.JButton();
         txtCodVenta = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtLimpiar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
         pnlDatos = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         txtStock = new javax.swing.JTextField();
@@ -79,7 +82,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         btnAgregar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtCodPro = new javax.swing.JTextField();
-        btnbuscar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Venta");
@@ -114,24 +117,24 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         jLabel8.setText("IGV");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("Total");
+        jLabel9.setText("Total Bruto");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Generar Venta");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnVenta.setText("Generar Venta");
+        btnVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVentaActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Cod. venta");
 
-        txtLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtLimpiar.setText("Limpiar");
-        txtLimpiar.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLimpiarActionPerformed(evt);
+                btnLimpiarActionPerformed(evt);
             }
         });
 
@@ -213,10 +216,10 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Código del producto");
 
-        btnbuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LUPA.jpg"))); // NOI18N
-        btnbuscar.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LUPA.jpg"))); // NOI18N
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnbuscarActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
 
@@ -226,9 +229,9 @@ public class IFormVenta extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(txtLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnVenta)
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
@@ -259,7 +262,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtCodPro, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -288,7 +291,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
                                     .addComponent(txtCodPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(85, 85, 85)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnbuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -304,9 +307,9 @@ public class IFormVenta extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(txttotalB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtLimpiar)))
+                            .addComponent(btnLimpiar)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnVenta)
                         .addGap(8, 8, 8)))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
@@ -325,57 +328,36 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbuscarActionPerformed
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
-        /*x=1;
+        x=1;
         actualizarInterfaz();
         IFormInventario i = new IFormInventario();
         contenedor.add(i);
         i.setVisible(true); 
         IFormInventario.pnlbuscar.setVisible(true);
-        IFormInventario.txttitulo.setVisible(false);*/
-        pd =new productoDAO();
-        listaProductos = pd.listarTodos();
-        // Buscar producto por codigo
-        String codigo;
-        codigo = txtCodPro.getText();
-        for(int i=0; i<listaProductos.size(); i++){
-            if(codigo.equalsIgnoreCase(listaProductos.get(i).getCod())){
-                indice = i;
-            }     
-        }
-        if(indice==-1){
-            JOptionPane.showMessageDialog(this, "No existe el producto");
-        }else{
-            JOptionPane.showMessageDialog(this, "Producto encontrado");
-            pnlDatos.setVisible(true);
-            double precio =listaProductos.get(indice).getPrecioUnit();
-            int stk =listaProductos.get(indice).getStock();
-            txtStock.setText(stk+"");
-            txtprecio.setText(precio+"");
-        }
-        
-        
-    }//GEN-LAST:event_btnbuscarActionPerformed
+        IFormInventario.txttitulo.setVisible(false);
+               
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtcantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcantidadActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        ProductoDTO producto = listaProductos.get(indice);
-        DetalleDTO dt = new DetalleDTO();
-        DetalleDAO dd=new DetalleDAO();
+        String codigo= txtCodPro.getText();
+        pd = new productoDAO();
+        producto = pd.listarUno(codigo);
+        dt = new DetalleDTO();
         dt.setProducto(producto);
         dt.setCantidad(Integer.parseInt(txtcantidad.getText()));
         dt.setCodigoVenta(txtCodVenta.getText());
         dt.calcularImporte();
-        dd.agregar(dt);
         listaDetalle.add(dt);
         mostrarTablaDetalle();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
         v = new Venta();
         VentaDAO vd= new VentaDAO();
         v.setCodigo(txtCodVenta.getText());
@@ -386,11 +368,21 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         txttotalN.setText(v.getTotalN()+"");
         txtIgv.setText(v.getImpuestoIGV()+"");
         txttotalB.setText(v.getTotalB()+"");
-        
         vd.agregar(v);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        
+        //Agregando detalles a la venta
+        for(int i=0; i<listaDetalle.size(); i++){
+            DetalleDAO dd=new DetalleDAO();
+            dd.agregar(listaDetalle.get(i));
+        }
+        
+        // Limpiar la listaDetalle para la próxima venta
+        listaDetalle.clear(); 
 
-    private void txtLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLimpiarActionPerformed
+        
+    }//GEN-LAST:event_btnVentaActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         txtCodVenta.setText(null);
         txtCodPro.setText(null);
         txtcantidad.setText(null);
@@ -398,8 +390,9 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         txtIgv.setText(null);
         txttotalN.setText(null);
         modelo.setRowCount(0);
- 
-    }//GEN-LAST:event_txtLimpiarActionPerformed
+        pnlDatos.setVisible(false);
+         
+    }//GEN-LAST:event_btnLimpiarActionPerformed
    
     public void eliminarElementosTabla(){
         for(int i=tblventa.getRowCount()-1; i>=0; i--){
@@ -422,8 +415,9 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     } 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnbuscar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnVenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -436,12 +430,11 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel pnlDatos;
+    public javax.swing.JPanel pnlDatos;
     private javax.swing.JTable tblventa;
     public javax.swing.JTextField txtCodPro;
     private javax.swing.JTextField txtCodVenta;
     private javax.swing.JTextField txtIgv;
-    private javax.swing.JButton txtLimpiar;
     public javax.swing.JTextField txtStock;
     public javax.swing.JTextField txtcantidad;
     private javax.swing.JTextField txtfecha;

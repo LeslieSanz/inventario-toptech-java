@@ -165,29 +165,21 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="txtFechaEntrada" min="-2" pref="95" max="-2" attributes="0"/>
+                      <EmptySpace pref="59" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="txtFechaEntrada" min="-2" pref="95" max="-2" attributes="0"/>
-                              <EmptySpace pref="59" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="35" max="32767" attributes="0"/>
-                                      <Component id="txtCantidadSolicitada" min="-2" pref="95" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="txtCantidadRecibida" min="-2" pref="95" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="35" max="32767" attributes="0"/>
+                              <Component id="txtCantidadSolicitada" min="-2" pref="95" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="btnEliminarEntrada" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="txtCantidadRecibida" min="-2" pref="95" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -219,10 +211,7 @@
                           <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnRegistrarEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnEliminarEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnRegistrarEntrada" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="37" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -258,14 +247,6 @@
             <Component class="javax.swing.JTextField" name="txtCantidadSolicitada">
             </Component>
             <Component class="javax.swing.JTextField" name="txtCantidadRecibida">
-            </Component>
-            <Component class="javax.swing.JButton" name="btnEliminarEntrada">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Eliminar"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnRegistrarEntrada">
               <Properties>

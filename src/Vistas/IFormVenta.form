@@ -45,9 +45,9 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="txtLimpiar" min="-2" pref="102" max="-2" attributes="0"/>
+                  <Component id="btnLimpiar" min="-2" pref="102" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnVenta" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -82,7 +82,7 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="txtCodPro" min="-2" pref="104" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnbuscar" min="-2" pref="46" max="-2" attributes="0"/>
+                                  <Component id="btnBuscar" min="-2" pref="46" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -121,7 +121,7 @@
                                   <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                                   <Component id="jScrollPane1" min="-2" pref="162" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="btnbuscar" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
+                              <Component id="btnBuscar" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="pnlDatos" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -142,11 +142,11 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txttotalB" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnLimpiar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnVenta" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -219,7 +219,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Total"/>
+            <Property name="text" type="java.lang.String" value="Total Bruto"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txttotalN">
@@ -228,7 +228,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txttotalB">
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnVenta">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -236,7 +236,7 @@
             <Property name="text" type="java.lang.String" value="Generar Venta"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVentaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCodVenta">
@@ -249,7 +249,7 @@
             <Property name="text" type="java.lang.String" value="Cod. venta"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="txtLimpiar">
+        <Component class="javax.swing.JButton" name="btnLimpiar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
@@ -257,10 +257,13 @@
             <Property name="text" type="java.lang.String" value="Limpiar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLimpiarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLimpiarActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="pnlDatos">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -398,14 +401,14 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="btnbuscar">
+        <Component class="javax.swing.JButton" name="btnBuscar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/LUPA.jpg"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnbuscarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBuscarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
