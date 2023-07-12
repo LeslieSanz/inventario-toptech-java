@@ -6,7 +6,8 @@ import javax.swing.table.DefaultTableModel;
 import modelo.ProductoDTO;
 import modeloDAO.procesoDAO;
 import modeloDAO.productoDAO;
-
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class IFormSalida extends javax.swing.JInternalFrame {
     int indice=-1;
@@ -25,6 +26,12 @@ public class IFormSalida extends javax.swing.JInternalFrame {
         pnlDatosSalida.setVisible(false);
         //Para mantener los productos en la tabla si se cambia de frame
         mostrarTablaSalida();
+        
+        // Establecer la fecha actual
+        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+        Date fa = new Date();
+        String fechaActualFormateada = f.format(fa);
+        txtFechaSalida.setText(fechaActualFormateada);
     }
     
      private void establecerColumnas() {
