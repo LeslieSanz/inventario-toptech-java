@@ -6,6 +6,8 @@ import javax.swing.table.DefaultTableModel;
 import modelo.ProductoDTO;
 import modeloDAO.procesoDAO;
 import modeloDAO.productoDAO;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 
 public class IFormEntrada extends javax.swing.JInternalFrame {
@@ -26,6 +28,13 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         pnlDatosEntrada.setVisible(false);
         //Para mantener los productos en la tabla si se cambia de frame
         mostrarTablaEntrada();
+        
+        
+        // Establecer la fecha actual
+        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+        Date fa = new Date();
+        String fechaActualFormateada = f.format(fa);
+        txtFechaEntrada.setText(fechaActualFormateada);
     }
     
     private void establecerColumnas(){
@@ -64,7 +73,6 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         txtCantidadSolicitada = new javax.swing.JTextField();
         txtCantidadRecibida = new javax.swing.JTextField();
         btnRegistrarEntrada = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
 
         setClosable(true);
         setTitle("Entrada");
@@ -123,22 +131,15 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel5.setText("DD-MM-YYYY");
-
         javax.swing.GroupLayout pnlDatosEntradaLayout = new javax.swing.GroupLayout(pnlDatosEntrada);
         pnlDatosEntrada.setLayout(pnlDatosEntradaLayout);
         pnlDatosEntradaLayout.setHorizontalGroup(
             pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDatosEntradaLayout.createSequentialGroup()
-                .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDatosEntradaLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(btnRegistrarEntrada)))
-                    .addGroup(pnlDatosEntradaLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel5)))
+                .addGap(15, 15, 15)
+                .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(btnRegistrarEntrada))
                 .addGap(26, 26, 26)
                 .addComponent(txtFechaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
@@ -168,11 +169,9 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2)
                             .addComponent(txtCantidadSolicitada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCantidadRecibida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3))
-                    .addComponent(jLabel5))
+                .addGroup(pnlDatosEntradaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCantidadRecibida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(12, 12, 12)
                 .addComponent(btnRegistrarEntrada)
                 .addContainerGap(37, Short.MAX_VALUE))
@@ -336,7 +335,6 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

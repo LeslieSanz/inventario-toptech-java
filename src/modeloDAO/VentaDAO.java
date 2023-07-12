@@ -16,7 +16,7 @@ import misInterfaces.VentaInterface;
 import modelo.Venta;
 
 public class VentaDAO implements VentaInterface{
-     Connection conn;
+    Connection conn;
     Conexion con = new Conexion();
     Venta v;
     Statement st;
@@ -108,6 +108,73 @@ try {
         } catch (SQLException ex) {
             Logger.getLogger(DetalleDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return v;    }
-    
+        return v;    
+    }
+
+    @Override
+    public String leerCodVenta() {
+        String ultimoCodigoVenta = null;
+    try {
+        String sql = "SELECT MAX(cod_ven) AS ultimo_codigo FROM venta";
+        conn = con.getConexion();
+        st = conn.createStatement();
+        rs = st.executeQuery(sql);
+        if (rs.next()) {
+            ultimoCodigoVenta = rs.getString("ultimo_codigo");
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(VentaDAO.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        // Cierra los recursos (ResultSet, Statement, Connection) en un bloque finally
+        // para asegurarte de que se liberen adecuadamente.
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            if (st != null) {
+                st.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VentaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    return ultimoCodigoVenta;
+    }
+
+    @Override
+    public boolean escribirCodVenta(String codigo) {
+         try {
+        String sql = "INSERT INTO venta (cod_ven) VALUES (?)";
+        conn = con.getConexion();
+        ps = conn.prepareStatement(sql);
+        ps.setString(1, codigo);
+        ps.executeUpdate();
+        return true;
+    } catch (SQLException ex) {
+        Logger.getLogger(VentaDAO.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        // Cierra los recursos (PreparedStatement, Connection) en un bloque finally
+        // para asegurarte de que se liberen adecuadamente.
+        try {
+            if (ps != null) {
+                ps.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VentaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    return false;
+    }    
+
+     
 }
+
+
+    
+

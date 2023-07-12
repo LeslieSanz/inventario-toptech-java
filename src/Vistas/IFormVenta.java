@@ -1,10 +1,6 @@
 package Vistas;
-
-
-import static Vistas.FormMenu.actualizarInterfaz;
 import static Vistas.FormMenu.contenedor;
 import java.awt.Dimension;
-//import static Vistas.IFormProducto.listaProductos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,6 +10,8 @@ import modelo.Venta;
 import modeloDAO.DetalleDAO;
 import modeloDAO.VentaDAO;
 import modeloDAO.productoDAO;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -25,6 +23,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     Venta v;
     public int x = 0;
     DetalleDTO dt;
+    VentaDAO vd;
 
     
     //Declarar un objeto de la clase productoDAO
@@ -33,12 +32,21 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     //ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
     ArrayList<DetalleDTO> listaDetalle = new ArrayList<>(); 
     
+    
+    // Obtener el último código de venta
+   
 
     public IFormVenta() {
         initComponents();
-        establecerColumnas();    
+        establecerColumnas();
+        
+        
+        // Establecer la fecha actual
+        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+        Date fa = new Date();
+        String fechaActualFormateada = f.format(fa);
+        txtfecha.setText(fechaActualFormateada);
     }
-    
     private void establecerColumnas() {
         modelo.addColumn("ID");
         modelo.addColumn("Nom.prod.");
@@ -48,7 +56,6 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         tblventa.setModel(modelo);
         pnlDatos.setVisible(false);
     }
-
     
     
     @SuppressWarnings("unchecked")
@@ -91,6 +98,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Fecha");
 
+        txtfecha.setEditable(false);
         txtfecha.setText(" ");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
@@ -344,6 +352,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtcantidadActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        
         String codigo= txtCodPro.getText();
         pd = new productoDAO();
         producto = pd.listarUno(codigo);
@@ -360,7 +369,8 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         dt.calcularImporte();
         listaDetalle.add(dt);
         mostrarTablaDetalle();
-    }
+        }
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
@@ -397,7 +407,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         txttotalN.setText(null);
         modelo.setRowCount(0);
         pnlDatos.setVisible(false);
-         
+        
     }//GEN-LAST:event_btnLimpiarActionPerformed
    
     public void eliminarElementosTabla(){
@@ -448,6 +458,10 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txttotalB;
     private javax.swing.JTextField txttotalN;
     // End of variables declaration//GEN-END:variables
+
+    
+
+   
 
   
 

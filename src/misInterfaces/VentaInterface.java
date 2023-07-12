@@ -11,5 +11,8 @@ import modelo.Venta;
  * @author esther
  */
 public interface VentaInterface extends CRUD<Venta>{
+    public String leerCodVenta();
+    public boolean escribirCodVenta(String codigo);
+   
     
 }

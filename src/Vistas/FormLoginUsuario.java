@@ -18,6 +18,7 @@ public class FormLoginUsuario extends javax.swing.JFrame {
 
     public FormLoginUsuario() {
         initComponents();
+        this.setLocationRelativeTo(this);
         pnlDatos.setVisible(false);
         restrictToNumbers(txtUsuario);
         setPlaceholderText(txtUsuario, "Usuario/DNI");
