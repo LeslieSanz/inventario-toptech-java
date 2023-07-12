@@ -8,11 +8,12 @@ import modeloDAO.procesoDAO;
 import modeloDAO.productoDAO;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import modelo.ProcesoDTO;
 
 
 public class IFormEntrada extends javax.swing.JInternalFrame {
     int indice=-1;
-    //int a;
+    ProcesoDTO pt =new ProcesoDTO();
     DefaultTableModel modelo= new DefaultTableModel();
     //Declarar un objeto de la clase Entrada
     Entrada e;
@@ -30,10 +31,13 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         mostrarTablaEntrada();
         
         
-        // Establecer la fecha actual
+       // Establecer la fecha actual
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
         Date fa = new Date();
+        // Obtener la fecha actual
         String fechaActualFormateada = f.format(fa);
+        // Asignar la fecha actual
+        pt.setFecha(fechaActualFormateada);
         txtFechaEntrada.setText(fechaActualFormateada);
     }
     

@@ -12,7 +12,6 @@ import modelo.Venta;
  */
 public interface VentaInterface extends CRUD<Venta>{
     public String leerCodVenta();
-    public boolean escribirCodVenta(String codigo);
    
     
 }

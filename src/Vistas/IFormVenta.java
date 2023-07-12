@@ -1,7 +1,9 @@
 package Vistas;
 import static Vistas.FormMenu.contenedor;
 import java.awt.Dimension;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.DetalleDTO;
@@ -10,8 +12,6 @@ import modelo.Venta;
 import modeloDAO.DetalleDAO;
 import modeloDAO.VentaDAO;
 import modeloDAO.productoDAO;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 
 /**
  *
@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 public class IFormVenta extends javax.swing.JInternalFrame {
 
     DefaultTableModel modelo= new DefaultTableModel();
-    Venta v;
+    Venta v = new Venta();
     public int x = 0;
     DetalleDTO dt;
     VentaDAO vd;
@@ -39,12 +39,15 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     public IFormVenta() {
         initComponents();
         establecerColumnas();
-        
-        
+        obtenerUltimoCodigoVenta();
+     
         // Establecer la fecha actual
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
         Date fa = new Date();
+        // Obtener la fecha actual
         String fechaActualFormateada = f.format(fa);
+        // Asignar la fecha actual
+        v.setFecha(fechaActualFormateada);
         txtfecha.setText(fechaActualFormateada);
     }
     private void establecerColumnas() {
@@ -56,6 +59,20 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         tblventa.setModel(modelo);
         pnlDatos.setVisible(false);
     }
+    
+    private void obtenerUltimoCodigoVenta() {
+    vd= new VentaDAO();
+    String ultimoCodVen = vd.leerCodVenta();
+    int siguienteNumero = 1;
+
+    if (ultimoCodVen != null && !ultimoCodVen.isEmpty()) {
+        siguienteNumero = Integer.parseInt(ultimoCodVen.substring(1)) + 1;
+    }
+
+    String nuevoCodVen = String.format("%05d", siguienteNumero);
+    txtCodVenta.setText(nuevoCodVen);
+}
+    
     
     
     @SuppressWarnings("unchecked")
@@ -407,7 +424,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         txttotalN.setText(null);
         modelo.setRowCount(0);
         pnlDatos.setVisible(false);
-        
+        obtenerUltimoCodigoVenta();
     }//GEN-LAST:event_btnLimpiarActionPerformed
    
     public void eliminarElementosTabla(){

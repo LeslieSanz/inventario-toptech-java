@@ -27,7 +27,7 @@ public class Venta {
     }
     
     public void calcularIGV(){
-        impuestoIGV=getTotalB()*0.18;
+        impuestoIGV=getTotalB()*0.15;  //calculando el 18% del totalN
     }
     
     public void cacularTtotalNeto(){

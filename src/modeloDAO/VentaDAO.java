@@ -35,7 +35,7 @@ try {
             ps.setString(2, v.getFecha());
             ps.setDouble(3, v.getTotalN());
             ps.setDouble(4, v.getImpuestoIGV());
-            ps.setDouble(5, v.getTotalN());
+            ps.setDouble(5, v.getTotalB());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(VentaDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -76,14 +76,6 @@ try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-               /* v = new DetalleDTO();
-                v.setCodigoVenta(rs.getString("cod_ven"));
-                dd.setCantidad(rs.getInt("can_pro"));
-                dd.setImporte(rs.getDouble("sub_total"));
-                //p.setStock(rs.getInt("stcpro"));
-                String cc = rs.getString("cod_cat");
-                c= cd.listarUno(cc);
-                listaDetalle.add(dd);*/
             }
         } catch (SQLException ex) {
             Logger.getLogger(DetalleDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -99,11 +91,6 @@ try {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
            while(rs.next()){
-                /*dd.setCodigoVenta(rs.getString("cod_ven"));
-                dd.setCantidad(rs.getInt("can_pro"));
-                dd.setImporte(rs.getDouble("sub-total"));
-                String cc = rs.getString("codpro");
-                c = cd.listarUno(cc);*/
             }
         } catch (SQLException ex) {
             Logger.getLogger(DetalleDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -113,20 +100,20 @@ try {
 
     @Override
     public String leerCodVenta() {
-        String ultimoCodigoVenta = null;
+        String ultimoCodVen = null;
     try {
-        String sql = "SELECT MAX(cod_ven) AS ultimo_codigo FROM venta";
+        String sql = "SELECT MAX(cod_ven) AS ult_cod FROM venta";
         conn = con.getConexion();
         st = conn.createStatement();
         rs = st.executeQuery(sql);
         if (rs.next()) {
-            ultimoCodigoVenta = rs.getString("ultimo_codigo");
+            ultimoCodVen = rs.getString("ult_cod");
         }
     } catch (SQLException ex) {
         Logger.getLogger(VentaDAO.class.getName()).log(Level.SEVERE, null, ex);
     } finally {
-        // Cierra los recursos (ResultSet, Statement, Connection) en un bloque finally
-        // para asegurarte de que se liberen adecuadamente.
+     
+        // para asegurarte de que se liberen
         try {
             if (rs != null) {
                 rs.close();
@@ -141,38 +128,9 @@ try {
             Logger.getLogger(VentaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    return ultimoCodigoVenta;
+    return ultimoCodVen;
     }
-
-    @Override
-    public boolean escribirCodVenta(String codigo) {
-         try {
-        String sql = "INSERT INTO venta (cod_ven) VALUES (?)";
-        conn = con.getConexion();
-        ps = conn.prepareStatement(sql);
-        ps.setString(1, codigo);
-        ps.executeUpdate();
-        return true;
-    } catch (SQLException ex) {
-        Logger.getLogger(VentaDAO.class.getName()).log(Level.SEVERE, null, ex);
-    } finally {
-        // Cierra los recursos (PreparedStatement, Connection) en un bloque finally
-        // para asegurarte de que se liberen adecuadamente.
-        try {
-            if (ps != null) {
-                ps.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(VentaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    return false;
-    }    
-
-     
+  
 }
 
 

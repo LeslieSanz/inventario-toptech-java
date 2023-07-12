@@ -34,7 +34,7 @@ public class DetalleDAO implements DetalleInterface{
     @Override
     public boolean agregar(DetalleDTO dd) {
 try {
-            String sql = "insert into detalle (cant_deta,monto_deta,cod_pro, cod_ven)"
+            String sql = "insert into detalle (cant_deta,monto_deta,cod_pro,cod_ven)"
                     + " values (?, ?, ?, ?)";
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
