@@ -258,7 +258,7 @@ public class IFormInventario extends javax.swing.JInternalFrame {
     private javax.swing.JPanel pnlnventario;
     private javax.swing.JRadioButton rbtidprod;
     private javax.swing.JRadioButton rbtnombreprod;
-    private javax.swing.JTable tblInventario;
+    public javax.swing.JTable tblInventario;
     private javax.swing.JTextField txtbuscarpor;
     public static javax.swing.JLabel txttitulo;
     // End of variables declaration//GEN-END:variables

@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package Vistas;
 
 
 import static Vistas.FormMenu.actualizarInterfaz;
 import static Vistas.FormMenu.contenedor;
+import java.awt.Dimension;
 //import static Vistas.IFormProducto.listaProductos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -26,21 +23,20 @@ public class IFormVenta extends javax.swing.JInternalFrame {
 
     DefaultTableModel modelo= new DefaultTableModel();
     Venta v;
-    //public static int x = 0;
+    public int x = 0;
     DetalleDTO dt;
 
     
     //Declarar un objeto de la clase productoDAO
     productoDAO pd;
     ProductoDTO producto;
-    ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
+    //ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
     ArrayList<DetalleDTO> listaDetalle = new ArrayList<>(); 
     
 
     public IFormVenta() {
         initComponents();
         establecerColumnas();    
-        pnlDatos.setVisible(true);
     }
     
     private void establecerColumnas() {
@@ -53,6 +49,8 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         pnlDatos.setVisible(false);
     }
 
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -330,15 +328,15 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        //x=1;
-        //actualizarInterfaz();
-        FormStockVenta s = new FormStockVenta();
-        s.setVisible(true);
-        //this.setVisible(false);
-        //IFormInventario.pnlbuscar.setVisible(true);
-        //IFormInventario.txttitulo.setVisible(false);
-        
-               
+        x=1;
+        IFormStockVenta s = new IFormStockVenta();
+        s.setFormularioVenta(this);
+        FormMenu.contenedor.add(s);
+        Dimension desktopSize = contenedor.getSize();
+        Dimension FrameSize = s.getSize();
+        s.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        s.toFront();
+        s.setVisible(true);        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void txtcantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcantidadActionPerformed
