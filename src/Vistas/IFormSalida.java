@@ -113,6 +113,8 @@ public class IFormSalida extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Fecha de salida");
 
+        txtFechaSalida.setEditable(false);
+
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Cantidad");
 
