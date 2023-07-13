@@ -25,8 +25,7 @@ public class IFormSalida extends javax.swing.JInternalFrame {
         establecerColumnas();
         pnlDatosSalida.setVisible(false);
         //Para mantener los productos en la tabla si se cambia de frame
-        mostrarTablaSalida();
-        
+        mostrarTablaSalida();       
         // Establecer la fecha actual
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
         Date fa = new Date();

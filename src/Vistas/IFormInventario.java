@@ -23,6 +23,7 @@ public class IFormInventario extends javax.swing.JInternalFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     public IFormInventario() {
         initComponents();
+        setSize(777,550);
         establecerColumnas();
         pnlbuscar.setVisible(false); 
     }

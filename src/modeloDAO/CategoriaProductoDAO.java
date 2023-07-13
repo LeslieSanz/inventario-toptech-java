@@ -36,7 +36,7 @@ public class CategoriaProductoDAO implements CategoriaProductoInterface {
     @Override
     public boolean eliminar(String codigo) {
         try {
-            String sql = "delete from categoria where cod_cat = "+codigo;
+            String sql = "delete from categoria where cod_cat = '"+codigo+"'";
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             ps.executeUpdate();
@@ -50,7 +50,7 @@ public class CategoriaProductoDAO implements CategoriaProductoInterface {
     public boolean modificar(CategoriaProducto c) {
        try {
             String sql = "update categoria set cod_cat=?, nom_cat=?"
-                    + " where cod_cat ="+c.getCodigo();
+                    + " where cod_cat = '"+c.getCodigo()+"'";
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             ps.setString(1, c.getCodigo());

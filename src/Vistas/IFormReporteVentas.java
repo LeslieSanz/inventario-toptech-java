@@ -18,6 +18,7 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
      */
     public IFormReporteVentas() {
         initComponents();
+        setSize(777,550);
         establecerColumnas();
     }
     private void establecerColumnas(){

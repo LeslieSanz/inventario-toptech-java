@@ -82,7 +82,7 @@
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="txtCodPro" min="-2" pref="104" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnBuscar" min="-2" pref="46" max="-2" attributes="0"/>
+                                  <Component id="btnBuscar" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -113,7 +113,7 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
+                              <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtCodPro" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -121,7 +121,7 @@
                                   <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                                   <Component id="jScrollPane1" min="-2" pref="162" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="btnBuscar" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
+                              <Component id="btnBuscar" min="-2" pref="61" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="pnlDatos" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -406,6 +406,11 @@
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/LUPA.jpg"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                <TitledBorder title="Buscar"/>
+              </Border>
             </Property>
           </Properties>
           <Events>
