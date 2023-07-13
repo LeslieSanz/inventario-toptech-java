@@ -25,6 +25,7 @@ public class IFormSalida extends javax.swing.JInternalFrame {
         pnlDatosSalida.setVisible(false);
         //Para mantener los productos en la tabla si se cambia de frame
         mostrarTablaSalida();
+        setSize(777,550);
     }
     
      private void establecerColumnas() {

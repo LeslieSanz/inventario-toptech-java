@@ -23,6 +23,7 @@ public class FormLoginUsuario extends javax.swing.JFrame {
         setPlaceholderText(txtUsuario, "Usuario/DNI");
         setPlaceholderText2(txtPassword, "             ");
         getRootPane().setDefaultButton(btnIngresar);
+        this.setLocationRelativeTo(this);
     }
         
         

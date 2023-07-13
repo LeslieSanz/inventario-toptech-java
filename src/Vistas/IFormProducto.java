@@ -31,6 +31,7 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
     
     public IFormProducto() {
         initComponents();
+        setSize(777,550);
         establecerColumnas();
         mostrarCategoriaProducto();
         mostrarProveedores();

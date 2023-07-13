@@ -16,6 +16,7 @@ public class FormMenu extends javax.swing.JFrame {
     public FormMenu() {
         initComponents();
         establecerColumnas();
+        this.setLocationRelativeTo(this);
     }
     
     private void establecerColumnas(){

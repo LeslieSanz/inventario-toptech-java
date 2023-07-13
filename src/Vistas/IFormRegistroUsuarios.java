@@ -11,6 +11,7 @@ public class IFormRegistroUsuarios extends javax.swing.JInternalFrame {
     public IFormRegistroUsuarios() {
         initComponents();
         restrictToNumbers(txtRegistroUsu);
+        setSize(777,550);
     }
 
     private void restrictToNumbers(javax.swing.JTextField textField) {

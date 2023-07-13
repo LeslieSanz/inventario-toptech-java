@@ -15,6 +15,7 @@ import modeloDAO.proveedorDAO;
     
     public IFormProveedor() {
     initComponents();
+    setSize(777,550);
     establecerColumnas();
     restrictToNumbers(FtextTelf);
     mostrarTablaProveedor();

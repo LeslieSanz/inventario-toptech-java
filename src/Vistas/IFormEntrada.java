@@ -22,6 +22,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     public static ArrayList<Entrada> listaEntrada = new ArrayList<>();
     public IFormEntrada() {
         initComponents();
+        setSize(777,550);
         establecerColumnas();
         pnlDatosEntrada.setVisible(false);
         //Para mantener los productos en la tabla si se cambia de frame

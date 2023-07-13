@@ -24,6 +24,7 @@ public class IFormReporte extends javax.swing.JInternalFrame {
      */
     public IFormReporte() {
         initComponents();
+        setSize(777,550);
         establecerColumnas1();
         pnlSalidaDatos.setVisible(false);
         pnlFecha.setVisible(false);
