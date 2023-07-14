@@ -49,8 +49,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         // Asignar la fecha actual
         v.setFecha(fechaActualFormateada);
         txtfecha.setText(fechaActualFormateada);
-        setSize(777,550);
-        establecerColumnas();    
+        setSize(777,550);   
     }
     private void establecerColumnas() {
         modelo.addColumn("ID");
