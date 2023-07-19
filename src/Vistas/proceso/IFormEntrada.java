@@ -1,4 +1,4 @@
-package Vistas;
+package Vistas.proceso;
 import modelo.Entrada;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;

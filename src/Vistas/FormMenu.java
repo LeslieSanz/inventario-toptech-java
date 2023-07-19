@@ -4,6 +4,12 @@
  */
 package Vistas;
 
+import Vistas.ventas.IFormReporteVentas;
+import Vistas.ventas.IFormVenta;
+import Vistas.proceso.IFormEntrada;
+import Vistas.proceso.IFormSalida;
+import Vistas.Categoria.IFormCategoría;
+import Vistas.producto.IFormProducto;
 import javax.swing.table.DefaultTableModel;
 
 /**

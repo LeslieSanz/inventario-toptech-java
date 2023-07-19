@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package Vistas;
+package Vistas.ventas;
 //import static Vistas.FormMenu.actualizarInterfaz;
 //import static Vistas.FormMenu.contenedor;
+import Vistas.ventas.IFormVenta;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

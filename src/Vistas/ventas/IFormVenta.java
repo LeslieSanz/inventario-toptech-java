@@ -1,4 +1,6 @@
-package Vistas;
+package Vistas.ventas;
+import Vistas.FormMenu;
+//import Vistas.IFormStockVenta;
 import static Vistas.FormMenu.contenedor;
 import java.awt.Dimension;
 import java.text.SimpleDateFormat;

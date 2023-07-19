@@ -1,5 +1,7 @@
+package Vistas.producto;
 
-package Vistas;
+
+
 
 import modelo.ProductoDTO;
 import java.util.ArrayList;
