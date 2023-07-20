@@ -4,6 +4,11 @@
  */
 package Vistas.ventas;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -43,6 +48,7 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
         btnMostrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReporteVentas = new javax.swing.JTable();
+        btnGrabar = new javax.swing.JButton();
 
         setToolTipText("");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -72,6 +78,13 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblReporteVentas);
 
+        btnGrabar.setText("Grabar");
+        btnGrabar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGrabarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -81,7 +94,10 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnMostrar)
                     .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnGrabar)
+                        .addGap(43, 43, 43)))
                 .addContainerGap(75, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -93,7 +109,9 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
                 .addComponent(btnMostrar)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(btnGrabar)
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -114,8 +132,27 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMostrarActionPerformed
 
+    private void btnGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGrabarActionPerformed
+        try {
+            FileWriter fw =new FileWriter("Facctura.txt");
+            PrintWriter pw = new PrintWriter(fw);
+            pw.println("Hola");
+            /*
+            for (int i=0;i<y.getSize();i++){
+                pw.println(y.get(i).toString());
+            }*/
+            pw.close();
+        } catch (IOException ex) {
+            Logger.getLogger(IFormReporteVentas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+               
+        
+    }//GEN-LAST:event_btnGrabarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGrabar;
     private javax.swing.JButton btnMostrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
