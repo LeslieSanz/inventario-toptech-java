@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Entrada;
 import modelo.ProductoDTO;
+import modelo.Salida;
 
 public class procesoDAO implements ProcesoInterface{
     Connection conn;
@@ -67,13 +68,42 @@ public class procesoDAO implements ProcesoInterface{
     }
 
     @Override
-    public ArrayList<ProcesoDTO> listarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public ArrayList<ProcesoDTO> listarTodos(String tipo) {
+        try {
+            String sql = "select * from proceso where tipo_proce='"+tipo+"'";            
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                proce = new ProcesoDTO();
+                switch (tipo){
+                case "E":
+                        proce = new Entrada();
+                        ((Entrada) proce).setCantidad_recibida(rs.getInt("cant_recibida"));
+                break;
+                case "S":  
+                        proce = new Salida();
+                break;
+                }
+                //Seteando los atributos comunes de las clases Entrada y Salida
+                //Para el producto
+                String cp = rs.getString("cod_pro");
+                p= pd.listarUno(cp);
+                proce.setProducto(p);
+                proce.setFecha(rs.getString("fec_proce"));
+                proce.setCantidad_solicitada(rs.getInt("cant_solicitada"));
+                proce.setEstadoConfirmacion(rs.getString("estado"));
+                lista.add(proce);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoriaProductoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return lista;         
     }
 
     @Override
     public ProcesoDTO listarUno(String codigo) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    }  
     
 }

@@ -8,6 +8,7 @@ import modeloDAO.procesoDAO;
 import modeloDAO.productoDAO;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import modelo.ProcesoDTO;
 
 public class IFormSalida extends javax.swing.JInternalFrame {
     int indice=-1;
@@ -18,7 +19,8 @@ public class IFormSalida extends javax.swing.JInternalFrame {
     productoDAO pd;
     ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
     ProductoDTO producto;
-    public static ArrayList<Salida> listaSalidas = new ArrayList<>();
+     //Declarar un objeto de proceso DAO para listar las salidas
+    procesoDAO proceDAO;
     
     public IFormSalida() {
         initComponents();
@@ -34,11 +36,10 @@ public class IFormSalida extends javax.swing.JInternalFrame {
     }
     
      private void establecerColumnas() {
-        modelo.addColumn("Código");
-        modelo.addColumn("Descripcion");
         modelo.addColumn("Fecha");
+        modelo.addColumn("Código producto");
+        modelo.addColumn("Descripcion");
         modelo.addColumn("Cantidad");
-        modelo.addColumn("Confirmacion");
         tblsalida.setModel(modelo);
     }
     public void borrarInterfaz(){
@@ -239,7 +240,7 @@ public class IFormSalida extends javax.swing.JInternalFrame {
         //Instanciando un objeto de la clase Salida
         s = new Salida();
         //Declarando e instanciando un DAO de proceso para agregar la salida a la tabla proceso
-        procesoDAO proceDAO = new procesoDAO();
+        proceDAO = new procesoDAO();
         
         //Obteniendo el producto encontrado en la lista segun el indice        
         producto = listaProductos.get(indice);
@@ -249,7 +250,6 @@ public class IFormSalida extends javax.swing.JInternalFrame {
         s.setProducto(producto);
         s.setFecha(txtFechaSalida.getText()); 
         s.setCantidad_solicitada(Integer.parseInt(txtCantidadSalida.getText()));
-        listaSalidas.add(s);
         
        //Primera consulta sql: para insertar la entrada en la tabla proceso
         proceDAO.agregar(s, "S");
@@ -294,16 +294,21 @@ public class IFormSalida extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
     
     public void mostrarTablaSalida(){
-        eliminarElementosTabla();
-        for(int i=0; i<listaSalidas.size(); i++){
-        Object[] data={
-            listaSalidas.get(i).getProducto().getCod(),
-            listaSalidas.get(i).getProducto().getDescripcion(),
-            listaSalidas.get(i).getFecha(),
-            listaSalidas.get(i).getCantidad_solicitada(), 
-        };
-        modelo.addRow(data);
-       }
+    modelo.setRowCount(0);
+    proceDAO = new procesoDAO();
+    ArrayList<ProcesoDTO> listaEntrada = proceDAO.listarTodos("S");
+    for (ProcesoDTO proceso : listaEntrada) {
+       if (proceso instanceof Salida) {
+            Salida salida = (Salida) proceso;
+            Object[] data = {
+                salida.getFecha(),
+                salida.getProducto().getCod(),
+                salida.getProducto().getDescripcion(),
+                salida.getCantidad_solicitada(),
+            };
+            modelo.addRow(data);
+        } 
+    }
     }
     
     public void eliminarElementosTabla(){

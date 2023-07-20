@@ -21,8 +21,9 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     productoDAO pd;
     ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
     ProductoDTO producto;
-    //Genera un nuevo Array List llamado listaEntrada
-    public static ArrayList<Entrada> listaEntrada = new ArrayList<>();
+    //Declarar un objeto de proceso DAO para listar las entradas
+    procesoDAO proceDAO;
+    
     public IFormEntrada() {
         initComponents();
         setSize(777,550);
@@ -43,11 +44,11 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     }
     
     private void establecerColumnas(){
-        modelo.addColumn("Código");
+        modelo.addColumn("Fecha");
+        modelo.addColumn("Código producto");
         modelo.addColumn("Descripción");
         modelo.addColumn("Cant.solicitada");
         modelo.addColumn("Cant.recibida");
-        modelo.addColumn("Fecha");
         modelo.addColumn("Estado");
         tblentrada.setModel(modelo);
     }
@@ -251,7 +252,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         //Instanciando un objeto de la clase Entrada
         e = new Entrada();
         //Declarando e instanciando un DAO de proceso para agregar la entrada a la tabla proceso
-        procesoDAO proceDAO = new procesoDAO();
+        proceDAO = new procesoDAO();
 
         //Obteniendo el producto encontrado en la lista segun el indice        
         producto = listaProductos.get(indice);
@@ -264,7 +265,7 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         e.setCantidad_recibida(Integer.parseInt(txtCantidadRecibida.getText()));
         String estado=e.verificarEstado();
         e.setEstadoConfirmacion(estado);
-        listaEntrada.add(e);
+        //listaEntrada.add(e);
         
         //Primera consulta sql: para insertar la entrada en la tabla proceso
         proceDAO.agregar(e, "E");
@@ -284,18 +285,22 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRegistrarEntradaActionPerformed
     
     private void mostrarTablaEntrada(){
-    eliminarElementosTabla();
-    
-    for(int i=0; i<listaEntrada.size(); i++){
-        Object[] data={
-            listaEntrada.get(i).getProducto().getCod(),
-            listaEntrada.get(i).getProducto().getDescripcion(),
-            listaEntrada.get(i).getCantidad_solicitada(),
-            listaEntrada.get(i).getCantidad_recibida(),
-            listaEntrada.get(i).getFecha(),
-            listaEntrada.get(i).getEstadoConfirmacion()
-        };
-        modelo.addRow(data);
+     modelo.setRowCount(0);
+     proceDAO = new procesoDAO();
+     ArrayList<ProcesoDTO> listaEntrada = proceDAO.listarTodos("E");
+     for (ProcesoDTO proceso : listaEntrada) {
+       if (proceso instanceof Entrada) {
+            Entrada entrada = (Entrada) proceso;
+            Object[] data = {
+                entrada.getFecha(),
+                entrada.getProducto().getCod(),
+                entrada.getProducto().getDescripcion(),
+                entrada.getCantidad_solicitada(),
+                entrada.getCantidad_recibida(),
+                entrada.getEstadoConfirmacion(),
+            };
+            modelo.addRow(data);
+        } 
     }    
 }
    

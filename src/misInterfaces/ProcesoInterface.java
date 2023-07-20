@@ -11,7 +11,7 @@ public interface ProcesoInterface{
     public boolean agregar(ProcesoDTO c,String tipo);
     public boolean eliminar(String codigo);
     public boolean modificar(ProcesoDTO c);
-    public ArrayList<ProcesoDTO> listarTodos();
+    public ArrayList<ProcesoDTO> listarTodos(String tipo);
     public ProcesoDTO listarUno(String codigo);
     
 }
