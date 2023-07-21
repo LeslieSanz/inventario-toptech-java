@@ -9,6 +9,7 @@ import Vistas.ventas.IFormVenta;
 import Vistas.proceso.IFormEntrada;
 import Vistas.proceso.IFormSalida;
 import Vistas.Categoria.IFormCategoría;
+import Vistas.producto.BuscarProducto;
 import Vistas.producto.IFormProducto;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,19 +22,9 @@ public class FormMenu extends javax.swing.JFrame {
    
     public FormMenu() {
         initComponents();
-        establecerColumnas();
         this.setLocationRelativeTo(this);
     }
     
-    private void establecerColumnas(){
-        modelo.addColumn("Codigo");
-        modelo.addColumn("Descripcion");
-        modelo.addColumn("Precio");
-        modelo.addColumn("Entradas");
-        modelo.addColumn("Salidas");
-        modelo.addColumn("Stock");
-        
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,6 +42,7 @@ public class FormMenu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuProductos = new javax.swing.JMenu();
         jmiProducto = new javax.swing.JMenuItem();
+        jmiBuscarProducto = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuProveedores = new javax.swing.JMenu();
         jmiProveedores = new javax.swing.JMenuItem();
@@ -125,7 +117,7 @@ public class FormMenu extends javax.swing.JFrame {
             }
         });
 
-        jmiProducto.setText("Registrar Producto");
+        jmiProducto.setText("Registrar producto");
         jmiProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiProductoActionPerformed(evt);
@@ -133,7 +125,15 @@ public class FormMenu extends javax.swing.JFrame {
         });
         jMenuProductos.add(jmiProducto);
 
-        jMenuItem1.setText("Registrar Categoria");
+        jmiBuscarProducto.setText("Buscar producto");
+        jmiBuscarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiBuscarProductoActionPerformed(evt);
+            }
+        });
+        jMenuProductos.add(jmiBuscarProducto);
+
+        jMenuItem1.setText(" Ver Categorías");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -376,6 +376,13 @@ public class FormMenu extends javax.swing.JFrame {
         rv.show();
     }//GEN-LAST:event_jMenuReporteActionPerformed
 
+    private void jmiBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiBuscarProductoActionPerformed
+        actualizarInterfaz();
+        BuscarProducto e = new BuscarProducto();
+        contenedor.add(e);
+        e.show();
+    }//GEN-LAST:event_jmiBuscarProductoActionPerformed
+
     //Para que no se sobrepongan los frames internos
     public static void actualizarInterfaz(){
         contenedor.removeAll();
@@ -437,6 +444,7 @@ public class FormMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuReporte;
     public static javax.swing.JMenu jMenuVenta;
     private javax.swing.JMenuItem jMiRegistrar;
+    private javax.swing.JMenuItem jmiBuscarProducto;
     private javax.swing.JMenuItem jmiEntrada;
     private javax.swing.JMenuItem jmiInventario;
     private javax.swing.JMenuItem jmiProducto;

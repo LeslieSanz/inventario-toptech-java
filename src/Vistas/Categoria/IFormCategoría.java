@@ -225,9 +225,15 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
     int fila = tblCategoria.getSelectedRow();
-    codigo = tblCategoria.getValueAt(fila, 0).toString();
-    ModificarCategoria mc = new ModificarCategoria(codigo);
-    mc.setVisible(true);
+    if (fila==-1){
+        // Mostrar un mensaje de error para notificar al usuario que debe seleccionar una fila.
+    JOptionPane.showMessageDialog(this, "Por favor, seleccione una categoría de la tabla.", "Error", JOptionPane.ERROR_MESSAGE);
+    }else{
+        codigo = tblCategoria.getValueAt(fila, 0).toString();
+        ModificarCategoria mc = new ModificarCategoria(codigo);
+        mc.setVisible(true);
+    }
+    
     }//GEN-LAST:event_btnModificarActionPerformed
     
     public void borrarInterfaz(){

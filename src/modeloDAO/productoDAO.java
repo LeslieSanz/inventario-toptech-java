@@ -194,6 +194,10 @@ public class productoDAO implements ProductoInterface{
                 p.setDescripcion(rs.getString(2));
                 p.setPrecioUnit(rs.getDouble(3));
                 p.setStock(rs.getInt(4));
+                //Para el proveedor
+                String cp = rs.getString(5);
+                prov= provd.listarUno(cp);
+                p.setProveedor(prov);
                 lista.add(p);        
             }
             conn.close();

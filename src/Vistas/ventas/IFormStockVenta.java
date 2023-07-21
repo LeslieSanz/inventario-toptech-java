@@ -19,9 +19,7 @@ import modeloDAO.productoDAO;
  */
 public class IFormStockVenta extends javax.swing.JInternalFrame {
     String nomCat;
-    productoDAO pd;
-    
-    
+    productoDAO pd; 
     CategoriaProducto c;
     CategoriaProductoDAO cd = new CategoriaProductoDAO();
     ArrayList<CategoriaProducto> listaCategorias = new ArrayList<>();
@@ -95,6 +93,11 @@ public class IFormStockVenta extends javax.swing.JInternalFrame {
         cbxCatego.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbxCategoItemStateChanged(evt);
+            }
+        });
+        cbxCatego.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxCategoActionPerformed(evt);
             }
         });
 
@@ -173,6 +176,10 @@ public class IFormStockVenta extends javax.swing.JInternalFrame {
             mostrarTablaProdxCat(nomCat);
         } 
     }//GEN-LAST:event_cbxCategoItemStateChanged
+
+    private void cbxCategoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCategoActionPerformed
+
+    }//GEN-LAST:event_cbxCategoActionPerformed
 
     private void mostrarTablaStock(){
         modelo.setRowCount(0);
