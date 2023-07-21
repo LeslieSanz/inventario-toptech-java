@@ -1,11 +1,13 @@
 package modeloDAO;
 
 import config.Conexion;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -103,6 +105,7 @@ public class productoDAO implements ProductoInterface{
                 p.setStock(rs.getInt("stk_pro"));
                 lista.add(p);
             }
+            conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(productoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -132,6 +135,7 @@ public class productoDAO implements ProductoInterface{
                 p.setProveedor(prov);
                 p.setStock(rs.getInt("stk_pro"));
             }
+            conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(productoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -151,5 +155,52 @@ public class productoDAO implements ProductoInterface{
         }
         return false;
     }
+   
+   public String generaCodProducto() {
+    String cod="";
+
+    try {
+        String sql = "{? = call gen_cod_pro()}";
+        conn = con.getConexion();
+        CallableStatement st = conn.prepareCall(sql);
+        st.registerOutParameter(1, Types.VARCHAR);
+        st.execute();
+        cod = st.getString(1);
+
+        } catch (SQLException ex) {
+        Logger.getLogger(productoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+        try {
+            conn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(productoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return cod;
+    }
+   
+   //Lista productos por codigo de categoria
+    public ArrayList<ProductoDTO> listaProdxCat(String nomCat){
+        try{
+            conn = con.getConexion();
+            String sql="{call sp_listaProdCat(?)}";
+            CallableStatement st=conn.prepareCall(sql);
+            st.setString(1, nomCat);
+            ResultSet rs=st.executeQuery();
+
+            while(rs.next()){
+                p=new ProductoDTO();
+                p.setCod(rs.getString(1));
+                p.setDescripcion(rs.getString(2));
+                p.setPrecioUnit(rs.getDouble(3));
+                p.setStock(rs.getInt(4));
+                lista.add(p);        
+            }
+            conn.close();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return lista;
+    } 
     
 }

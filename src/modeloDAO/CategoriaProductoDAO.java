@@ -75,6 +75,7 @@ public class CategoriaProductoDAO implements CategoriaProductoInterface {
                 c.setNombre(rs.getString("nom_cat"));
                 lista.add(c);
             }
+            conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(CategoriaProductoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -84,7 +85,7 @@ public class CategoriaProductoDAO implements CategoriaProductoInterface {
     @Override
     public CategoriaProducto listarUno(String codigo) {
         try {
-            String sql = "select * from categoria where cod_cat = "+codigo;            
+            String sql = "select * from categoria where cod_cat = '"+codigo+"'";            
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -93,6 +94,7 @@ public class CategoriaProductoDAO implements CategoriaProductoInterface {
                 c.setCodigo(rs.getString("cod_cat"));
                 c.setNombre(rs.getString("nom_cat"));
              }
+            conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(CategoriaProductoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

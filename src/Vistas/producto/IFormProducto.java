@@ -39,6 +39,7 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         mostrarProveedores();
         //Para mantener los productos en tabla al iniciar el formulario
         mostrarTablaProductos();
+        generaCodigoAutomatico();       
     }
     
     private void establecerColumnas(){
@@ -50,7 +51,7 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         tblProducto.setModel(modelo);
     }
     
-    //Funcion que recorre la lista de categorias, obtiene su nombre y las agrega una por una
+    //Metodo que recorre la lista de categorias, obtiene su nombre y las agrega una por una
     //al cbxCategoria
     private void mostrarCategoriaProducto(){
         listaCategorias = cd.listarTodos();
@@ -59,13 +60,20 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         }
     }
     
-    //Funcion que recorre la lista de proveedores, obtiene su nombre y los agrega uno por uno
+    //Metodo que recorre la lista de proveedores, obtiene su nombre y los agrega uno por uno
     //al cbxProveedor
      private void mostrarProveedores(){
         listaProvs = provd.listarTodos();
         for(int i=0; i<listaProvs.size(); i++){
             cbxProveedor.addItem(listaProvs.get(i).getNombreprov());
         }
+    }
+     
+    private void generaCodigoAutomatico(){
+        //Generar el codigo del producto a partir del ultimo en la base de datos
+        String codProd = pd.generaCodProducto();
+        //Seteando el valor obtenido en el txtCodEntrada
+        txtCodPro.setText(codProd);
     }
     
     @SuppressWarnings("unchecked")
@@ -199,13 +207,17 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
                     .addComponent(cbxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbxProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtPrecioUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(btnRegistrar)
-                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtPrecioUnit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(64, 64, 64))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRegistrar)
+                        .addGap(42, 42, 42)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -266,6 +278,7 @@ public final class IFormProducto extends javax.swing.JInternalFrame {
         
         borrarInterfaz();
         mostrarTablaProductos();
+        generaCodigoAutomatico();
       
     }//GEN-LAST:event_btnRegistrarActionPerformed
 

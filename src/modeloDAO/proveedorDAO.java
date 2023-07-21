@@ -80,6 +80,7 @@ public class proveedorDAO implements  ProveedorInterface{
                 prov.setDireccion(rs.getString("dir_prov"));
                 lista.add(prov);
             }
+            conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(proveedorDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -89,7 +90,7 @@ public class proveedorDAO implements  ProveedorInterface{
     @Override
     public Proveedor listarUno(String codigo) {
         try {
-            String sql = "select * from proveedor where cod_prov = "+codigo;            
+            String sql = "select * from proveedor where cod_prov = '"+codigo+"'";            
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -100,6 +101,7 @@ public class proveedorDAO implements  ProveedorInterface{
                 prov.setTelefono(rs.getInt("telf_prov"));
                 prov.setDireccion(rs.getString("dir_prov"));
              }
+            conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(proveedorDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
