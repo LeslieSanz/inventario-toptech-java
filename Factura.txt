@@ -1,0 +1,13 @@
+Factura de Venta
+Código de Venta: 00005
+Fecha de Venta: 21/07/2023
+-------------------------------
+Detalle de Venta:
+Producto: Lenovo IdeaPad 3
+Cantidad: 300
+Precio Unitario: 2500.0
+Importe: 750000.0
+-------------------------------
+Total Neto: 637500.0
+IGV: 112500.0
+Total Bruto: 750000.0
