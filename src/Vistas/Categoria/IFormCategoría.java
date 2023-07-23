@@ -5,6 +5,7 @@
 package Vistas.Categoria;
 
 //import Vistas.ModificarCategoria;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -68,6 +69,12 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Código");
+
+        txtCod.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCodKeyPressed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Nombre");
@@ -236,6 +243,12 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
     }
     
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void txtCodKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodKeyPressed
+        if (evt.getKeyChar()== KeyEvent.VK_ENTER) {
+                    txtNombre.requestFocus();
+                }
+    }//GEN-LAST:event_txtCodKeyPressed
     
     public void borrarInterfaz(){
         txtCod.setText(null);
