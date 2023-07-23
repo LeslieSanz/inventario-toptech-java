@@ -232,6 +232,7 @@ public class IFormCategoría extends javax.swing.JInternalFrame {
         codigo = tblCategoria.getValueAt(fila, 0).toString();
         ModificarCategoria mc = new ModificarCategoria(codigo);
         mc.setVisible(true);
+        mc.txtmodifNombre.requestFocus();
     }
     
     }//GEN-LAST:event_btnModificarActionPerformed

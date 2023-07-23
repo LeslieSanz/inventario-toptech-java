@@ -4,6 +4,7 @@
  */
 package Vistas;
 
+import Vistas.proveedores.IFormProveedor;
 import Vistas.ventas.IFormReporteVentas;
 import Vistas.ventas.IFormVenta;
 import Vistas.proceso.IFormEntrada;

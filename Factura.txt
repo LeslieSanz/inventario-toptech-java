@@ -1,13 +1,13 @@
 Factura de Venta
-Código de Venta: 00005
-Fecha de Venta: 21/07/2023
+Código de Venta: 00001
+Fecha de Venta: 23/07/2023
 -------------------------------
 Detalle de Venta:
-Producto: Lenovo IdeaPad 3
-Cantidad: 300
-Precio Unitario: 2500.0
-Importe: 750000.0
+Producto: AMD Ryzen 5
+Cantidad: 6
+Precio Unitario: 219.5
+Importe: 1317.0
 -------------------------------
-Total Neto: 637500.0
-IGV: 112500.0
-Total Bruto: 750000.0
+Total Neto: 1119.45
+IGV: 197.54999999999998
+Total Bruto: 1317.0

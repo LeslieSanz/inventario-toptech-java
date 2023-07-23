@@ -23,23 +23,23 @@ import modelo.Proveedor;
 public class proveedorDAO implements  ProveedorInterface{
     Connection conn;
     Conexion con = new Conexion();
-    Proveedor prov;
+    Proveedor p;
     Statement st;
     PreparedStatement ps;
     ResultSet rs;
     ArrayList<Proveedor> lista = new ArrayList<>(); 
 
     @Override
-    public boolean agregar(Proveedor prov) {
+    public boolean agregar(Proveedor p) {
          try {
             String sql = "insert into proveedor (cod_prov, nom_prov,telf_prov,dir_prov)"
                     + " values (?, ?, ?, ?)";
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
-            ps.setString(1, prov.getCodigoprov());
-            ps.setString(2, prov.getNombreprov());
-            ps.setInt(3, prov.getTelefono());
-            ps.setString(4, prov.getDireccion());
+            ps.setString(1, p.getCodigoprov());
+            ps.setString(2, p.getNombreprov());
+            ps.setInt(3, p.getTelefono());
+            ps.setString(4, p.getDireccion());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(proveedorDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -50,7 +50,7 @@ public class proveedorDAO implements  ProveedorInterface{
     @Override
     public boolean eliminar(String codigo) {
         try {
-            String sql = "delete from provedor where cod_prov = "+codigo;
+            String sql = "delete from proveedor where cod_prov = '"+codigo+"'";
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             ps.executeUpdate();
@@ -61,9 +61,21 @@ public class proveedorDAO implements  ProveedorInterface{
     }
 
     @Override
-    public boolean modificar(Proveedor c) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    public boolean modificar(Proveedor p) {
+        try {
+            String sql = "update proveedor set cod_prov=?, nom_prov=?, telf_prov=?, dir_prov=?"
+                    + " where cod_prov = '"+p.getCodigoprov()+"'";
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, p.getCodigoprov());
+            ps.setString(2, p.getNombreprov());
+            ps.setInt(3, p.getTelefono());
+            ps.setString(4, p.getDireccion());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(proveedorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;    }
 
     @Override
     public ArrayList<Proveedor> listarTodos() {
@@ -73,12 +85,12 @@ public class proveedorDAO implements  ProveedorInterface{
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                prov = new Proveedor();
-                prov.setCodigoprov(rs.getString("cod_prov"));
-                prov.setNombreprov(rs.getString("nom_prov"));
-                prov.setTelefono(rs.getInt("telf_prov"));
-                prov.setDireccion(rs.getString("dir_prov"));
-                lista.add(prov);
+                p = new Proveedor();
+                p.setCodigoprov(rs.getString("cod_prov"));
+                p.setNombreprov(rs.getString("nom_prov"));
+                p.setTelefono(rs.getInt("telf_prov"));
+                p.setDireccion(rs.getString("dir_prov"));
+                lista.add(p);
             }
             conn.close();
         } catch (SQLException ex) {
@@ -95,17 +107,17 @@ public class proveedorDAO implements  ProveedorInterface{
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                prov = new Proveedor();
-                prov.setCodigoprov(rs.getString("cod_prov"));
-                prov.setNombreprov(rs.getString("nom_prov"));
-                prov.setTelefono(rs.getInt("telf_prov"));
-                prov.setDireccion(rs.getString("dir_prov"));
+                p = new Proveedor();
+                p.setCodigoprov(rs.getString("cod_prov"));
+                p.setNombreprov(rs.getString("nom_prov"));
+                p.setTelefono(rs.getInt("telf_prov"));
+                p.setDireccion(rs.getString("dir_prov"));
              }
             conn.close();
         } catch (SQLException ex) {
             Logger.getLogger(proveedorDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return prov;
+        return p;
         
     }
 }
