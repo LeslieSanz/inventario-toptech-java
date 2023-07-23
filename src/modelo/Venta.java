@@ -19,6 +19,15 @@ public class Venta {
     private double impuestoIGV; //se calcula
     private double totalB; //se calcula
     
+    private int cantidad;
+    private double total;
+    private int mes;
+    public String Lmes(){
+        String vec[]={"","Ene","Feb","Mar","Abr","May","Jun",
+            "Jul","Ago","Set","Oct","Nov","Dic"};
+        return vec[getMes()];
+    }
+    
     public void calcularTotalBruto(ArrayList<DetalleDTO> listaDetalle){
         totalB=0;
         for(int i=0; i<listaDetalle.size(); i++){
@@ -86,6 +95,48 @@ public class Venta {
      */
     public void setTotalB(double totalB) {
         this.totalB = totalB;
+    }
+
+    /**
+     * @return the mes
+     */
+    public int getMes() {
+        return mes;
+    }
+
+    /**
+     * @param mes the mes to set
+     */
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    /**
+     * @return the cantidad
+     */
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    /**
+     * @param cantidad the cantidad to set
+     */
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    /**
+     * @return the total
+     */
+    public double getTotal() {
+        return total;
+    }
+
+    /**
+     * @param total the total to set
+     */
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     

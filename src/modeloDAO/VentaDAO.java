@@ -4,6 +4,8 @@
  */
 package modeloDAO;
 import config.Conexion;
+import java.sql.CallableStatement;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -131,6 +133,27 @@ try {
     return ultimoCodVen;
     }
   
+    public List<Venta> lisMes(int an){
+   List<Venta> lis=new ArrayList();
+   conn=con.getConexion();
+   String sql="{call sp_reportem(?)}";   
+   try{
+     CallableStatement st=conn.prepareCall(sql);
+     st.setInt(1, an);
+     ResultSet rs = st.executeQuery();
+     
+     while(rs.next()){
+        Venta v=new Venta();
+        v.setMes(rs.getInt(1));
+        v.setCantidad(rs.getInt(2));
+        v.setTotal(rs.getInt(3));       
+        lis.add(v);
+     }
+   }catch(Exception ex){
+     ex.printStackTrace();
+   }   
+  return lis;    
+  } 
 }
 
 
