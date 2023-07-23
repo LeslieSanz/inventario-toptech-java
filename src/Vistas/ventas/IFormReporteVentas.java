@@ -4,6 +4,7 @@
  */
 package Vistas.ventas;
 
+import javax.swing.JOptionPane;
 import modeloDAO.VentaDAO;
 
 /*import java.io.FileWriter;
@@ -125,12 +126,12 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnLineal)
                             .addComponent(jLabel1))
-                        .addGap(5, 5, 5)
+                        .addGap(4, 4, 4)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtAn, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnBarra)
-                                .addGap(28, 28, 28)
+                                .addGap(29, 29, 29)
                                 .addComponent(btnCirculo)))
                         .addGap(63, 63, 63))))
         );
@@ -143,19 +144,22 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
                         .addComponent(jLabel3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
                             .addComponent(txtAn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(btnBarra)
                             .addComponent(btnLineal)
+                            .addComponent(btnBarra)
                             .addComponent(btnCirculo))))
                 .addGap(18, 18, 18)
                 .addComponent(pnlReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,6 +179,12 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCirculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCirculoActionPerformed
+    //Agregando excepciones
+    if (txtAn.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Se necesita llenar el año para mostrar el gráfico",
+                "Campos vacíos", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
         int an=Integer.parseInt(txtAn.getText());
         DefaultPieDataset ds = new DefaultPieDataset();
         for(Venta v:vd.lisMes(an)){
@@ -190,6 +200,12 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCirculoActionPerformed
 
     private void btnBarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarraActionPerformed
+    //Agregando excepciones
+    if (txtAn.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Se necesita llenar el año para mostrar el gráfico",
+                "Campos vacíos", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
         int an=Integer.parseInt(txtAn.getText());
         DefaultCategoryDataset ds = new DefaultCategoryDataset();
         for(Venta v:vd.lisMes(an)){
@@ -205,6 +221,12 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBarraActionPerformed
 
     private void btnLinealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLinealActionPerformed
+    //Agregando excepciones
+    if (txtAn.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Se necesita llenar el año para mostrar el gráfico",
+                "Campos vacíos", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
         int an=Integer.parseInt(txtAn.getText());
         XYSeries series = new XYSeries("Datos");
         for(Venta v:vd.lisMes(an)){

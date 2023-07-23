@@ -311,10 +311,11 @@ public class IFormVenta extends javax.swing.JInternalFrame {
                             .addComponent(jLabel9)
                             .addComponent(jLabel7))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txttotalN, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                            .addComponent(txttotalB)
-                            .addComponent(txtIgv))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txttotalB, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                .addComponent(txtIgv))
+                            .addComponent(txttotalN, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(103, 103, 103)))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
@@ -347,9 +348,9 @@ public class IFormVenta extends javax.swing.JInternalFrame {
                     .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txttotalN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(19, 19, 19)
+                    .addComponent(jLabel9)
+                    .addComponent(txttotalB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel8)
@@ -358,9 +359,9 @@ public class IFormVenta extends javax.swing.JInternalFrame {
                     .addComponent(txtIgv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txttotalB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addContainerGap(45, Short.MAX_VALUE))
+                    .addComponent(jLabel7)
+                    .addComponent(txttotalN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -421,9 +422,9 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         VentaDAO vd= new VentaDAO();
         v.setCodigo(txtCodVenta.getText());
         v.setFecha(txtfecha.getText());
-        v.calcularTotalBruto(listaDetalle);
+        v.calcularTotalNeto(listaDetalle);
         v.calcularIGV();
-        v.cacularTtotalNeto();
+        v.cacularTotalBruto();
         txttotalN.setText(v.getTotalN()+"");
         txtIgv.setText(v.getImpuestoIGV()+"");
         txttotalB.setText(v.getTotalB()+"");
@@ -457,9 +458,9 @@ public class IFormVenta extends javax.swing.JInternalFrame {
                     "\t"+detalle.getProducto().getPrecioUnit()+"\t"+"\t"+detalle.getImporte());
         }
         pw.println("--------------------------------------------------------------");
-        pw.println("Total Bruto: " + txttotalN.getText());
+        pw.println("Total Bruto: " + txttotalB.getText());
         pw.println("IGV: " + txtIgv.getText());
-        pw.println("Total Neto: " + txttotalB.getText());
+        pw.println("Total Neto: " + txttotalN.getText());
 
         pw.close();
         fw.close();

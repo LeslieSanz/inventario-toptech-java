@@ -28,19 +28,18 @@ public class Venta {
         return vec[getMes()];
     }
     
-    public void calcularTotalBruto(ArrayList<DetalleDTO> listaDetalle){
-        totalB=0;
+    public void calcularTotalNeto(ArrayList<DetalleDTO> listaDetalle){
+        totalN=0;
         for(int i=0; i<listaDetalle.size(); i++){
-            totalB=totalB + listaDetalle.get(i).getImporte();
+            totalN=totalN + listaDetalle.get(i).getImporte();
         }
     }
-    
     public void calcularIGV(){
-        impuestoIGV=getTotalB()*0.15;  //calculando el 18% del totalN
+        impuestoIGV=Math.round((getTotalN()*18/118)*100)/100.0;  //calculando el 18% del totalN
     }
     
-    public void cacularTtotalNeto(){
-        totalN=totalB-impuestoIGV;
+    public void cacularTotalBruto(){
+        totalB=Math.round((totalN-impuestoIGV)*100)/100.0;
     }
     
     public String getFecha() {
