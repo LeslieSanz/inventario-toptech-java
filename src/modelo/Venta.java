@@ -21,6 +21,7 @@ public class Venta {
     
     private int cantidad;
     private double total;
+    private int dia;
     private int mes;
     public String Lmes(){
         String vec[]={"","Ene","Feb","Mar","Abr","May","Jun",
@@ -136,6 +137,20 @@ public class Venta {
      */
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    /**
+     * @return the dia
+     */
+    public int getDia() {
+        return dia;
+    }
+
+    /**
+     * @param dia the dia to set
+     */
+    public void setDia(int dia) {
+        this.dia = dia;
     }
 
     

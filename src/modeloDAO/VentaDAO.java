@@ -133,10 +133,10 @@ try {
     return ultimoCodVen;
     }
   
-    public List<Venta> lisMes(int an){
+      public List<Venta> lisMes(int an){
    List<Venta> lis=new ArrayList();
    conn=con.getConexion();
-   String sql="{call sp_reportem(?)}";   
+   String sql="{call sp_reporteanual(?)}";   
    try{
      CallableStatement st=conn.prepareCall(sql);
      st.setInt(1, an);
@@ -154,6 +154,29 @@ try {
    }   
   return lis;    
   } 
+    
+    public List<Venta> lisDia(int mes, int an) {
+    List<Venta> lis = new ArrayList();
+    conn = con.getConexion();
+    String sql = "{call sp_reportemmesual(?, ?)}";
+    try {
+        CallableStatement st = conn.prepareCall(sql);
+        st.setInt(1, mes);
+        st.setInt(2, an);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+            Venta v = new Venta();
+            v.setDia(rs.getInt(1)); // Modificar para obtener el día en lugar del mes
+            v.setCantidad(rs.getInt(2));
+            v.setTotal(rs.getInt(3));
+            lis.add(v);
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+    return lis;
+}
 }
 
 
