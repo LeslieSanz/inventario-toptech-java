@@ -12,7 +12,7 @@ import java.util.Random;
  * @author lesly
  */
 public class Entrada extends ProcesoDTO{
-    
+    //Atributo
      private int cantidad_recibida;
      
     public int getCantidad_recibida() {
@@ -33,18 +33,8 @@ public class Entrada extends ProcesoDTO{
                estado="Revisar";
         }
         return estado;
-        //aplicar excepcion en el formulario !!!!!!!!!!!!!!!
-        //else if(cantidad_recibida==0){
-        //estado="No Llega";
-    }
-    //Revisar !!!
-    public int cantidadSolicitadaRandom(){
-        int cantidadRandom = 0;
-        Random random = new Random();
-        cantidadRandom=random.nextInt(10000)+1;
-        return cantidadRandom;
-    }
-    
+        
+    } 
 }
         
    

@@ -142,7 +142,6 @@ public class ModificarCategoria extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         cd = new CategoriaProductoDAO();
         c = cd.listarUno(codigo);
-        //c.setCodigo(txtCodCat.getText());
         c.setNombre(txtmodifNombre.getText());
         cd.modificar(c);
         System.out.println(c.getCodigo());

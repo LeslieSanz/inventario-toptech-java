@@ -9,7 +9,7 @@ package modelo;
  * @author lesly
  */
 public class Usuario {
-    //comentario de prueba para ver si funciona el commit desde una rama local
+    //Atributos
     private int codigoUsuario; //Se ingresa
     private int telefono; //Supongo que estará ingresado en la bdd
     private String nombreUsuario; //Supongo que estará ingresado en la bdd
