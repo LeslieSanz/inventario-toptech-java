@@ -3,14 +3,14 @@
 	Av. Arequipa 265, Lima 15046
 	    toptech@gmail.com
 	919280633 , (01)3749342
-Factura de Venta	Código de Venta: 00006
-Fecha de Venta: 23/07/2023
-Cliente: Esther
+Factura de Venta	Código de Venta: 00003
+Fecha de Venta: 24/07/2023
+Cliente: Leslie
 --------------------------------------------------------------
 Detalle de Venta:
 ID	Descripción	Cantidad	Precio Unit	Importe
-P0002	AMD Ryzen 5	1		220.0		220.0
+P0001	Intel Core i7	1		1200.0		1200.0
 --------------------------------------------------------------
-Total Bruto: 186.44
-IGV: 33.56
-Total Neto: 220.0
+Total Bruto: 1016.95
+IGV: 183.05
+Total Neto: 1200.0

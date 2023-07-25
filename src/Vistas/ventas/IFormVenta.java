@@ -1,4 +1,5 @@
 package Vistas.ventas;
+
 import Vistas.FormMenu;
 //import Vistas.IFormStockVenta;
 import static Vistas.FormMenu.contenedor;
@@ -19,6 +20,10 @@ import modelo.Venta;
 import modeloDAO.DetalleDAO;
 import modeloDAO.VentaDAO;
 import modeloDAO.productoDAO;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
@@ -26,28 +31,24 @@ import modeloDAO.productoDAO;
  */
 public class IFormVenta extends javax.swing.JInternalFrame {
 
-    DefaultTableModel modelo= new DefaultTableModel();
+    DefaultTableModel modelo = new DefaultTableModel();
     Venta v = new Venta();
     public int x = 0;
     DetalleDTO dt;
     VentaDAO vd;
 
-    
     //Declarar un objeto de la clase productoDAO
     productoDAO pd;
     ProductoDTO producto;
     //ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
-    ArrayList<DetalleDTO> listaDetalle = new ArrayList<>(); 
-    
-    
-    // Obtener el último código de venta
-   
+    ArrayList<DetalleDTO> listaDetalle = new ArrayList<>();
 
+    // Obtener el último código de venta
     public IFormVenta() {
         initComponents();
         establecerColumnas();
         obtenerUltimoCodigoVenta();
-     
+
         // Establecer la fecha actual
         SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
         Date fa = new Date();
@@ -56,33 +57,41 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         // Asignar la fecha actual
         v.setFecha(fechaActualFormateada);
         txtfecha.setText(fechaActualFormateada);
-        setSize(777,550);   
+        File facturasFolder = new File("FACTURAS");
+        if (!facturasFolder.exists()) {
+            if (facturasFolder.mkdir()) {
+                System.out.println("La carpeta FACTURAS se ha creado correctamente.");
+            } else {
+                System.err.println("No se pudo crear la carpeta FACTURAS.");
+            }
+        }
+        setSize(777, 550);
+
     }
+
     private void establecerColumnas() {
         modelo.addColumn("ID");
         modelo.addColumn("Nom.prod.");
         modelo.addColumn("Precio unit");
         modelo.addColumn("Cantidad");
-        modelo.addColumn("Importe"); 
+        modelo.addColumn("Importe");
         tblventa.setModel(modelo);
         pnlDatos.setVisible(false);
     }
-    
-    private void obtenerUltimoCodigoVenta() {
-    vd= new VentaDAO();
-    String ultimoCodVen = vd.leerCodVenta();
-    int siguienteNumero = 1;
 
-    if (ultimoCodVen != null && !ultimoCodVen.isEmpty()) {
-        siguienteNumero = Integer.parseInt(ultimoCodVen.substring(1)) + 1;
+    private void obtenerUltimoCodigoVenta() {
+        vd = new VentaDAO();
+        String ultimoCodVen = vd.leerCodVenta();
+        int siguienteNumero = 1;
+
+        if (ultimoCodVen != null && !ultimoCodVen.isEmpty()) {
+            siguienteNumero = Integer.parseInt(ultimoCodVen.substring(1)) + 1;
+        }
+
+        String nuevoCodVen = String.format("%05d", siguienteNumero);
+        txtCodVenta.setText(nuevoCodVen);
     }
 
-    String nuevoCodVen = String.format("%05d", siguienteNumero);
-    txtCodVenta.setText(nuevoCodVen);
-}
-    
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -372,20 +381,21 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        x=1;
+        x = 1;
         IFormStockVenta s = new IFormStockVenta();
         s.setFormularioVenta(this);
         FormMenu.contenedor.add(s);
         Dimension desktopSize = contenedor.getSize();
         Dimension FrameSize = s.getSize();
-        s.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height- FrameSize.height)/2);
+        s.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
         s.toFront();
-        s.setVisible(true);        
+        s.setVisible(true);
+        txtcantidad.setText(null);
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        
-        String codigo= txtCodPro.getText();
+
+        String codigo = txtCodPro.getText();
         pd = new productoDAO();
         producto = pd.listarUno(codigo);
         dt = new DetalleDTO();
@@ -393,74 +403,82 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         dt.setCantidad(Integer.parseInt(txtcantidad.getText()));
         int stock = Integer.parseInt(txtStock.getText());
         int cant = Integer.parseInt(txtcantidad.getText());
-        if(cant > stock){
+        if (cant > stock) {
             JOptionPane.showMessageDialog(null, "No hay stock suficiente");
             txtcantidad.requestFocus();
-        }else {
-        dt.setCodigoVenta(txtCodVenta.getText());
-        dt.calcularImporte();
-        listaDetalle.add(dt);
-        txtcantidad.setText(null);
-        mostrarTablaDetalle();
+        } else {
+            dt.setCodigoVenta(txtCodVenta.getText());
+            dt.calcularImporte();
+            listaDetalle.add(dt);
+            txtcantidad.setText(null);
+            mostrarTablaDetalle();
         }
-        
+
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
+        //Agregando Excepciones evitar que se genere una venta 
+        if (tblventa.getRowCount() == 0 ) {
+            JOptionPane.showMessageDialog(this, "No es posible realizar esta venta",
+                "Error de Venta", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
         v = new Venta();
-        VentaDAO vd= new VentaDAO();
+        VentaDAO vd = new VentaDAO();
         v.setCodigo(txtCodVenta.getText());
         v.setFecha(txtfecha.getText());
         v.calcularTotalNeto(listaDetalle);
         v.calcularIGV();
         v.cacularTotalBruto();
-        txttotalN.setText(v.getTotalN()+"");
-        txtIgv.setText(v.getImpuestoIGV()+"");
-        txttotalB.setText(v.getTotalB()+"");
+        txttotalN.setText(v.getTotalN() + "");
+        txtIgv.setText(v.getImpuestoIGV() + "");
+        txttotalB.setText(v.getTotalB() + "");
         vd.agregar(v);
-        
+        // Ruta de guardado del archivo de la factura
+        String rutaFactura = "FACTURAS" + File.separator + "Factura" + v.getCodigo() + ".txt";
+
         //Agregando detalles a la venta
-        for(int i=0; i<listaDetalle.size(); i++){
-            DetalleDAO dd=new DetalleDAO();
+        for (int i = 0; i < listaDetalle.size(); i++) {
+            DetalleDAO dd = new DetalleDAO();
             dd.agregar(listaDetalle.get(i));
         }
         // Guardar el detalle en un archivo de factura
         try {
-        FileWriter fw = new FileWriter("Factura"+v.getCodigo()+".txt");
-        PrintWriter pw = new PrintWriter(fw);   
-        pw.println("\t"+"\t"+"TOP TECH");
-        pw.println("\t"+"    RUC 10103651480");
-        pw.println("\t"+"Av. Arequipa 265, Lima 15046");
-        pw.println("\t"+"    toptech@gmail.com");
-        pw.println("\t"+"919280633 , (01)3749342");
-        pw.println("Factura de Venta"+"\t"+"Código de Venta: " + txtCodVenta.getText());
-        pw.println("Fecha de Venta: " + txtfecha.getText());
-        pw.println("Cliente: "+txtNombreCliente.getText());
-        pw.println("--------------------------------------------------------------");
-        pw.println("Detalle de Venta:");
-        pw.println("ID"+"\t"+"Descripción"+"\t"+"Cantidad"+"\t"+"Precio Unit"+"\t"+"Importe");
-        
-        for (int i = 0; i < listaDetalle.size(); i++) {
-            DetalleDTO detalle = listaDetalle.get(i);
-            pw.println(detalle.getProducto().getCod()+"\t"+detalle.getProducto().getDescripcion()+
-                    "\t"+detalle.getCantidad()+"\t"+
-                    "\t"+detalle.getProducto().getPrecioUnit()+"\t"+"\t"+detalle.getImporte());
+            FileWriter fw = new FileWriter(rutaFactura);
+            PrintWriter pw = new PrintWriter(fw);
+            pw.println("\t" + "\t" + "TOP TECH");
+            pw.println("\t" + "    RUC 10103651480");
+            pw.println("\t" + "Av. Arequipa 265, Lima 15046");
+            pw.println("\t" + "    toptech@gmail.com");
+            pw.println("\t" + "919280633 , (01)3749342");
+            pw.println("Factura de Venta" + "\t" + "Código de Venta: " + txtCodVenta.getText());
+            pw.println("Fecha de Venta: " + txtfecha.getText());
+            pw.println("Cliente: " + txtNombreCliente.getText());
+            pw.println("--------------------------------------------------------------");
+            pw.println("Detalle de Venta:");
+            pw.println("ID" + "\t" + "Descripción" + "\t" + "Cantidad" + "\t" + "Precio Unit" + "\t" + "Importe");
+
+            for (int i = 0; i < listaDetalle.size(); i++) {
+                DetalleDTO detalle = listaDetalle.get(i);
+                pw.println(detalle.getProducto().getCod() + "\t" + detalle.getProducto().getDescripcion()
+                        + "\t" + detalle.getCantidad() + "\t"
+                        + "\t" + detalle.getProducto().getPrecioUnit() + "\t" + "\t" + detalle.getImporte());
+            }
+            pw.println("--------------------------------------------------------------");
+            pw.println("Total Bruto: " + txttotalB.getText());
+            pw.println("IGV: " + txtIgv.getText());
+            pw.println("Total Neto: " + txttotalN.getText());
+
+            pw.close();
+            fw.close();
+            JOptionPane.showMessageDialog(this, "Factura generada y guardada correctamente.");
+        } catch (IOException ex) {
+            Logger.getLogger(IFormReporteVentas.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error al guardar la factura.");
         }
-        pw.println("--------------------------------------------------------------");
-        pw.println("Total Bruto: " + txttotalB.getText());
-        pw.println("IGV: " + txtIgv.getText());
-        pw.println("Total Neto: " + txttotalN.getText());
 
-        pw.close();
-        fw.close();
-        JOptionPane.showMessageDialog(this, "Factura generada y guardada correctamente.");
-    } catch (IOException ex) {
-        Logger.getLogger(IFormReporteVentas.class.getName()).log(Level.SEVERE, null, ex);
-        JOptionPane.showMessageDialog(this, "Error al guardar la factura.");
-    }
-
-    // Limpiar la listaDetalle para la próxima venta
-    listaDetalle.clear();
+        // Limpiar la listaDetalle para la próxima venta
+        listaDetalle.clear();
 
     }//GEN-LAST:event_btnVentaActionPerformed
 
@@ -471,30 +489,30 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         txttotalB.setText(null);
         txtIgv.setText(null);
         txttotalN.setText(null);
+        txtNombreCliente.setText(null);
         modelo.setRowCount(0);
         pnlDatos.setVisible(false);
         obtenerUltimoCodigoVenta();
     }//GEN-LAST:event_btnLimpiarActionPerformed
-   
-    public void eliminarElementosTabla(){
-        for(int i=tblventa.getRowCount()-1; i>=0; i--){
+
+    public void eliminarElementosTabla() {
+        for (int i = tblventa.getRowCount() - 1; i >= 0; i--) {
             modelo.removeRow(i);
         }
     }
-    
-    public void mostrarTablaDetalle(){
-     eliminarElementosTabla();
-        for(int i=0; i<listaDetalle.size(); i++){
-        Object[] data={
-            listaDetalle.get(i).getProducto().getCod(),
-            listaDetalle.get(i).getProducto().getDescripcion(),
-            listaDetalle.get(i).getProducto().getPrecioUnit(),
-            listaDetalle.get(i).getCantidad(),
-            listaDetalle.get(i).getImporte(),
-        };
-        modelo.addRow(data);
-       }
-    } 
+
+    public void mostrarTablaDetalle() {
+        eliminarElementosTabla();
+        for (int i = 0; i < listaDetalle.size(); i++) {
+            Object[] data = {
+                listaDetalle.get(i).getProducto().getCod(),
+                listaDetalle.get(i).getProducto().getDescripcion(),
+                listaDetalle.get(i).getProducto().getPrecioUnit(),
+                listaDetalle.get(i).getCantidad(),
+                listaDetalle.get(i).getImporte(),};
+            modelo.addRow(data);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
@@ -527,16 +545,4 @@ public class IFormVenta extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txttotalN;
     // End of variables declaration//GEN-END:variables
 
-    
-
-   
-
-  
-
-
-
-    
-
-    
-    
 }
