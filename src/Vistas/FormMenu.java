@@ -118,6 +118,7 @@ public class FormMenu extends javax.swing.JFrame {
             }
         });
 
+        jmiProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/productoMenu.png"))); // NOI18N
         jmiProducto.setText("Registrar producto");
         jmiProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +127,7 @@ public class FormMenu extends javax.swing.JFrame {
         });
         jMenuProductos.add(jmiProducto);
 
+        jmiBuscarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/lupitaMenu.png"))); // NOI18N
         jmiBuscarProducto.setText("Buscar producto");
         jmiBuscarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +136,9 @@ public class FormMenu extends javax.swing.JFrame {
         });
         jMenuProductos.add(jmiBuscarProducto);
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CategoriaMenu.png"))); // NOI18N
         jMenuItem1.setText(" Ver Categorías");
+        jMenuItem1.setToolTipText("");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -148,6 +152,7 @@ public class FormMenu extends javax.swing.JFrame {
         jMenuProveedores.setText("Proveedores");
         jMenuProveedores.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
 
+        jmiProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAgregarM.png"))); // NOI18N
         jmiProveedores.setText("Registrar");
         jmiProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,7 +250,8 @@ public class FormMenu extends javax.swing.JFrame {
             }
         });
 
-        jMiRegistrar.setText("Registrar usuarios");
+        jMiRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botonAgregarM.png"))); // NOI18N
+        jMiRegistrar.setText("Nuevo usuario");
         jMiRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMiRegistrarActionPerformed(evt);

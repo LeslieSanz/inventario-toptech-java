@@ -23,6 +23,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiProducto">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/productoMenu.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Registrar producto"/>
               </Properties>
               <Events>
@@ -31,6 +34,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jmiBuscarProducto">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/lupitaMenu.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Buscar producto"/>
               </Properties>
               <Events>
@@ -39,7 +45,11 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/CategoriaMenu.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value=" Ver Categor&#xed;as"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
@@ -63,6 +73,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiProveedores">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/botonAgregarM.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Registrar"/>
               </Properties>
               <Events>
@@ -202,7 +215,10 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMiRegistrar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Registrar usuarios"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/Imagenes/botonAgregarM.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Nuevo usuario"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMiRegistrarActionPerformed"/>
