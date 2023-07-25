@@ -19,11 +19,13 @@ import modeloDAO.productoDAO;
 
 public class BuscarProducto extends javax.swing.JInternalFrame {
     String nomCat;
+    String codigo;
     private TableRowSorter trsfiltro;
     String filtro;
     
     //Declarar un objeto de la clase productoDAO
     productoDAO pd;
+    ProductoDTO p;
     
     CategoriaProducto c;
     CategoriaProductoDAO cd = new CategoriaProductoDAO();
@@ -69,13 +71,13 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
         tblProductoTodos = new javax.swing.JTable();
         pnlDatosProd = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnGuardarProducto = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        txtCodigProd = new javax.swing.JTextField();
+        txtPrecioProd = new javax.swing.JTextField();
+        txtDescripcione = new javax.swing.JTextField();
         pnlBuscar = new javax.swing.JPanel();
         txtDescripProd = new javax.swing.JTextField();
         cbxCatBuscar = new javax.swing.JComboBox<>();
@@ -118,9 +120,14 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel1.setText("Datos del producto");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnGuardar.png"))); // NOI18N
-        jButton1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Guardar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        btnGuardarProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnGuardarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/btnGuardar.png"))); // NOI18N
+        btnGuardarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Guardar", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BELOW_BOTTOM, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        btnGuardarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarProductoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel4.setText("Codigo");
@@ -130,6 +137,8 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Descripcion");
+
+        txtCodigProd.setEditable(false);
 
         javax.swing.GroupLayout pnlDatosProdLayout = new javax.swing.GroupLayout(pnlDatosProd);
         pnlDatosProd.setLayout(pnlDatosProdLayout);
@@ -146,17 +155,17 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
                             .addGroup(pnlDatosProdLayout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtPrecioProd, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlDatosProdLayout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtDescripcione, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(pnlDatosProdLayout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtCodigProd, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGuardarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(43, 43, 43))))
         );
         pnlDatosProdLayout.setVerticalGroup(
@@ -171,18 +180,18 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
                             .addGroup(pnlDatosProdLayout.createSequentialGroup()
                                 .addGroup(pnlDatosProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel4)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtCodigProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel5))
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPrecioProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(pnlDatosProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtDescripcione, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDatosProdLayout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnGuardarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         txtDescripProd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -252,6 +261,10 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
             .addGroup(pnlBuscarLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(pnlBuscarLayout.createSequentialGroup()
+                        .addComponent(lblDescripcion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtDescripProd, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscarLayout.createSequentialGroup()
                         .addComponent(rbtnCod)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -266,14 +279,12 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
                     .addGroup(pnlBuscarLayout.createSequentialGroup()
                         .addComponent(lblCodigo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCodProdu, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnModificarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(pnlBuscarLayout.createSequentialGroup()
-                            .addComponent(lblDescripcion)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(txtDescripProd, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtCodProdu, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(12, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnModificarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
         pnlBuscarLayout.setVerticalGroup(
             pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,9 +307,9 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
                 .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDescripcion)
                     .addComponent(txtDescripProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGap(45, 45, 45)
                 .addComponent(btnModificarProducto)
-                .addGap(37, 37, 37))
+                .addGap(63, 63, 63))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -327,8 +338,8 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(pnlDatosProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pnlBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(20, 20, 20))
+                    .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(51, 51, 51))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -367,7 +378,12 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Por favor, seleccione una categoría de la tabla.", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             pnlDatosProd.setVisible(true);
-            String codigo = tblProductoTodos.getValueAt(fila, 0).toString();            
+            codigo = tblProductoTodos.getValueAt(fila, 0).toString();
+            pd = new productoDAO();
+            p = pd.listarUno(codigo);
+            txtCodigProd.setText(p.getCod());
+            txtPrecioProd.setText(p.getPrecioUnit()+"");
+            txtDescripcione.setText(p.getDescripcion());            
     }
     }//GEN-LAST:event_btnModificarProductoActionPerformed
 
@@ -406,6 +422,13 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
     private void txtCodProduKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodProduKeyTyped
 
     }//GEN-LAST:event_txtCodProduKeyTyped
+
+    private void btnGuardarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProductoActionPerformed
+
+        p.setPrecioUnit(Double.parseDouble(txtPrecioProd.getText()));
+        p.setDescripcion(txtDescripcione.getText());       
+        pd.modificar(p);
+    }//GEN-LAST:event_btnGuardarProductoActionPerformed
     
     
     public void filtro1(){
@@ -451,10 +474,10 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnGuardarProducto;
     private javax.swing.JButton btnModificarProducto;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbxCatBuscar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -463,9 +486,6 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JLabel lblCodigo;
     private javax.swing.JLabel lblDescripcion;
     private javax.swing.JPanel pnlBuscar;
@@ -474,6 +494,9 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rtbnDescrip;
     private javax.swing.JTable tblProductoTodos;
     private javax.swing.JTextField txtCodProdu;
+    private javax.swing.JTextField txtCodigProd;
     private javax.swing.JTextField txtDescripProd;
+    private javax.swing.JTextField txtDescripcione;
+    private javax.swing.JTextField txtPrecioProd;
     // End of variables declaration//GEN-END:variables
 }
