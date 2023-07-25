@@ -4,13 +4,13 @@
 	    toptech@gmail.com
 	919280633 , (01)3749342
 Factura de Venta	Código de Venta: 00002
-Fecha de Venta: 23/07/2023
-Cliente: Leslie
+Fecha de Venta: 24/06/2023
+Cliente: Esther
 --------------------------------------------------------------
 Detalle de Venta:
 ID	Descripción	Cantidad	Precio Unit	Importe
-P0003	Intel Core i5	1		189.0		189.0
+P0002	AMD Ryzen 5	5		385.0		1925.0
 --------------------------------------------------------------
-Total Bruto: 160.65
-IGV: 28.349999999999998
-Total Neto: 189.0
+Total Bruto: 1631.36
+IGV: 293.64
+Total Neto: 1925.0
