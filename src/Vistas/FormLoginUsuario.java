@@ -25,9 +25,24 @@ public class FormLoginUsuario extends javax.swing.JFrame {
         setPlaceholderText2(txtPassword, "             ");
         getRootPane().setDefaultButton(btnIngresar);
         this.setLocationRelativeTo(this);
+        chkMostrar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+                    // Mostrar contraseña
+                    txtPassword.setEchoChar((char) 0);
+                } else if (evt.getStateChange() == java.awt.event.ItemEvent.DESELECTED) {
+                    // Ocultar contraseña
+                    txtPassword.setEchoChar('\u2022');
+                }
+            }
+        });
+        
     }
+    private boolean mostrarContrasena = false;
         
-        
+    
+    
+    
         // Para que el txtUsuario solo permita numeros enteros jeje la queremos profe
     private void restrictToNumbers(javax.swing.JTextField textField) {
         textField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -122,6 +137,7 @@ public class FormLoginUsuario extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         txtPassword = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
+        chkMostrar = new javax.swing.JCheckBox();
         btnIngresar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -195,7 +211,7 @@ public class FormLoginUsuario extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(0, 51, 102));
         jPanel6.setPreferredSize(new java.awt.Dimension(341, 69));
 
-        txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtPassword.setMinimumSize(new java.awt.Dimension(64, 31));
         txtPassword.setPreferredSize(new java.awt.Dimension(64, 31));
 
@@ -217,15 +233,25 @@ public class FormLoginUsuario extends javax.swing.JFrame {
             .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        chkMostrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        chkMostrar.setText("Mostrar contraseña");
+        chkMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMostrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlDatosLayout = new javax.swing.GroupLayout(pnlDatos);
         pnlDatos.setLayout(pnlDatosLayout);
         pnlDatosLayout.setHorizontalGroup(
             pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDatosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))
+                .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))
+                    .addComponent(chkMostrar))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         pnlDatosLayout.setVerticalGroup(
@@ -235,7 +261,9 @@ public class FormLoginUsuario extends javax.swing.JFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(chkMostrar)
+                .addContainerGap())
         );
 
         btnIngresar.setBackground(new java.awt.Color(0, 51, 102));
@@ -306,7 +334,7 @@ public class FormLoginUsuario extends javax.swing.JFrame {
                     .addComponent(LblTipoUsuario))
                 .addGap(28, 28, 28)
                 .addComponent(pnlDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(76, Short.MAX_VALUE))
         );
@@ -411,6 +439,10 @@ public class FormLoginUsuario extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnIngresarKeyPressed
 
+    private void chkMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMostrarActionPerformed
+   
+    }//GEN-LAST:event_chkMostrarActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -424,6 +456,7 @@ public class FormLoginUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel LblTipoUsuario;
     private javax.swing.JButton btnIngresar;
     private javax.swing.JComboBox<String> cbxTipoUsuario;
+    private javax.swing.JCheckBox chkMostrar;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
