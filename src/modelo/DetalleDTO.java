@@ -15,7 +15,6 @@ public class DetalleDTO {
     private String codigoVenta;
     private double importe;//cantidad*precio unitario
     private int cantidad;
-    //super f
     
     public void calcularImporte(){
         importe=cantidad*producto.getPrecioUnit();

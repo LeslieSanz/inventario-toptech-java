@@ -1,6 +1,7 @@
 package modelo;
 
 public class ProductoDTO {    
+    //Atributos
     private String cod;
     private CategoriaProducto categoria;
     public String descripcion;

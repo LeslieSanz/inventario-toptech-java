@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * // Luis^2 y Esther
  */
 public class Venta {
-    
+    //Atributos
     private String codigo;
     private String fecha;
     private double totalN; //se calcula

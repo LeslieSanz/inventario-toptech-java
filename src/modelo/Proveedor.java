@@ -2,6 +2,7 @@
 package modelo;
 
 public class Proveedor {
+    //Atributos
     private String codigoprov;
     private int telefono;
     private String nombreprov;

@@ -9,6 +9,7 @@ package modelo;
  * @author lesly
  */
 public class CategoriaProducto {
+    //Atributos
     private String codigo;
     private String nombre;
 
