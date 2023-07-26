@@ -3,16 +3,17 @@
 	Av. Arequipa 265, Lima 15046
 	    toptech@gmail.com
 	919280633 , (01)3749342
-Factura de Venta	Código de Venta: 00005
+Factura de Venta	Código de Venta: 00006
 Fecha de Venta: 25/07/2023
-Cliente: Yuliana Jauregui
+Cliente: Leslie
 --------------------------------------------------------------
 Detalle de Venta:
 ID	Descripción	Cantidad	Precio Unit	Importe
-P0001	Intel Core i7	10		1200.0		12000.0
+P0008	AMD Athlon	1		250.0		250.0
 P0004	AMD Ryzen 7	2		980.0		1960.0
-P0026	HDD Toshiba 1TB	1		216.0		216.0
+P0008	AMD Athlon	4		250.0		1000.0
+P0008	AMD Athlon	5		250.0		1250.0
 --------------------------------------------------------------
-Total Bruto: 12013.56
-IGV: 2162.44
-Total Neto: 14176.0
+Total Bruto: 3779.66
+IGV: 680.34
+Total Neto: 4460.0

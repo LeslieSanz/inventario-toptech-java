@@ -65,6 +65,7 @@ public class IFormVenta extends javax.swing.JInternalFrame {
                 System.err.println("No se pudo crear la carpeta FACTURAS.");
             }
         }
+        
         setSize(777, 550);
 
     }
@@ -415,7 +416,8 @@ public class IFormVenta extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_btnAgregarActionPerformed
-
+    
+    
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
         //Agregando Excepciones evitar que se genere una venta 
         if (tblventa.getRowCount() == 0 ) {
