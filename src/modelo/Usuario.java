@@ -1,20 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package modelo;
 
-/**
- *
- * @author lesly
- */
 public class Usuario {
-    //Atributos
+    //comentario de prueba para ver si funciona el commit desde una rama local
     private int codigoUsuario; //Se ingresa
     private int telefono; //Supongo que estará ingresado en la bdd
     private String nombreUsuario; //Supongo que estará ingresado en la bdd
     private String contraseña; //Se ingresa
     private String rol; //Supongo que estará ingresado en la bdd
+    public String Nombres; //Se ingresa
 
     public int getCodigoUsuario() {
         return codigoUsuario;
@@ -54,6 +48,14 @@ public class Usuario {
 
     public void setTelefono(int telefono) {
         this.telefono = telefono;
+    }
+
+    public  String getNombres() {
+        return Nombres;
+    }
+
+    public void setNombres(String Nombres) {
+        this.Nombres = Nombres;
     }
        
 }

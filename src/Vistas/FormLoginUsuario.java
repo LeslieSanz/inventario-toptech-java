@@ -2,6 +2,7 @@
 package Vistas;
 
 import Vistas.FormMenu;
+import Vistas.FormMenu;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Font;
@@ -212,8 +213,6 @@ public class FormLoginUsuario extends javax.swing.JFrame {
         jPanel6.setPreferredSize(new java.awt.Dimension(341, 69));
 
         txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtPassword.setMinimumSize(new java.awt.Dimension(64, 31));
-        txtPassword.setPreferredSize(new java.awt.Dimension(64, 31));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/PasswordLogo.png"))); // NOI18N
 
@@ -230,7 +229,7 @@ public class FormLoginUsuario extends javax.swing.JFrame {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(txtPassword)
         );
 
         chkMostrar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -393,6 +392,9 @@ public class FormLoginUsuario extends javax.swing.JFrame {
 
                     FormMenu m = new FormMenu();
                     m.setVisible(true);
+                    
+                    m.jMenuVenta.setVisible(false);
+                    
 
                     setPlaceholderText2(txtPassword, "**************"); // Reiniciar campo de contraseña
                 } else if (cbxTipoUsuario.getSelectedItem().equals("Vendedor")) {

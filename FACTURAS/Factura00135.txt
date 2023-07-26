@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00135
+Fecha de Venta: 26/07/2023
+Cliente: Leslie
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0013	NVIDIA GeForce RTX 3060	5		3480.0		17400.0
+P0009	Intel Core i3	6		237.0		1422.0
+--------------------------------------------------------------
+Total Bruto: 15950.85
+IGV: 2871.15
+Total Neto: 18822.0
