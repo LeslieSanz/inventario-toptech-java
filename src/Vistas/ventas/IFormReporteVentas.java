@@ -22,7 +22,8 @@ import org.jfree.data.xy.XYSeriesCollection; //Para el grafico lineal
 public class IFormReporteVentas extends javax.swing.JInternalFrame {
     VentaDAO vd= new VentaDAO();
     Venta v = new Venta();
-    int grafico=0;
+    int grafico;
+    String m;
     /**
      * Creates new form IFormReporteVentas
      */
@@ -65,7 +66,7 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
         case 1:
             //Graficar en memoria
             JFreeChart jsCircularAnual = ChartFactory.createPieChart(
-                    "Ventas para el Año " + an, // Título del gráfico
+                    "Ventas del Año " + an, // Título del gráfico
                     dsCircularAnual // Datos
             );
             ChartPanel cpCircularAnual = new ChartPanel(jsCircularAnual);
@@ -77,7 +78,7 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
         case 2:
             //Graficar en memoria
             JFreeChart jsBarraAnual = ChartFactory.createBarChart(
-                    "Ventas para el Año " + an, // Título del gráfico
+                    "Ventas del Año " + an, // Título del gráfico
                     "Meses", // Etiqueta del eje X
                     "Total", // Etiqueta del eje Y
                     dsBarraAnual // Datos
@@ -93,7 +94,7 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
             dataset.addSeries(seriesAnual);
             // Graficar en memoria
             JFreeChart lineChart = ChartFactory.createXYLineChart(
-                    "Gráfico Lineal de Ventas para el Año " + an,
+                    "Ventas del Año " + an,
                     "Meses", // Eje X
                     "Total Ventas", // Etiqueta del eje Y
                     dataset // Datos
@@ -129,13 +130,11 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
         }
     }
     
-    
-
     switch (grafico) {
         case 1:
             //Graficar en memoria
             JFreeChart jsCircularMensual = ChartFactory.createPieChart(
-                    "Ventas para " + v.Lmes() + " " + an, // Título del gráfico
+                    "Todas las Ventas de " + m + " del " + an, // Título del gráfico
                     dsCircularMensual // Datos
             );
             ChartPanel cpCircularMensual = new ChartPanel(jsCircularMensual);
@@ -147,7 +146,7 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
         case 2:
             //Graficar en memoria
             JFreeChart jsBarraMensual = ChartFactory.createBarChart(
-                    "Ventas para " + v.Lmes() + " " + an, // Título del gráfico
+                    "Todas las Ventas de " + m + " del " + an, // Título del gráfico
                     "Día", // Etiqueta del eje X
                     "Total", // Etiqueta del eje Y
                     dsBarraMensual // Datos
@@ -163,7 +162,7 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
             dataset.addSeries(seriesMensual);
             // Graficar en memoria
             JFreeChart lineChart = ChartFactory.createXYLineChart(
-                    "Gráfico Lineal de Ventas para " + v.Lmes() + " " + an,
+                    "Todas las Ventas de " + m + " del " + an,
                     "Días", // Eje X
                     "Total Ventas", // Etiqueta del eje Y
                     dataset // Datos
@@ -377,12 +376,13 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
     private void btnCirculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCirculoActionPerformed
     grafico = 1;
     String tipo = cbxtipo.getSelectedItem().toString();
-    if (tipo.equals("ANUAL")) {
+    if (tipo.equals("Anual")) {
         int an = (int) spnanio.getValue();
         generarGraficoAnual(an);
-    } else if (tipo.equals("MENSUAL")) {
+    } else if (tipo.equals("Mensual")) {
         int an = (int) spnanio.getValue();
         int mes = cbxmes.getSelectedIndex() + 1; 
+        m=cbxmes.getSelectedItem().toString();
         generarGraficoMensual(an, mes);
     }
     }//GEN-LAST:event_btnCirculoActionPerformed
@@ -390,12 +390,13 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
     private void btnBarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarraActionPerformed
     grafico = 2;
     String tipo = cbxtipo.getSelectedItem().toString();
-    if (tipo.equals("ANUAL")) {
+    if (tipo.equals("Anual")) {
         int an = (int) spnanio.getValue();
         generarGraficoAnual(an);
-    } else if (tipo.equals("MENSUAL")) {
+    } else if (tipo.equals("Mensual")) {
         int an = (int) spnanio.getValue();
         int mes = cbxmes.getSelectedIndex() + 1; 
+        m=cbxmes.getSelectedItem().toString();
         generarGraficoMensual(an, mes);
     }
     }//GEN-LAST:event_btnBarraActionPerformed
@@ -403,19 +404,20 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
     private void btnLinealActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLinealActionPerformed
    grafico = 3;
     String tipo = cbxtipo.getSelectedItem().toString();
-    if (tipo.equals("ANUAL")) {
+    if (tipo.equals("Anual")) {
         int an = (int) spnanio.getValue();
         generarGraficoAnual(an);
-    } else if (tipo.equals("MENSUAL")) {
+    } else if (tipo.equals("Mensual")) {
         int an = (int) spnanio.getValue();
         int mes = cbxmes.getSelectedIndex() + 1; 
+        m=cbxmes.getSelectedItem().toString();
         generarGraficoMensual(an, mes);
     }
     }//GEN-LAST:event_btnLinealActionPerformed
 
     private void cbxtipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxtipoActionPerformed
     String tipo = cbxtipo.getSelectedItem().toString();
-    if (tipo.equals("MENSUAL")) { // Cambiar "Mensual" a "MENSUAL"
+    if (tipo.equals("Mensual")) { // Cambiar "Mensual" a "MENSUAL"
        pnlmes.setVisible(true);
     } else {
         pnlmes.setVisible(false);

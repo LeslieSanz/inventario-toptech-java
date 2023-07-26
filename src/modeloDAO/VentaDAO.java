@@ -158,7 +158,7 @@ try {
     public List<Venta> lisDia(int mes, int an) {
     List<Venta> lis = new ArrayList();
     conn = con.getConexion();
-    String sql = "{call sp_reportemmesual(?, ?)}";
+    String sql = "{call sp_reportemmensual(?, ?)}";
     try {
         CallableStatement st = conn.prepareCall(sql);
         st.setInt(1, mes);
@@ -166,7 +166,7 @@ try {
         ResultSet rs = st.executeQuery();
 
         while (rs.next()) {
-            Venta v = new Venta();
+            Venta v = new Venta(); 
             v.setDia(rs.getInt(1)); // Modificar para obtener el día en lugar del mes
             v.setCantidad(rs.getInt(2));
             v.setTotal(rs.getInt(3));
