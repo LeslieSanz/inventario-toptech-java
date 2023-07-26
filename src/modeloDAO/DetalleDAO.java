@@ -4,6 +4,7 @@
  */
 package modeloDAO;
 
+import java.sql.CallableStatement;
 import config.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,11 +12,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import misInterfaces.DetalleInterface;
 import modelo.CategoriaProducto;
 import modelo.DetalleDTO;
+
 /**
  *
  * @author esther
@@ -118,4 +121,24 @@ try {
         }
         return dd;    }
     
+    public ArrayList<DetalleDTO> lisFactura(String codven){
+   ArrayList<DetalleDTO> lis=new ArrayList();
+   conn=con.getConexion();
+   String sql="{call sp_MostrarDetalleVenta(?)}";   
+   try{
+       CallableStatement st=conn.prepareCall(sql);
+     st.setString(1, codven);
+     ResultSet rs = st.executeQuery();
+     
+     while(rs.next()){
+        DetalleDTO f=new DetalleDTO();
+        f.setCodigoVenta(rs.getString(1));
+        f.setCantidad(rs.getInt(2));      
+        lis.add(f);
+     }
+   }catch(Exception ex){
+     ex.printStackTrace();
+   }   
+  return lis;    
+  } 
 }
