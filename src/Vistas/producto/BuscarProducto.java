@@ -428,6 +428,8 @@ public class BuscarProducto extends javax.swing.JInternalFrame {
         p.setPrecioUnit(Double.parseDouble(txtPrecioProd.getText()));
         p.setDescripcion(txtDescripcione.getText());       
         pd.modificar(p);
+        
+        mostrarTablaProductosxCat(nomCat);
     }//GEN-LAST:event_btnGuardarProductoActionPerformed
     
     
