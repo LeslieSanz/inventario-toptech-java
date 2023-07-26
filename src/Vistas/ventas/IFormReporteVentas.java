@@ -52,12 +52,12 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
 
     for (Venta v :vd.lisMes(an)) {
         try {
-            dsCircularAnual.setValue("Mes " + v.Lmes(), v.getTotal());
-            dsBarraAnual.addValue(v.getTotal(), "Venta", "Mes " + v.Lmes());
+            dsCircularAnual.setValue(v.Lmes(), v.getTotal());
+            dsBarraAnual.addValue(v.getTotal(), "Venta", v.Lmes());
             seriesAnual.add(v.getMes(), v.getTotal());
         } catch (NumberFormatException e) {
-            dsCircularAnual.setValue("Mes " + v.Lmes(), 0);
-            dsBarraAnual.addValue(0, "Venta", "Mes " + v.Lmes());
+            dsCircularAnual.setValue(v.Lmes(), 0);
+            dsBarraAnual.addValue(0, "Venta",v.Lmes());
             seriesAnual.add(v.getMes(), 0);
         }
     }
@@ -120,12 +120,12 @@ public class IFormReporteVentas extends javax.swing.JInternalFrame {
 
     for (Venta v : vd.lisDia(mes, an)) {
         try {
-            dsCircularMensual.setValue("Día " + v.getDia(), v.getTotal());
-            dsBarraMensual.addValue(v.getTotal(), "Venta", "Día " + v.getDia());
+            dsCircularMensual.setValue("" + v.getDia(), v.getTotal());
+            dsBarraMensual.addValue(v.getTotal(), "Venta", "" + v.getDia());
             seriesMensual.add(v.getDia(), v.getTotal());
         } catch (NumberFormatException e) {
-            dsCircularMensual.setValue("Día " + v.getDia(), 0);
-            dsBarraMensual.addValue(0, "Venta", "Día " + v.getDia());
+            dsCircularMensual.setValue("" + v.getDia(), 0);
+            dsBarraMensual.addValue(0, "Venta", "" + v.getDia());
             seriesMensual.add(v.getDia(), 0);
         }
     }

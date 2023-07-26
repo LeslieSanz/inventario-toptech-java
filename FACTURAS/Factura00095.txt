@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00095
+Fecha de Venta: 02/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0048	AOC C24G1A	7		2.5		17.5
+P0055	HyperX Alloy FPS Pro	12		890.0		10680.0
+--------------------------------------------------------------
+Total Bruto: 9065.68
+IGV: 1631.82
+Total Neto: 10697.5

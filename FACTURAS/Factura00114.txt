@@ -1,0 +1,16 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00114
+Fecha de Venta: 13/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0054	SteelSeries Apex Pro	24		1590.0		38160.0
+--------------------------------------------------------------
+Total Bruto: 32338.98
+IGV: 5821.02
+Total Neto: 38160.0

@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00099
+Fecha de Venta: 03/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0052	Razer BlackWidow Elite	12		1090.0		13080.0
+P0013	NVIDIA GeForce RTX 3060	3		3480.0		10440.0
+--------------------------------------------------------------
+Total Bruto: 19932.2
+IGV: 3587.8
+Total Neto: 23520.0

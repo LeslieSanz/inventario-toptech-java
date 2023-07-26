@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00085
+Fecha de Venta: 01/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0022	HDD Seagate 1TB	3		350.0		1050.0
+P0038	Kingston ValueRAM 4GB	12		390.0		4680.0
+--------------------------------------------------------------
+Total Bruto: 4855.93
+IGV: 874.07
+Total Neto: 5730.0

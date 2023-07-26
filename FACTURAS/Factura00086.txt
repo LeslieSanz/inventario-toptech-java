@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00086
+Fecha de Venta: 01/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0057	Corsair K95 RGB Platinum	12		1800.0		21600.0
+P0029	SSD WD Blue 1TB	24		435.0		10440.0
+--------------------------------------------------------------
+Total Bruto: 27152.54
+IGV: 4887.46
+Total Neto: 32040.0

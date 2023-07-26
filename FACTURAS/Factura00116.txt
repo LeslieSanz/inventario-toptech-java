@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00116
+Fecha de Venta: 15/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0057	Corsair K95 RGB Platinum	5		1800.0		9000.0
+P0048	AOC C24G1A	20		2.5		50.0
+--------------------------------------------------------------
+Total Bruto: 7669.49
+IGV: 1380.51
+Total Neto: 9050.0

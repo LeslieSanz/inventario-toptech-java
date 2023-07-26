@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00087
+Fecha de Venta: 01/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0048	AOC C24G1A	24		2.5		60.0
+P0045	Dell S2419H	6		740.0		4440.0
+--------------------------------------------------------------
+Total Bruto: 3813.56
+IGV: 686.44
+Total Neto: 4500.0

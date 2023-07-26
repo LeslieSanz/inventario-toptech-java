@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00090
+Fecha de Venta: 01/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0057	Corsair K95 RGB Platinum	3		1800.0		5400.0
+P0059	Razer Huntsman Elite	6		890.0		5340.0
+--------------------------------------------------------------
+Total Bruto: 9101.69
+IGV: 1638.31
+Total Neto: 10740.0

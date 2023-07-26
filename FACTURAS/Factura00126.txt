@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00126
+Fecha de Venta: 24/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0033	Crucial Ballistix 32GB	7		2325.0		16275.0
+P0039	Crucial 16GB DDR4	3		470.0		1410.0
+--------------------------------------------------------------
+Total Bruto: 14987.29
+IGV: 2697.71
+Total Neto: 17685.0

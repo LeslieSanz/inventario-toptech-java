@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00132
+Fecha de Venta: 28/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0067	Corsair Scimitar Pro	3		725.0		2175.0
+P0047	LG 34" Curved Ultrawide Monito	6		1300.0		7800.0
+--------------------------------------------------------------
+Total Bruto: 8453.39
+IGV: 1521.61
+Total Neto: 9975.0

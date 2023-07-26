@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00115
+Fecha de Venta: 14/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0083	Thermaltake Smart RGB 700W	5		890.0		4450.0
+P0047	LG 34" Curved Ultrawide Monito	5		1300.0		6500.0
+--------------------------------------------------------------
+Total Bruto: 9279.66
+IGV: 1670.34
+Total Neto: 10950.0

@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00100
+Fecha de Venta: 03/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0003	Intel Core i5	6		505.0		3030.0
+P0034	G.Skill Ripjaws V 4GB	3		1025.0		3075.0
+--------------------------------------------------------------
+Total Bruto: 5173.73
+IGV: 931.27
+Total Neto: 6105.0

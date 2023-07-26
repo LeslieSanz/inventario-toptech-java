@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00097
+Fecha de Venta: 02/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0067	Corsair Scimitar Pro	12		725.0		8700.0
+P0094	Cooler Master MasterBox MB511	6		890.0		5340.0
+--------------------------------------------------------------
+Total Bruto: 11898.31
+IGV: 2141.69
+Total Neto: 14040.0

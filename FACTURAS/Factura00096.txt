@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00096
+Fecha de Venta: 02/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0071	MSI B450 Tomahawk Max	12		1090.0		13080.0
+P0073	Gigabyte B560 Aorus Pro AX	6		1790.0		10740.0
+--------------------------------------------------------------
+Total Bruto: 20186.44
+IGV: 3633.56
+Total Neto: 23820.0

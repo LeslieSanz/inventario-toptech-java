@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00123
+Fecha de Venta: 21/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0038	Kingston ValueRAM 4GB	24		390.0		9360.0
+P0034	G.Skill Ripjaws V 4GB	3		1025.0		3075.0
+--------------------------------------------------------------
+Total Bruto: 10538.14
+IGV: 1896.86
+Total Neto: 12435.0

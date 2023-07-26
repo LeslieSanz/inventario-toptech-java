@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00118
+Fecha de Venta: 17/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0063	Corsair Dark Core RGB Pro	3		890.0		2670.0
+P0067	Corsair Scimitar Pro	1		725.0		725.0
+--------------------------------------------------------------
+Total Bruto: 2877.12
+IGV: 517.88
+Total Neto: 3395.0

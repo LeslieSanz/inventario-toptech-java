@@ -1,0 +1,16 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00129
+Fecha de Venta: 26/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0078	ASRock B460M Pro4	12		875.0		10500.0
+--------------------------------------------------------------
+Total Bruto: 8898.31
+IGV: 1601.69
+Total Neto: 10500.0

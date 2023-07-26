@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00121
+Fecha de Venta: 19/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0047	LG 34" Curved Ultrawide Monito	6		1300.0		7800.0
+P0047	LG 34" Curved Ultrawide Monito	3		1300.0		3900.0
+--------------------------------------------------------------
+Total Bruto: 9915.25
+IGV: 1784.75
+Total Neto: 11700.0

@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00107
+Fecha de Venta: 09/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0046	BenQ GW2270	9		690.0		6210.0
+P0031	Corsair Vengeance LPX 8GB	3		600.0		1800.0
+--------------------------------------------------------------
+Total Bruto: 6788.14
+IGV: 1221.86
+Total Neto: 8010.0

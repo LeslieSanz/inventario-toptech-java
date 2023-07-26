@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00134
+Fecha de Venta: 29/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0076	ASUS Prime Z590-P	12		1450.0		17400.0
+P0030	HDD Seagate 500GB	3		280.0		840.0
+--------------------------------------------------------------
+Total Bruto: 15457.63
+IGV: 2782.37
+Total Neto: 18240.0

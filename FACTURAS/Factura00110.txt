@@ -1,0 +1,16 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00110
+Fecha de Venta: 11/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0059	Razer Huntsman Elite	11		890.0		9790.0
+--------------------------------------------------------------
+Total Bruto: 8296.61
+IGV: 1493.39
+Total Neto: 9790.0

@@ -1,0 +1,16 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00131
+Fecha de Venta: 27/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0044	ASUS VG278QR	12		890.0		10680.0
+--------------------------------------------------------------
+Total Bruto: 9050.85
+IGV: 1629.15
+Total Neto: 10680.0

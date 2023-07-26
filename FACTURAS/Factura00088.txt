@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00088
+Fecha de Venta: 01/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0025	SSD Crucial 500GB	12		237.0		2844.0
+P0042	Acer R240HY	6		676.0		4056.0
+--------------------------------------------------------------
+Total Bruto: 5847.46
+IGV: 1052.54
+Total Neto: 6900.0

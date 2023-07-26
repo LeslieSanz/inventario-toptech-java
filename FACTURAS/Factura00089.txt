@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00089
+Fecha de Venta: 01/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0055	HyperX Alloy FPS Pro	12		890.0		10680.0
+P0055	HyperX Alloy FPS Pro	9		890.0		8010.0
+--------------------------------------------------------------
+Total Bruto: 15838.98
+IGV: 2851.02
+Total Neto: 18690.0

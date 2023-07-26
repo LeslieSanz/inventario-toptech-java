@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00128
+Fecha de Venta: 25/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0037	Corsair Dominator Platinum RGB	6		370.0		2220.0
+P0042	Acer R240HY	12		676.0		8112.0
+--------------------------------------------------------------
+Total Bruto: 8755.93
+IGV: 1576.07
+Total Neto: 10332.0

@@ -1,0 +1,16 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00122
+Fecha de Venta: 20/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0091	NZXT H510	6		790.0		4740.0
+--------------------------------------------------------------
+Total Bruto: 4016.95
+IGV: 723.05
+Total Neto: 4740.0

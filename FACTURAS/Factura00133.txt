@@ -1,0 +1,16 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00133
+Fecha de Venta: 28/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0035	ADATA XPG Spectrix D60G 16GB	3		1455.0		4365.0
+--------------------------------------------------------------
+Total Bruto: 3699.15
+IGV: 665.85
+Total Neto: 4365.0

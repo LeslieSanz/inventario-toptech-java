@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00102
+Fecha de Venta: 05/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0038	Kingston ValueRAM 4GB	5		390.0		1950.0
+P0044	ASUS VG278QR	6		890.0		5340.0
+--------------------------------------------------------------
+Total Bruto: 6177.97
+IGV: 1112.03
+Total Neto: 7290.0

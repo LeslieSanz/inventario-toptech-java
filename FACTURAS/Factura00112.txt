@@ -1,0 +1,16 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00112
+Fecha de Venta: 11/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0075	MSI MPG Z490 Gaming Edge	3		1790.0		5370.0
+--------------------------------------------------------------
+Total Bruto: 4550.85
+IGV: 819.15
+Total Neto: 5370.0

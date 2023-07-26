@@ -1,0 +1,16 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00109
+Fecha de Venta: 10/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0069	Razer Naga Trinity	24		1010.0		24240.0
+--------------------------------------------------------------
+Total Bruto: 20542.37
+IGV: 3697.63
+Total Neto: 24240.0

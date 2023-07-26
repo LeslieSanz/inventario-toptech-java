@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00092
+Fecha de Venta: 01/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0043	LG 27" Ultragear Gaming Monito	12		249.0		2988.0
+P0039	Crucial 16GB DDR4	3		470.0		1410.0
+--------------------------------------------------------------
+Total Bruto: 3727.12
+IGV: 670.88
+Total Neto: 4398.0

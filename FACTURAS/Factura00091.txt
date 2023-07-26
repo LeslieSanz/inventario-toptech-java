@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00091
+Fecha de Venta: 01/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0096	Thermaltake V200	24		590.0		14160.0
+P0023	SSD Samsung 1TB	3		420.0		1260.0
+--------------------------------------------------------------
+Total Bruto: 13067.8
+IGV: 2352.2
+Total Neto: 15420.0

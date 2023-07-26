@@ -1,0 +1,17 @@
+		TOP TECH
+	    RUC 10103651480
+	Av. Arequipa 265, Lima 15046
+	    toptech@gmail.com
+	919280633 , (01)3749342
+Factura de Venta	Código de Venta: 00093
+Fecha de Venta: 01/02/2023
+Cliente: 
+--------------------------------------------------------------
+Detalle de Venta:
+ID	Descripción	Cantidad	Precio Unit	Importe
+P0047	LG 34" Curved Ultrawide Monito	12		1300.0		15600.0
+P0051	Logitech G213 Prodigy	6		290.0		1740.0
+--------------------------------------------------------------
+Total Bruto: 14694.92
+IGV: 2645.08
+Total Neto: 17340.0
