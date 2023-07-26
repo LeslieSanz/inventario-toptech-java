@@ -4,13 +4,15 @@
 	    toptech@gmail.com
 	919280633 , (01)3749342
 Factura de Venta	Código de Venta: 00001
-Fecha de Venta: 24/07/2023
-Cliente: Luis
+Fecha de Venta: 10/01/2022
+Cliente: Lucas
 --------------------------------------------------------------
 Detalle de Venta:
 ID	Descripción	Cantidad	Precio Unit	Importe
-P0001	Intel Core i7	10		1200.0		12000.0
+P0019	NVIDIA GeForce RTX 3070	12		3800.0		45600.0
+P0021	SSD Kingston 500GB	24		140.0		3360.0
+P0092	Corsair iCUE 220T	12		1000.0		12000.0
 --------------------------------------------------------------
-Total Bruto: 10169.49
-IGV: 1830.51
-Total Neto: 12000.0
+Total Bruto: 51661.02
+IGV: 9298.98
+Total Neto: 60960.0
