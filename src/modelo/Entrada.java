@@ -25,9 +25,9 @@ public class Entrada extends ProcesoDTO{
     
     public String verificarEstado(){
         String estado;
-        if (cantidad_solicitada<cantidad_recibida){
+        if (getCantidad_solicitada()<cantidad_recibida){
                estado="Exceso";
-        }else if (cantidad_recibida==cantidad_solicitada ){
+        }else if (cantidad_recibida==getCantidad_solicitada() ){
                estado="Conforme";
         }else{
                estado="Revisar";

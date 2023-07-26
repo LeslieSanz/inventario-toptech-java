@@ -31,16 +31,6 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         pnlDatosEntrada.setVisible(false);
         //Para mantener los productos en la tabla si se cambia de frame
         mostrarTablaEntrada();
-        
-        
-       // Establecer la fecha actual
-        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
-        Date fa = new Date();
-        // Obtener la fecha actual
-        String fechaActualFormateada = f.format(fa);
-        // Asignar la fecha actual
-        pt.setFecha(fechaActualFormateada);
-        txtFechaEntrada.setText(fechaActualFormateada);
     }
     
     private void establecerColumnas(){
@@ -334,6 +324,14 @@ public class IFormEntrada extends javax.swing.JInternalFrame {
         }
         else{
             pnlDatosEntrada.setVisible(true);
+            // Establecer la fecha actual
+            SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy");
+            Date fa = new Date();
+            // Obtener la fecha actual
+            String fechaActualFormateada = f.format(fa);
+            // Asignar la fecha actual
+            pt.setFecha(fechaActualFormateada);
+            txtFechaEntrada.setText(fechaActualFormateada);
         }
     }//GEN-LAST:event_btnBuscarProductoActionPerformed
  
