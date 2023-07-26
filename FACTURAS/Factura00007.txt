@@ -4,14 +4,13 @@
 	    toptech@gmail.com
 	919280633 , (01)3749342
 Factura de Venta	Código de Venta: 00007
-Fecha de Venta: 25/07/2023
-Cliente: Leslie
+Fecha de Venta: 01/04/2022
+Cliente: Nicolás
 --------------------------------------------------------------
 Detalle de Venta:
 ID	Descripción	Cantidad	Precio Unit	Importe
-P0004	AMD Ryzen 7	8		980.0		7840.0
-P0041	Samsung 24" LED Monitor	4		238.0		952.0
+P0061	Logitech G502 Hero	64		700.0		44800.0
 --------------------------------------------------------------
-Total Bruto: 7450.85
-IGV: 1341.15
-Total Neto: 8792.0
+Total Bruto: 37966.1
+IGV: 6833.9
+Total Neto: 44800.0

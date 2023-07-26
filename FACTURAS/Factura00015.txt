@@ -3,14 +3,14 @@
 	Av. Arequipa 265, Lima 15046
 	    toptech@gmail.com
 	919280633 , (01)3749342
-Factura de Venta	Código de Venta: 00005
-Fecha de Venta: 09/03/2022
-Cliente: Alejandro
+Factura de Venta	Código de Venta: 00015
+Fecha de Venta: 12/08/2022
+Cliente: Daniel
 --------------------------------------------------------------
 Detalle de Venta:
 ID	Descripción	Cantidad	Precio Unit	Importe
-P0051	Logitech G213 Prodigy	48		290.0		13920.0
+P0007	Intel Pentium	10		350.0		3500.0
 --------------------------------------------------------------
-Total Bruto: 11796.61
-IGV: 2123.39
-Total Neto: 13920.0
+Total Bruto: 2966.1
+IGV: 533.9
+Total Neto: 3500.0

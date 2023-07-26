@@ -4,13 +4,13 @@
 	    toptech@gmail.com
 	919280633 , (01)3749342
 Factura de Venta	Código de Venta: 00003
-Fecha de Venta: 24/07/2023
-Cliente: Leslie
+Fecha de Venta: 13/02/2022
+Cliente: Mateo
 --------------------------------------------------------------
 Detalle de Venta:
 ID	Descripción	Cantidad	Precio Unit	Importe
-P0001	Intel Core i7	1		1200.0		1200.0
+P0035	ADATA XPG Spectrix D60G 16GB	24		1455.0		34920.0
 --------------------------------------------------------------
-Total Bruto: 1016.95
-IGV: 183.05
-Total Neto: 1200.0
+Total Bruto: 29593.22
+IGV: 5326.78
+Total Neto: 34920.0

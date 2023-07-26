@@ -3,14 +3,15 @@
 	Av. Arequipa 265, Lima 15046
 	    toptech@gmail.com
 	919280633 , (01)3749342
-Factura de Venta	Código de Venta: 00005
-Fecha de Venta: 09/03/2022
-Cliente: Alejandro
+Factura de Venta	Código de Venta: 00021
+Fecha de Venta: 24/11/2022
+Cliente: Leonardo
 --------------------------------------------------------------
 Detalle de Venta:
 ID	Descripción	Cantidad	Precio Unit	Importe
-P0051	Logitech G213 Prodigy	48		290.0		13920.0
+P0077	Gigabyte X570 Aorus Elite	120		1700.0		204000.0
+P0044	ASUS VG278QR	64		890.0		56960.0
 --------------------------------------------------------------
-Total Bruto: 11796.61
-IGV: 2123.39
-Total Neto: 13920.0
+Total Bruto: 221152.54
+IGV: 39807.46
+Total Neto: 260960.0

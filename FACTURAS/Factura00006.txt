@@ -4,16 +4,13 @@
 	    toptech@gmail.com
 	919280633 , (01)3749342
 Factura de Venta	Código de Venta: 00006
-Fecha de Venta: 25/07/2023
-Cliente: Leslie
+Fecha de Venta: 21/03/2022
+Cliente: Camila
 --------------------------------------------------------------
 Detalle de Venta:
 ID	Descripción	Cantidad	Precio Unit	Importe
-P0008	AMD Athlon	1		250.0		250.0
-P0004	AMD Ryzen 7	2		980.0		1960.0
-P0008	AMD Athlon	4		250.0		1000.0
-P0008	AMD Athlon	5		250.0		1250.0
+P0029	SSD WD Blue 1TB	12		435.0		5220.0
 --------------------------------------------------------------
-Total Bruto: 3779.66
-IGV: 680.34
-Total Neto: 4460.0
+Total Bruto: 4423.73
+IGV: 796.27
+Total Neto: 5220.0

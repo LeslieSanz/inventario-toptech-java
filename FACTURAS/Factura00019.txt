@@ -3,14 +3,14 @@
 	Av. Arequipa 265, Lima 15046
 	    toptech@gmail.com
 	919280633 , (01)3749342
-Factura de Venta	Código de Venta: 00005
-Fecha de Venta: 09/03/2022
-Cliente: Alejandro
+Factura de Venta	Código de Venta: 00019
+Fecha de Venta: 18/10/2022
+Cliente: Andrés
 --------------------------------------------------------------
 Detalle de Venta:
 ID	Descripción	Cantidad	Precio Unit	Importe
-P0051	Logitech G213 Prodigy	48		290.0		13920.0
+P0068	Logitech G Pro Wireless	120		1100.0		132000.0
 --------------------------------------------------------------
-Total Bruto: 11796.61
-IGV: 2123.39
-Total Neto: 13920.0
+Total Bruto: 111864.41
+IGV: 20135.59
+Total Neto: 132000.0

@@ -3,14 +3,14 @@
 	Av. Arequipa 265, Lima 15046
 	    toptech@gmail.com
 	919280633 , (01)3749342
-Factura de Venta	Código de Venta: 00005
-Fecha de Venta: 09/03/2022
-Cliente: Alejandro
+Factura de Venta	Código de Venta: 00024
+Fecha de Venta: 11/12/2023
+Cliente: Renata
 --------------------------------------------------------------
 Detalle de Venta:
 ID	Descripción	Cantidad	Precio Unit	Importe
-P0051	Logitech G213 Prodigy	48		290.0		13920.0
+P0053	Corsair K70 RGB MK.2	100		1290.0		129000.0
 --------------------------------------------------------------
-Total Bruto: 11796.61
-IGV: 2123.39
-Total Neto: 13920.0
+Total Bruto: 109322.03
+IGV: 19677.97
+Total Neto: 129000.0

@@ -4,13 +4,14 @@
 	    toptech@gmail.com
 	919280633 , (01)3749342
 Factura de Venta	Código de Venta: 00002
-Fecha de Venta: 24/06/2023
-Cliente: Esther
+Fecha de Venta: 15/01/2022
+Cliente: Sofía
 --------------------------------------------------------------
 Detalle de Venta:
 ID	Descripción	Cantidad	Precio Unit	Importe
-P0002	AMD Ryzen 5	5		385.0		1925.0
+P0010	AMD Ryzen 3	12		310.0		3720.0
+P0058	Logitech G915	12		830.0		9960.0
 --------------------------------------------------------------
-Total Bruto: 1631.36
-IGV: 293.64
-Total Neto: 1925.0
+Total Bruto: 11593.22
+IGV: 2086.78
+Total Neto: 13680.0
